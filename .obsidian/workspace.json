@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Developing The Idea/Project Idea.md",
+                "file": "Developing The Idea/Notes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Developing The Idea/Project Idea.md",
+                "file": "Developing The Idea/Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Developing The Idea/Project Idea.md",
+                "file": "Developing The Idea/Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Developing The Idea/Project Idea.md"
+                "file": "Developing The Idea/Notes.md"
               }
             }
           }
@@ -151,10 +151,11 @@
   },
   "active": "4611449c83bcb194",
   "lastOpenFiles": [
+    "Developing The Idea/Project Idea.md",
+    "Developing The Idea/Notes.md",
     "Current Research/Things Looked Up.md",
     "Developing The Idea/Current Knowledge.md",
     "Developing The Idea/Detailed Algorithm Notes.md",
-    "Developing The Idea/Project Idea.md",
     "Current Research/Revisiting Gist-PCA Hashing for Near Duplicate Image Detection.pdf",
     "Current Research/Pulse Coupled NN based Near-Duplicate Detection of Images (PCNN - NDD).pdf",
     "Current Research/Semantics/Bimodal Fusion of Low-Level Visual Features and High-Level Semantic Features For Near-Duplicate Video Clip Detection.pdf",
@@ -197,7 +198,6 @@
     "Documents/School/Web Programming/B2 Presentation.md",
     "Documents/School/Software Architecture/Example 2.md",
     "Documents/Personal/Documentation/Linux/Arch Install.md",
-    "Documents/School/Web Programming/B2 CRUD.md",
-    "2024-02-07.md"
+    "Documents/School/Web Programming/B2 CRUD.md"
   ]
 }

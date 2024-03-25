@@ -2,13 +2,15 @@
 
 ----
 ### What Do I Hope To Discover or Test?
-- One thing we could do is redefine exactly what we are considering a near duplicate image. Everything I have found defines it as image transformations, but this is not what I want to do. Instead I want different pictures that are similar where small things such as angle or whatnot are a bit different.
-- Adaptable threshold techniques
-	- Develop an adaptive threshold approach that happens during the hashing process itself.
-- New Algorithms for hashing and feature extraction
-	- Hybrid hashing using strengths of current approaches and the strengths of deep learning.
-- Semantic Hashing
-	- Hashing techniques that focus on semantic similarity rather than pixel-level similarity, enabling the detection of duplicates that are contextually similar but may not be visually identical.
+- Main idea
+	- One thing we could do is redefine exactly what we are considering a near duplicate image. Everything I have found defines it as image transformations, but this is not what I want to do. Instead I want different pictures that are similar where small things such as angle or whatnot are a bit different.
+- Other potentials
+	- Adaptable threshold techniques
+		- Develop an adaptive threshold approach that happens during the hashing process itself.
+	- New Algorithms for hashing and feature extraction
+		- Hybrid hashing using strengths of current approaches and the strengths of deep learning.
+	- Semantic Hashing
+		- Hashing techniques that focus on semantic similarity rather than pixel-level similarity, enabling the detection of duplicates that are contextually similar but may not be visually identical.
 
 ### Notes
 - Simply the goal is the answer true or false if two images are considered **perceptually** to be duplicates. This is done by finding the best suited threshold between the two possibilities.

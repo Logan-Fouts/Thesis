@@ -15,6 +15,9 @@ Near duplicate images are images that are either exact copies or very similar to
 - Perspective changes
 - Lighting
 - ~~And other changes that are prevalent in real life like weather/environment~~
+### Potential Models
+[Good Article](https://spotintelligence.com/2023/11/04/feature-extraction/#What_is_Feature_Extraction_in_Machine_Learning)
+-  VGG, ResNet, and Inception
 ### What Do I Hope To Discover or Test?
 We are not looking to create a faster necessarily method but a more reliable accurate method.
 - One thing we could do is redefine exactly what we are considering a near duplicate image. Everything I have found defines it as image transformations, but this is not what I want to do. Instead I want different pictures that are similar where small things such as angle or whatnot are a bit different.

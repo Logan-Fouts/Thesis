@@ -1,5 +1,12 @@
 ## Semantic Near-Duplicate Image Detection Using Deep Learning And Bimodal Fusion
 ----
+It seems most are concerned not with getting the highest accuracy, but in efficiency in computation, storage, and retrieval.
+
+> [!NOTE] Research Gap
+> The fact that we aim for highest accuracy and not highest efficiency could be part of out gap.
+> 
+> Also, we are using models to get a deeper understanding of semantics as well as combining them with low level features.
+
 ### Hypothesis
 Using deep learning models together with Multi-Modal Fusion techniques we can increase upon the accuracy of current techniques such as min-hash, PCA, and etc.
 ### Define Near Duplicate Images
@@ -7,7 +14,7 @@ Near duplicate images are images that are either exact copies or very similar to
 - Image transformations- Alterations made to an image through some sort of software
 - Perspective changes
 - Lighting
-- And other changes that are prevalent in real life like weather/environment
+- ~~And other changes that are prevalent in real life like weather/environment~~
 ### What Do I Hope To Discover or Test?
 We are not looking to create a faster necessarily method but a more reliable accurate method.
 - One thing we could do is redefine exactly what we are considering a near duplicate image. Everything I have found defines it as image transformations, but this is not what I want to do. Instead I want different pictures that are similar where small things such as angle or whatnot are a bit different.
@@ -40,6 +47,8 @@ We are not looking to create a faster necessarily method but a more reliable acc
 #### Iterative Quantization (ITQ)
 
 - **Research Gap**: ITQ aims to improve the binary coding of high-dimensional data, offering efficient retrieval. While ITQ enhances quantization for hashing, it doesn't inherently focus on semantic content or the fusion of different data types. Your approach introduces an emphasis on deep learning and bimodal fusion to capture and utilize semantic content more effectively.
+### Related Stuff
+- Google photos has exact duplicate detection, not near duplicate detection [Here](https://sites.google.com/site/picasaresources/google-photos-1/how-to-remove-duplicates-in-google-photos)
 ### Notes
 - Simply the goal is the answer true or false if two images are considered **perceptually** to be duplicates. This is done by finding the best suited threshold between the two possibilities.
 - "Image description should be as **compact** as possible for storage efficiency, and duplicate detection needs to be **very fast** and **accurate** with light memory usage." (*G-PCA-HASH, page 1*)

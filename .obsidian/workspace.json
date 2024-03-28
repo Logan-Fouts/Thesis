@@ -24,16 +24,6 @@
             "id": "a90b2e24f0fef020",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "SPP/SPP Thesis proposal.pdf"
-              }
-            }
-          },
-          {
-            "id": "e1892ddd5424d7d3",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
                 "file": "SPP/SPP.md",
@@ -42,9 +32,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "12fd552527f3c1dc",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "SPP/SPP Thesis proposal.pdf"
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -159,8 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5,
-    "collapsed": true
+    "width": 337.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -173,16 +172,16 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "e1892ddd5424d7d3",
+  "active": "a90b2e24f0fef020",
   "lastOpenFiles": [
     "SPP/SPP Thesis proposal.pdf",
     "SPP/SPP.md",
+    "Readme.md",
     "Developing The Idea/Notes.md",
     "Untitled.md",
     "Current Research/Things Looked Up.md",
     "Developing The Idea/Project Idea.md",
     "SPP",
-    "Readme.md",
     "Developing The Idea/Detailed Algorithm Notes.md",
     "Developing The Idea/Current Knowledge.md",
     "Current Research/Benchmarking unsupervised near-duplicate image detection.pdf",

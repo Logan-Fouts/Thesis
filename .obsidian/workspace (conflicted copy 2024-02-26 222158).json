@@ -4,59 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "a60550df8cce7ffd",
+        "id": "5cca5687577fb004",
         "type": "tabs",
         "children": [
           {
-            "id": "971f7cd6db3032fe",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Current Research/Near Duplicate Image Detection min-Hash and tf-idf Weighting.pdf"
-              }
-            }
-          },
-          {
-            "id": "44f94c7f1b4a7255",
+            "id": "c45d5e48b67d8896",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "Documents/School/Algorithms/New Lecture Notes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "9be3226997f917de",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Developing The Idea/Notes.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "5941ba3317c9991c",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "4611449c83bcb194",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "SPP/SPP Thesis proposal.pdf"
               }
             }
           }
@@ -127,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "Documents/School/Algorithms/New Lecture Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "Documents/School/Algorithms/New Lecture Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SPP/SPP Responses.md"
+                "file": "Documents/School/Algorithms/New Lecture Notes.md"
               }
             }
           }
@@ -176,7 +136,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5,
+    "width": 298.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -190,54 +150,54 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "44f94c7f1b4a7255",
+  "active": "c45d5e48b67d8896",
   "lastOpenFiles": [
-    "SPP/SPP Thesis proposal.pdf",
-    "SPP/SPP Responses.md",
-    "Developing The Idea/Detailed Algorithm Notes.md",
-    "Developing The Idea/Notes.md",
-    "Developing The Idea/Project Idea.md",
-    "Current Research/Near Duplicate Image Detection min-Hash and tf-idf Weighting.pdf",
-    "Readme.md",
-    "Developing The Idea/Current Knowledge.md",
-    "Template/SPP Thesis proposal.pdf.crdownload",
-    "SPP",
-    "New folder",
-    "Current Research/Bimodal Fusion of Low-Level Visual Features and High-Level Semantic Features For Near-Duplicate Video Clip Detection.pdf",
-    "Current Research/Benchmarking unsupervised near-duplicate image detection.pdf",
-    "Current Research/Things Looked Up.md",
-    "Current Research/Revisiting Gist-PCA Hashing for Near Duplicate Image Detection.pdf",
-    "Current Research/Pulse Coupled NN based Near-Duplicate Detection of Images (PCNN - NDD).pdf",
-    "Current Research/Semantics/Bimodal Fusion of Low-Level Visual Features and High-Level Semantic Features For Near-Duplicate Video Clip Detection.pdf",
-    "Current Research/ReadMe.md",
-    "Documents/School/Software Architecture/Reading Notes.md",
-    "Pasted image 20240318143335.png",
-    "Pasted image 20240318143253.png",
-    "Pasted image 20240318143231.png",
-    "Pasted image 20240318143215.png",
-    "Pasted image 20240318140352.png",
-    "Pasted image 20240318140336.png",
-    "Pasted image 20240318140148.png",
-    "Pasted image 20240318135201.png",
-    "Pasted image 20240318135048.png",
-    "Pasted image 20240318134525.png",
-    "Documents/School/Web Programming/Exam Studying.md",
-    "Documents/School/Web Programming/B3 Issue Report.md",
-    "youtube.com.md",
-    "Documents/School/Algorithms-Exam-Study/Notes/Typed Notes/New Lecture Notes.md",
-    "Documents/School/Algorithms-Exam-Study/README.md",
+    "Books/Software Architecture In Practice.pdf",
     "Documents/Personal/Documentation/LeetCode/Leetcode 75 Notes.md",
-    "Documents/School/Software Architecture/A3 Work.md",
-    "2390..md",
-    "[2390..md",
-    "Documents/School/Algorithms-Exam-Study/Notes/Typed Notes/Reading Notes.md",
-    "Documents/School/Algorithms/Reading Notes.md",
-    "Documents/School/Algorithms/New Lecture Notes.md",
-    "Documents/School/Software Architecture/Performance Notes For UML A2.md",
+    "Documents/School/Software Architecture/Docs/A2.pdf",
+    "Documents/School/Software Architecture/Reading Notes.md",
     "Documents/School/Software Architecture/Lecture Notes.md",
+    "Documents/School/Algorithms/New Lecture Notes.md",
+    "Books/Data Structures and Algorithm Analysis in Java.pdf",
+    "Documents/School/Algorithms/Reading Notes.md",
+    "Untitled.md",
+    "Documents/School/Algorithms/Lectures/l2.pdf",
+    "Documents/School/Algorithms/Lectures/l1.pdf",
+    "Books/Data Structures and Algorithm Analysis in Java.pdf.crdownload",
+    "Documents/School/Algorithms/Lectures/l8.pdf",
+    "Documents/School/Algorithms/Lectures/l8.pdf.crdownload",
+    "Documents/School/Algorithms/Lectures/l7.pdf",
+    "Documents/School/Algorithms/Lectures/l7.pdf.crdownload",
+    "Images/Pasted image 20240221170018.png",
     "Untitled 1.canvas",
     "Untitled.canvas",
+    "Images/Pasted image 20240221161447.png",
+    "Images/Pasted image 20240221161418.png",
+    "Images/Pasted image 20240221154419 1.png",
     "Documents/School/Web Programming/B2 Presentation.md",
-    "Documents/School/Software Architecture/Example 2.md"
+    "Documents/School/Software Architecture/Example 2.md",
+    "Documents/Personal/Documentation/Linux/Arch Install.md",
+    "Images/Pasted image 20240213113818 1.png",
+    "Images/Pasted image 20240213114558 1.png",
+    "Documents/School/Web Programming/B2 CRUD.md",
+    "Pasted image 20240207081736.png",
+    "Pasted image 20240207080508.png",
+    "Pasted image 20240207080500.png",
+    "2024-02-07.md",
+    "Documents/School/Degree Project/Current Research/ReadMe.md",
+    "Documents/School/Intro Programming/Mini Project/Report.md",
+    "Books/Web Programming With Node JS/Contents/2024-(Unit-4)-Week-6-MongoDB/Chapter 6/teaching-examples/mongoDB-shell-examples.md",
+    "Documents/School/Intro Programming/Robot-LawnMower/Readme.md",
+    "Documents/School/Intro Programming/Mini Project/Readme.md",
+    "Books/Web Programming With Node JS/Contents/2024-(Unit-1)-Week-3-NodeJS/README.md",
+    "Books/Web Programming With Node JS/Contents/README.md",
+    "Images/Pasted image 20240207071327.png",
+    "Documents/School/Web Programming/A3-SPA Presentation.md",
+    "Documents/School/Software Architecture/Exercise 1.md",
+    "Documents/School/Degree Project/Developing The Idea/Project Idea.md",
+    "Documents/School/Degree Project/Developing The Idea/Current Knowledge.md",
+    "Documents/School/Degree Project/Developing The Idea/Detailed Algorithm Notes.md",
+    "Documents/School/Software Testing/Software Testing Lecture Notes.md",
+    "Documents/School/Software Testing/Presentation Notes.md"
   ]
 }

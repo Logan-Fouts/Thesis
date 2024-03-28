@@ -4,3 +4,7 @@
 - https://www.robots.ox.ac.uk/~vgg/publications/2008/Chum08a/chum08a.pdf
 - https://link.springer.com/article/10.1007/s11831-020-09400-w
 - https://www.sciencedirect.com/science/article/pii/S095741741930315X?casa_token=0Tu6pDSG9XoAAAAA:pbctF7x4IUKyDyg53iPxpRJU0IeQ1Xj1yfmh-eCAYhyd-lno0rdfvGK3quVOhmz7KEfdt4-TK6Ab
+- https://www.sciencedirect.com/science/article/abs/pii/089360809390002E
+- https://www.mdpi.com/1999-4907/12/2/217
+- https://books.google.se/books?hl=en&lr=&id=qcHsCgAAQBAJ&oi=fnd&pg=PA107&dq=layered+approach+in+Image+Processing&ots=qNZqrM3zSk&sig=MrRYL1LCsTTyzBjzCcnUlAlXewA&redir_esc=y#v=onepage&q=layered%20approach%20in%20Image%20Processing&f=false
+- https://ieeexplore.ieee.org/abstract/document/4938723?casa_token=3zkRtFRR-B8AAAAA:Xog_Pnau347TW0r6SRA3RpLmyc6ES2oWlVQVxpti8ThR--2_kbt9YPwgtd2zeA0U-UvLV_2qQTY

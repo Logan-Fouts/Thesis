@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "Developing The Idea/Notes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -21,19 +21,30 @@
             }
           },
           {
-            "id": "e7b4936890ff0fd4",
+            "id": "a90b2e24f0fef020",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "SPP/SPP Thesis proposal.pdf"
+              }
+            }
+          },
+          {
+            "id": "e1892ddd5424d7d3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Current Research/Things Looked Up.md",
+                "file": "SPP/SPP.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -83,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 281.5,
-    "collapsed": true
+    "width": 281.5
   },
   "right": {
     "id": "e420f9a32d131055",
@@ -100,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "SPP/SPP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SPP/SPP Responses.md",
+                "file": "SPP/SPP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SPP/SPP Responses.md"
+                "file": "SPP/SPP.md"
               }
             }
           }
@@ -163,15 +173,16 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "4611449c83bcb194",
+  "active": "e1892ddd5424d7d3",
   "lastOpenFiles": [
-    "Current Research/Things Looked Up.md",
-    "SPP/SPP Responses.md",
-    "Developing The Idea/Project Idea.md",
     "SPP/SPP Thesis proposal.pdf",
+    "SPP/SPP.md",
+    "Developing The Idea/Notes.md",
+    "Untitled.md",
+    "Current Research/Things Looked Up.md",
+    "Developing The Idea/Project Idea.md",
     "SPP",
     "Readme.md",
-    "Developing The Idea/Notes.md",
     "Developing The Idea/Detailed Algorithm Notes.md",
     "Developing The Idea/Current Knowledge.md",
     "Current Research/Benchmarking unsupervised near-duplicate image detection.pdf",
@@ -194,7 +205,6 @@
     "Pasted image 20240318135201.png",
     "Pasted image 20240318135048.png",
     "Pasted image 20240318134525.png",
-    "Untitled.md",
     "Documents/School/Web Programming/Exam Studying.md",
     "Documents/School/Web Programming/B3 Issue Report.md",
     "youtube.com.md",

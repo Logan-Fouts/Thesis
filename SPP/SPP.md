@@ -51,6 +51,15 @@ Image processing in general is a very useful tool across many different areas fo
 
 #### Research Area
 The idea of duplicate image detection done in a new efficient and accurate manner falls nicely in the field of image processing within computer science. More specifically this project aims to contribute information and potentially a new useful technique to the duplicate image detection research area.
+
+#### Current Knowledge and Why Change
+Research shows a plethora of current and past solutions for duplicate image detection. These range from basic hashing techniques like min-hash to more intensive methods such as Convolutional Neural Networks (CNNs). These methods each have their strengths and weaknesses, with some having speed over accuracy, others providing accuracy at the expense of speed, and many showing greater or lesser adaptability to different datasets. This range of pros and cons for each method elicits a notable gap. Despite so many current techniques their is an absence of a method that seamlessly combines high efficiency with accuracy across varied datasets. To fill in this gap, a layered architecture is proposed, where each layer utilizes its own distinct method to progressively filter input images as they pass from the top to bottom layers. This nuanced approach hopes to be adaptable to various datasets without requiring modifications, while ensuring a balance between efficiency and accuracy that enhances its usability in real-world applications.
+
+To motivate why this gap should be filled, different potential positive effects can be discussed. Achieving more efficient and reliable duplicate image detection could greatly increase the quality of information on the internet, impacting society by more reliably providing access to accurate information and minimizing the spread of misinformation. Furthermore, this project hopes to help contribute to cleansing the internet of the copyright violations and illegal content that is currently abundant, ensuring individuals keep possession of their creations and preventing misuse of online platforms. Finally, the use of this project/idea by not only corporations but also individuals could lead to a significant reduction in resource consumption, as duplicates would no longer take up precious compute power and storage resources. This conserves financial resources and also allows for more effective use of storage and processing. In summary it could help to contribute to a greener world.
+
+> [!NOTE] TODO
+> If you are going to develop something (eg. prototype, app, web app, …) then describe the closest solutions. If there are many have a table. You can show the important features.
+
 ### Related work
 ### Knowledge Gap/Challenge/Problem
 ### Knowledge Contribution/Action

@@ -25,11 +25,15 @@ Layered Architecture for Efficient and Accurate Detection of Semantic Near-Dupli
 
 ## Risks
 - Implementation complexity
-	- **Risk:** When going into the coding phase of our project, we may find that the methods we are trying to implement are challenging to get working. This could be the algorithm themselves or how to get them to integrate and work together.
+	- **Risk:** When going into the coding phase of our project, we may find that the methods we are trying to implement are challenging to get working and may take more time then we have. This could be the algorithm themselves or how to get them to integrate and work together.
 	- **Mitigation:** To avoid this pitfall we can utilize an incremental approach. This involves writing small portions of the program at a time to limit complexity. Furthermore, testing can be used throughout the development to identify any issues early on.
+- Differing Near duplicate image definitions
+> [!NOTE] TODO
+> - Write the above section
+
 - Access to data sets
 	- **Risk:** To be able to properly compare and contrast our results to others we need to perform experiments with the same data sets. Access to this data may either be impossible or be locked behind paywalls.
-	- **Mitigation:** In order to mitigate this risk we can strategically collect data sets that are listed in papers we intend to compare against. While reading of the used data sets, access to each can be verified.
+	- **Mitigation:** In order to mitigate this risk we can strategically collect data sets that are listed in papers we intend to compare against. While reading of the used data sets, access to each can be verified. As a backup idea, generated image data sets could be used.
 - Computational limitations
 	- **Risk:** The layered approach including potentially a heavy deep learning model may turn out to be very computationally heavy for our resources.
 	- **Mitigation:** While in the process of choosing methods for each layer, we can vet each to make sure it is not only well suited for the specific layer but also computationally manageable for our hardware.
@@ -48,6 +52,8 @@ Image processing in general is a very useful tool across many different areas fo
 **Digital Libraries:** In places where users store lots of media such as pictures and videos, duplicate detection could prove a handy tool. The use of this detection could greatly reduce storage resource utilization which could help to reduce overall computational resource utilization.
 
 **Social Media:** Duplicate detection could be used heavily in this area to mitigate many issues. These include spam, copyright infringement, posting of illegal images, etc. This would have a direct effect on improving user experience within the platform.
+
+**Copyright infringement**- could be an area on its own.
 
 #### Research Area
 The idea of duplicate image detection done in a new efficient and accurate manner falls nicely in the field of image processing within computer science. More specifically this project aims to contribute information and potentially a new useful technique to the duplicate image detection research area.

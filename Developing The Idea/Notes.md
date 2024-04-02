@@ -1,8 +1,22 @@
+
+> [!NOTE] Think About
+> False positives would be very bad for our arhitecture
+
 ## How to write related work
 - Summary
 - Position (Relate their work to yours)
 - Motivation (Why is it important)
 This should show the research gap.
+###  Articles chosen (TBD)
+- [[Bimodal Fusion of Low-Level Visual Features and High-Level Semantic Features For Near-Duplicate Video Clip Detection.pdf]]
+	- This gives us the idea to combine different techniques together
+- [[Near Duplicate Image Detection min-Hash and tf-idf Weighting.pdf]] or [[Geometric_min-Hashing_Finding_a_thick_needle_in_a_haystack.pdf]]
+	- Layer 1 solution
+- [[Revisiting Gist-PCA Hashing for Near Duplicate Image Detection.pdf]]
+	- Layer 2 solution
+- [[Pulse Coupled NN based Near-Duplicate Detection of Images (PCNN - NDD).pdf]] or Use VGG
+	- Layer 3 solution
+
 
 ## Preliminary Title
 Improving visually duplicate image detection with deep learning and ~~multi-modal fusion~~

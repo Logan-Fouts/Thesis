@@ -1,14 +1,12 @@
 ## Semantic Near-Duplicate Image Detection Using Deep Learning And Bimodal Fusion
 ----
-It seems most are concerned not with getting the highest accuracy, but in efficiency in computation, storage, and retrieval.
-
-> [!NOTE] Research Gap
-> The fact that we aim for highest accuracy and not highest efficiency could be part of out gap.
-> 
-> Also, we are using models to get a deeper understanding of semantics as well as combining them with low level features.
-
+~~It seems most are concerned not with getting the highest accuracy, but in efficiency in computation, storage, and retrieval.~~
+### Potential Layers
+1. d-hash
+2. min-hash
+3. VGG
 ### Hypothesis
-Using deep learning models together with Multi-Modal Fusion techniques we can increase upon the accuracy of current techniques such as min-hash, PCA, and etc.
+~~Using deep learning models together with Multi-Modal Fusion techniques we can increase upon the accuracy of current techniques such as min-hash, PCA, and etc.~~
 ### Define Near Duplicate Images
 Near duplicate images are images that are either exact copies or very similar to each other with minimal differences. Some differences could be as follows:
 - Image transformations- Alterations made to an image through some sort of software

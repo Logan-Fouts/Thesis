@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SPP/SPP.md",
+                "file": "Developing The Idea/Detailed Algorithm Notes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Web-Programming",
+                "query": "tag:#Degree-Project",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 281.5
+    "width": 445.5024719238281
   },
   "right": {
     "id": "e420f9a32d131055",
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SPP/SPP.md",
+                "file": "Developing The Idea/Detailed Algorithm Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SPP/SPP.md",
+                "file": "Developing The Idea/Detailed Algorithm Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SPP/SPP.md"
+                "file": "Developing The Idea/Detailed Algorithm Notes.md"
               }
             }
           }
@@ -150,10 +150,16 @@
   },
   "active": "8e69fb9bc421956f",
   "lastOpenFiles": [
-    "Developing The Idea/Notes.md",
-    "SPP/SPP.md",
-    "Current Research/Geometric_min-Hashing_Finding_a_thick_needle_in_a_haystack.pdf",
     "SPP/SPP Thesis proposal.pdf",
+    "SPP/SPP.md",
+    "Developing The Idea/Project Idea.md",
+    "Developing The Idea/Detailed Algorithm Notes.md",
+    "Developing The Idea/Notes.md",
+    "Current Research/Things Looked Up.md",
+    "Current Research/ReadMe.md",
+    "Readme.md",
+    "Current Research/Untitled.md",
+    "Current Research/Geometric_min-Hashing_Finding_a_thick_needle_in_a_haystack.pdf",
     "Current Research/Revisiting Gist-PCA Hashing for Near Duplicate Image Detection.pdf",
     "Current Research/Near Duplicate Image Detection min-Hash and tf-idf Weighting.pdf",
     "Current Research/research-dump-henry/Near Duplicate Image Detection- min-Hash and tf-idf Weighting.pdf",
@@ -161,12 +167,7 @@
     "Current Research/research-dump-henry",
     "Current Research/Pulse Coupled NN based Near-Duplicate Detection of Images (PCNN - NDD).pdf",
     "Current Research/Bimodal Fusion of Low-Level Visual Features and High-Level Semantic Features For Near-Duplicate Video Clip Detection.pdf",
-    "Current Research/ReadMe.md",
-    "Current Research/Things Looked Up.md",
-    "Developing The Idea/Project Idea.md",
-    "Developing The Idea/Detailed Algorithm Notes.md",
     "SPP/SPP Responses.md",
-    "Readme.md",
     "Developing The Idea/Current Knowledge.md",
     "Template/SPP Thesis proposal.pdf.crdownload",
     "Documents/School/Software Architecture/Reading Notes.md",
@@ -195,7 +196,6 @@
     "Documents/School/Software Architecture/Performance Notes For UML A2.md",
     "Documents/School/Software Architecture/Lecture Notes.md",
     "Untitled 1.canvas",
-    "Untitled.canvas",
-    "Documents/School/Web Programming/B2 Presentation.md"
+    "Untitled.canvas"
   ]
 }

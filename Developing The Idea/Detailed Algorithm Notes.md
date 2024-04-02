@@ -55,6 +55,10 @@ The multi-block approach produces multiple binary codes for each image, so they 
 8. **Dependency on Training Data**: Machine learning-based hashing algorithms depend heavily on the quality and diversity of the training data. Biased or limited training data can lead to algorithms that do not perform well in real-world scenarios.
     
 9. **Scalability**: As the size of image databases continues to grow, scalability becomes a concern. Algorithms need to handle an increasing amount of data efficiently without a loss in performance.
+
+## Geometric min hash: 
+main algorithm to determine feature extraction is divided into 2 parts, central and secondary features. Central features is normal min-hash but unique visual words are used (unique features of image). With this unique list of features spatial and scale information is obtained which is used to guide the selection of the secondary features. We can think of it like we zoom in into the main features that was extracted and produce a more clooser look at these regions to produce a more detailed feature list. This would result in a more richer hash which is used for comparision. 
+
 ---
 #Degree-Project
 #Software-Technology

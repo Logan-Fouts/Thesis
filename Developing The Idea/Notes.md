@@ -1,6 +1,7 @@
 
 > [!NOTE] Think About
 > False positives would be very bad for our arhitecture
+> - dhash has a low false positive rate
 
 ## How to write related work
 - Summary

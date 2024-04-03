@@ -2,10 +2,7 @@
 Layered Architecture for Efficient and Accurate Detection of Semantic Near-Duplicate Images.
 
 ## Elevator Pitch
-### Background
-### Challenge
-### Action
-### Evaluation
+The uncontrollable growth in the creation of photographs is and continues to be a problem requiring ways of efficient and accurate detection/management, particularly for semantically similar images. There exists techniques to accomplish this; however, these tend to be inefficient in varied datasets, less accurate, or complicated to implement. In this paper, we propose a new algorithm using a layered architecture, built by leveraging different techniques together, with the idea of improving accuracy and efficiency while staying adaptable and relatively simple for implementation. Therefore, we plan on experimenting using standard image data sets in controlled experiments and then comparing them with other methods in terms of accuracy, efficiency, adaptability, and other key metrics.
 
 ## Steps/Milestones/Actions
 1. Define criteria for near duplicate images
@@ -59,14 +56,28 @@ Image processing in general is a very useful tool across many different areas fo
 The idea of duplicate image detection done in a new efficient and accurate manner falls nicely in the field of image processing within computer science. More specifically this project aims to contribute information and potentially a new useful technique to the duplicate image detection research area.
 
 #### Current Knowledge and Why Change
-Research shows a plethora of current and past solutions for duplicate image detection. These range from basic hashing techniques like min-hash to more intensive methods such as Convolutional Neural Networks (CNNs). These methods each have their strengths and weaknesses, with some having speed over accuracy, others providing accuracy at the expense of speed, and many showing greater or lesser adaptability to different datasets. This range of pros and cons for each method elicits a notable gap. Despite so many current techniques their is an absence of a method that seamlessly combines high efficiency with accuracy across varied datasets. To fill in this gap, a layered architecture is proposed, where each layer utilizes its own distinct method to progressively filter input images as they pass from the top to bottom layers. This nuanced approach hopes to be adaptable to various datasets without requiring modifications, while ensuring a balance between efficiency and accuracy that enhances its usability in real-world applications.
+Research shows a plethora of current and past solutions for duplicate image detection. These range from basic hashing techniques like min-hash to more intensive methods such as Convolutional Neural Networks (CNNs). These methods each have their strengths and weaknesses, with some having speed over accuracy, others providing accuracy at the expense of speed, and many showing greater or lesser adaptability to different datasets. This range of pros and cons for each method elicits a notable gap. Despite so many current techniques their is an absence of a method that seamlessly combines high efficiency with accuracy across varied datasets. Furthermore, current best solutions are highly complex and hard to implement. To fill in this gap, a layered architecture is proposed, where each layer utilizes its own distinct method to progressively filter input images as they pass from the top to bottom layers. This nuanced approach hopes to be adaptable to various datasets without requiring modifications, while ensuring a balance between efficiency and accuracy that enhances its usability in real-world applications.
 
 To motivate why this gap should be filled, different potential positive effects can be discussed. Achieving more efficient and reliable duplicate image detection could greatly increase the quality of information on the internet, impacting society by more reliably providing access to accurate information and minimizing the spread of misinformation. Furthermore, this project hopes to help contribute to cleansing the internet of the copyright violations and illegal content that is currently abundant, ensuring individuals keep possession of their creations and preventing misuse of online platforms. Finally, the use of this project/idea by not only corporations but also individuals could lead to a significant reduction in resource consumption, as duplicates would no longer take up precious compute power and storage resources. This conserves financial resources and also allows for more effective use of storage and processing. In summary it could help to contribute to a greener world.
 
-> [!NOTE] TODO
-> If you are going to develop something (eg. prototype, app, web app, …) then describe the closest solutions. If there are many have a table. You can show the important features.
+| Feature                        | DHash                                          | Geometric Min Hash                                    | VGG Net                                                     |
+| ------------------------------ | ---------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------- |
+| **Accuracy**                   | Low to Medium, effective for simple duplicates | Medium to High, captures geometric similarities       | Very high, even on complex images                           |
+| **Adaptability to Variations** | Limited, works on exact or nearly exact images | Moderate, best for images with spatial variations     | High, can handle a wide range of variations due to training |
+| **Approach**                   | Difference hashing for image comparison        | Hashing based on geometric features                   | Convolutional Neural Network (CNN)                          |
+| **Efficiency**                 | Very high, fast enough for real-time           | High for reasonably large datasets                    | Low, computationally expensive                              |
+| **Implementation Complexity**  | Low, simple to implement                       | Moderate, requires understanding of geometric hashing | High, requires deep learning expertise                      |
 
 ### Related work
 ### Knowledge Gap/Challenge/Problem
+Though many techniques are available for image duplicate detection, there exists a lack of an effective methodology with high accuracy and efficiency across diverse datasets. Even the most promising methods usually suffer from their complexity, and the implementation itself becomes quite a difficult task.
 ### Knowledge Contribution/Action
+This paper introduces the idea for a new algorithm based on a layered architecture of combining various near duplicate image detection techniques. Thus increasing the accuracy and effectiveness of detecting near-duplicate images, all while aiming for a simple and easy to understand algorithm.
+
+This research may offer a framework, to flexibly integrate any added algorithms together that can be used for a number of datasets and application areas. A new framework allows for a certain level of personalization, able to be modified and deployable in a range of scenarios.
 ### Empirical Evidence/Evaluation
+We plan to evaluate our solution by use of a controlled experiment, which will be guided by methodology seen in related work. This will be compared with standard methods such as accuracy, precision, recall, and efficiency by using accessible standard image datasets.
+
+**Evaluation Strategy:** Directly compare under controlled conditions the selected metrics; evaluate with different image datasets to demonstrate the effectiveness and adaptability of this new solution.
+
+**Performance Metrics:** These will be the accuracy, computational efficiency, performance across differing datasets, and other commonly used metrics for performance in this research field (ROC for example). These metrics can be used to see how this solutions works in comparison to other current solutions.

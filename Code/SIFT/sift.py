@@ -8,14 +8,12 @@ class SIFT:
     Uses open cv to implement SIFT.
     """
 
-    def __init__(self, threshold=40, error=15, image_ratio=0.25, plot=False):
+    def __init__(self, threshold=40, image_ratio=0.35, plot=False):
         self.name = "SIFT"
         self.threshold = threshold
-        self.error = error
         self.image_ratio = image_ratio
         self.plot = plot
         self.duplicates = set()
-        self.non_duplicates = set()
         self.possible_duplicates = set()
 
     def process(self, image_paths):
@@ -48,16 +46,14 @@ class SIFT:
                 self.duplicates.update((path1, path2))
             elif result == 1:
                 self.possible_duplicates.update((path1, path2))
-            else:
-                self.non_duplicates.update((path1, path2))
 
     def _preprocess(self, image_paths):
         preprocessed_images = {}
         for path in image_paths:
             img = cv2.imread(path)
-            if img is None:  # Check if the image was not loaded successfully
+            if img is None:
                 print(f"Failed to open image: {path}.")
-                continue  # Skip this image and proceed with the next one
+                continue
             image = cv2.resize(img, None, fx=self.image_ratio, fy=self.image_ratio)
             gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             sift = cv2.SIFT_create()
@@ -68,7 +64,7 @@ class SIFT:
     def _calc_lowe(self, matches):
         close_enough_matches = []
         for m, n in matches:
-            if m.distance < 0.75 * n.distance:
+            if m.distance < 0.7 * n.distance:
                 close_enough_matches.append(m)
         return close_enough_matches
 
@@ -91,14 +87,10 @@ class SIFT:
         plt.imshow(match_img)
         plt.show()
 
-    # TODO: Move filter into a new class or something.
-
     def _filter(self, matches):
         """
         Determine category based on the number of matches.
         """
         if len(matches) > self.threshold:
             return 0
-        if len(matches) > self.threshold - self.error:
-            return 1
-        return 2
+        return 1

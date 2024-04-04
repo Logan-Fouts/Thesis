@@ -10,7 +10,6 @@ class Layers:
         self.layers = []
         self.result_duplicates = set()
         self.debug = debug
-        self.result_non_duplicates = set()
         self.result_possible_duplicates = set()
         self._wrap_layers(raw_layers)
 
@@ -33,43 +32,29 @@ class Layers:
         """
         current_image_paths = set(image_paths)
         for layer in self.layers:
-            if len(current_image_paths) > 0:
+            if len(current_image_paths) > 1:
                 layer.run(current_image_paths)
-                tmp_duplicates, tmp_non_duplicates, tmp_possible_duplicates = (
-                    layer.get_results()
-                )
+                tmp_duplicates, tmp_possible_duplicates = layer.get_results()
                 if self.debug:
                     layer.print_results()
 
-                (
-                    cleaned_duplicates,
-                    cleaned_non_duplicates,
-                    cleaned_possible_duplicates,
-                ) = self._cleanup(
+                (cleaned_duplicates, cleaned_possible_duplicates) = self._cleanup(
                     set(tmp_duplicates),
-                    set(tmp_non_duplicates),
                     set(tmp_possible_duplicates),
                 )
 
                 self.result_duplicates.update(cleaned_duplicates)
-                self.result_non_duplicates.update(cleaned_non_duplicates)
                 self.result_possible_duplicates.update(cleaned_possible_duplicates)
 
                 current_image_paths = cleaned_possible_duplicates
             else:
                 print("Done Early!")
 
-    def _cleanup(self, duplicates, non_duplicates, possible_duplicates):
-        non_duplicates -= possible_duplicates
-        non_duplicates -= duplicates
-
-        possible_duplicates -= non_duplicates
+    def _cleanup(self, duplicates, possible_duplicates):
         possible_duplicates -= duplicates
-
         duplicates -= possible_duplicates
-        duplicates -= non_duplicates
 
-        return duplicates, non_duplicates, possible_duplicates
+        return duplicates, possible_duplicates
 
     def print_final_results(self):
         """

@@ -6,12 +6,10 @@ from tensorflow.keras.preprocessing import image
 
 
 class VGG:
-    def __init__(self, threshold=0.6, error=0.2):
+    def __init__(self, threshold=0.6):
         self.name = "VGG"
         self.threshold = threshold
-        self.error = error
         self.duplicates = set()
-        self.non_duplicates = set()
         self.possible_duplicates = set()
 
         # Don't include top classification layer
@@ -27,6 +25,7 @@ class VGG:
         """
         features = [self._vgg_features(path) for path in image_paths]
         num_images = len(image_paths)
+        image_paths = list(image_paths)
 
         for i in range(num_images):
             for j in range(i + 1, num_images):
@@ -34,11 +33,9 @@ class VGG:
                 similarity = self._cosine_similarity(features[i], features[j])
 
                 if similarity > self.threshold:
-                    self.duplicates.update({image_paths[i], image_paths[j]})
-                elif similarity > self.threshold - self.error:
-                    self.possible_duplicates.update({image_paths[i], image_paths[j]})
+                    self.duplicates.update((image_paths[i], image_paths[j]))
                 else:
-                    self.non_duplicates.update({image_paths[i], image_paths[j]})
+                    self.possible_duplicates.update((image_paths[i], image_paths[j]))
 
     def _vgg_features(self, image_path):
         """

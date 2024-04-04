@@ -3,10 +3,9 @@ from PIL import Image
 
 
 class Phash:
-    def __init__(self, threshold=15, error=10):
+    def __init__(self, threshold=15):
         self.name = "Dhash"
         self.threshold = threshold
-        self.error = error
         self.duplicates = set()
         self.non_duplicates = set()
         self.possible_duplicates = set()
@@ -35,8 +34,6 @@ class Phash:
                     self.duplicates.update((path1, path2))
                 elif result == 1:
                     self.possible_duplicates.update((path1, path2))
-                elif result == 2:
-                    self.non_duplicates.update((path1, path2))
 
                 checked_pairs.add((path1, path2))
                 checked_pairs.add((path2, path1))
@@ -58,6 +55,4 @@ class Phash:
         hamming_distance = h1 - h2
         if hamming_distance <= self.threshold:
             return 0
-        if self.threshold < hamming_distance < self.threshold + self.error:
-            return 1
-        return 2
+        return 1

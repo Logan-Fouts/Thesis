@@ -23,7 +23,7 @@ def get_image_paths(directory):
 
 
 image_paths = get_image_paths("Images/Manual_Tests")
-layers = [Phash(), Dhash(), SIFT(), VGG()]
+layers = [Phash(), Dhash(), VGG(), SIFT()]
 layered_architecure = Layers(layers)
 layered_architecure.run(image_paths)
 layered_architecure.print_final_results()

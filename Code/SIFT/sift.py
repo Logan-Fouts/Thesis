@@ -1,3 +1,5 @@
+from itertools import combinations
+
 import cv2
 
 
@@ -6,68 +8,97 @@ class SIFT:
     Uses open cv to implement SIFT.
     """
 
-    def __init__(self, threshold=40, error=15):
+    def __init__(self, threshold=40, error=15, image_ratio=0.25, plot=False):
         self.name = "SIFT"
         self.threshold = threshold
         self.error = error
+        self.image_ratio = image_ratio
+        self.plot = plot
         self.duplicates = set()
         self.non_duplicates = set()
         self.possible_duplicates = set()
 
     def process(self, image_paths):
         """
-        Takes provided image paths and classifies them as duplicates, not duplicates, or unsure.
+        Uses sift to classify images.
         """
-        image_paths = set(image_paths)
+        preprocessed_images = self._preprocess(image_paths)
 
-        for i, path1 in enumerate(image_paths):
-            for path2 in list(image_paths)[i + 1 :]:
-                image1, image2 = cv2.imread(path1), cv2.imread(path2)
+        for path1, path2 in combinations(preprocessed_images.keys(), 2):
+            _, _, descriptors1 = preprocessed_images[path1]
+            _, _, descriptors2 = preprocessed_images[path2]
 
-                if image1 is None or image2 is None:
-                    print(f"Failed to load images: {path1} or {path2}.")
-                    continue
+            if descriptors1 is None or descriptors2 is None:
+                print(f"Descriptors missing for images: {path1} or {path2}")
+                continue
 
-                image1 = cv2.resize(image1, None, fx=0.5, fy=0.5)
-                image2 = cv2.resize(image2, None, fx=0.5, fy=0.5)
+            matches = cv2.BFMatcher().knnMatch(descriptors1, descriptors2, k=2)
 
-                gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
-                gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+            close_enough_matches = self._calc_lowe(matches)
 
-                sift = cv2.SIFT_create()
+            if self.plot:
+                self._plot(
+                    close_enough_matches,
+                    preprocessed_images[path1],
+                    preprocessed_images[path2],
+                )
 
-                _, descriptors1 = sift.detectAndCompute(gray1, None)
-                _, descriptors2 = sift.detectAndCompute(gray2, None)
+            result = self._filter(close_enough_matches)
+            if result == 0:
+                self.duplicates.update((path1, path2))
+            elif result == 1:
+                self.possible_duplicates.update((path1, path2))
+            else:
+                self.non_duplicates.update((path1, path2))
 
-                matches = cv2.BFMatcher().knnMatch(descriptors1, descriptors2, k=2)
+    def _preprocess(self, image_paths):
+        preprocessed_images = {}
+        for path in image_paths:
+            img = cv2.imread(path)
+            if img is None:  # Check if the image was not loaded successfully
+                print(f"Failed to open image: {path}.")
+                continue  # Skip this image and proceed with the next one
+            image = cv2.resize(img, None, fx=self.image_ratio, fy=self.image_ratio)
+            gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            sift = cv2.SIFT_create()
+            keypoints, descriptors = sift.detectAndCompute(gray_image, None)
+            preprocessed_images[path] = (gray_image, keypoints, descriptors)
+        return preprocessed_images
 
-                result = self._filter(matches)
-
-                pair = (path1, path2)
-                if result == 0:
-                    self.duplicates.update(pair)
-                elif result == 1:
-                    self.possible_duplicates.update(pair)
-                elif result == 2:
-                    self.non_duplicates.update(pair)
-
-        self.non_duplicates -= self.possible_duplicates
-        self.non_duplicates -= self.duplicates
-
-        self.possible_duplicates -= self.non_duplicates
-        self.possible_duplicates -= self.duplicates
-
-        self.duplicates -= self.possible_duplicates
-        self.duplicates -= self.non_duplicates
-
-    def _filter(self, matches):
-        close_matches = []
+    def _calc_lowe(self, matches):
+        close_enough_matches = []
         for m, n in matches:
             if m.distance < 0.75 * n.distance:
-                close_matches.append(m)
+                close_enough_matches.append(m)
+        return close_enough_matches
 
-        if len(close_matches) > self.threshold:
+    def _plot(self, matches, oim1, oim2):
+        import matplotlib.pyplot as plt
+
+        im1, kp1, _ = oim1
+        im2, kp2, _ = oim2
+
+        num_matches = min(200, len(matches))
+        match_img = cv2.drawMatches(
+            im1,
+            kp1,
+            im2,
+            kp2,
+            matches[:num_matches],
+            None,
+        )
+        plt.figure(figsize=(12, 6))
+        plt.imshow(match_img)
+        plt.show()
+
+    # TODO: Move filter into a new class or something.
+
+    def _filter(self, matches):
+        """
+        Determine category based on the number of matches.
+        """
+        if len(matches) > self.threshold:
             return 0
-        if len(close_matches) > self.threshold - self.error:
+        if len(matches) > self.threshold - self.error:
             return 1
         return 2

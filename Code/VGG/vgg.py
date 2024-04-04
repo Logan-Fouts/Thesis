@@ -1,5 +1,4 @@
 import numpy as np
-from PIL import Image
 from scipy.spatial import distance
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.models import Model
@@ -41,21 +40,11 @@ class VGG:
                 else:
                     self.non_duplicates.update({image_paths[i], image_paths[j]})
 
-        # Remove any duplication
-        self.non_duplicates -= self.possible_duplicates
-        self.non_duplicates -= self.duplicates
-
-        self.possible_duplicates -= self.non_duplicates
-        self.possible_duplicates -= self.duplicates
-
-        self.duplicates -= self.possible_duplicates
-        self.duplicates -= self.non_duplicates
-
     def _vgg_features(self, image_path):
         """
         Extracts features from an image using VGG16.
         """
-        img = image.load_img(image_path, target_size=(124, 124))
+        img = image.load_img(image_path, target_size=(224, 224))
         img_array = image.img_to_array(img)
         expanded_img_array = np.expand_dims(img_array, axis=0)
         preprocessed_img = preprocess_input(expanded_img_array)

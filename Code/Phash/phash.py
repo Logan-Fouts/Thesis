@@ -2,7 +2,7 @@ import imagehash
 from PIL import Image
 
 
-class Dhash:
+class Phash:
     def __init__(self, threshold=15, error=10):
         self.name = "Dhash"
         self.threshold = threshold
@@ -17,7 +17,7 @@ class Dhash:
         """
         image_paths = set(image_paths)
 
-        hashes = {image_path: self._dhash(image_path) for image_path in image_paths}
+        hashes = {image_path: self._phash(image_path) for image_path in image_paths}
         checked_pairs = set()
 
         for path1, hash1 in hashes.items():
@@ -30,23 +30,22 @@ class Dhash:
                     continue
 
                 result = self._filter(hash1, hash2)
-                pair = {path1, path2}
 
                 if result == 0:
-                    self.duplicates.update(pair)
+                    self.duplicates.update((path1, path2))
                 elif result == 1:
-                    self.possible_duplicates.update(pair)
+                    self.possible_duplicates.update((path1, path2))
                 elif result == 2:
-                    self.non_duplicates.update(pair)
+                    self.non_duplicates.update((path1, path2))
 
                 checked_pairs.add((path1, path2))
                 checked_pairs.add((path2, path1))
 
-    def _dhash(self, image_path):
+    def _phash(self, image_path):
         try:
             with Image.open(image_path) as image:
                 image = image.convert("L").resize((8, 8), Image.LANCZOS)
-                return imagehash.dhash(image)
+                return imagehash.phash(image)
         except IOError as e:
             print(f"Error accessing image: {image_path}: {e}")
             return None

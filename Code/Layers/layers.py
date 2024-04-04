@@ -1,4 +1,3 @@
-from Dhash.dhash import Dhash
 from Wrapper.wrapper import Wrapper
 
 
@@ -7,8 +6,12 @@ class Layers:
     Builds and allows for execution of the layered architecure.
     """
 
-    def __init__(self, raw_layers):
+    def __init__(self, raw_layers, debug=False):
         self.layers = []
+        self.result_duplicates = set()
+        self.debug = debug
+        self.result_non_duplicates = set()
+        self.result_possible_duplicates = set()
         self._wrap_layers(raw_layers)
 
     def _wrap_layers(self, raw_layers):
@@ -33,6 +36,27 @@ class Layers:
             if len(image_paths) > 0:
                 layer.run(current_image_paths)
                 _, _, current_image_paths = layer.get_results()
-                layer.print_results()
+                if self.debug:
+                    layer.print_results()
+                tmp_duplicates, tmp_non_duplicates, tmp_possible_duplicates = (
+                    layer.get_results()
+                )
+
+                self.result_duplicates.update(tmp_duplicates)
+                self.result_non_duplicates.update(tmp_non_duplicates)
+                self.result_possible_duplicates.update(tmp_possible_duplicates)
             else:
                 print("Done")
+
+    def print_final_results(self):
+        """
+        Nicely formats and prints the final resulting arrays of paths.
+        """
+        print("\nFINAL RESULTS...")
+        print("~~~~~~")
+        print("Duplicates:")
+        if self.result_duplicates:
+            for item in self.result_duplicates:
+                print(f"- {item}")
+        else:
+            print("- None")

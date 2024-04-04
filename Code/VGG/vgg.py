@@ -1,20 +1,19 @@
 import numpy as np
 from PIL import Image
 from scipy.spatial import distance
-from sklearn.metrics.pairwise import cosine_similarity
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing import image
 
 
 class VGG:
-    def __init__(self, threshold=0.7, error=0.1):
+    def __init__(self, threshold=0.6, error=0.2):
         self.name = "VGG"
         self.threshold = threshold
         self.error = error
-        self.duplicates = []
-        self.non_duplicates = []
-        self.possible_duplicates = []
+        self.duplicates = set()
+        self.non_duplicates = set()
+        self.possible_duplicates = set()
 
         # Don't include top classification layer
         base_model = VGG16(weights="imagenet", include_top=False)
@@ -34,17 +33,23 @@ class VGG:
             for j in range(i + 1, num_images):
 
                 similarity = self._cosine_similarity(features[i], features[j])
-                print(similarity)
 
                 if similarity > self.threshold:
-                    self.duplicates.append(image_paths[i])
-                    self.duplicates.append(image_paths[j])
+                    self.duplicates.update({image_paths[i], image_paths[j]})
                 elif similarity > self.threshold - self.error:
-                    self.possible_duplicates.append(image_paths[i])
-                    self.possible_duplicates.append(image_paths[j])
+                    self.possible_duplicates.update({image_paths[i], image_paths[j]})
                 else:
-                    self.non_duplicates.append(image_paths[i])
-                    self.non_duplicates.append(image_paths[j])
+                    self.non_duplicates.update({image_paths[i], image_paths[j]})
+
+        # Remove any duplication
+        self.non_duplicates -= self.possible_duplicates
+        self.non_duplicates -= self.duplicates
+
+        self.possible_duplicates -= self.non_duplicates
+        self.possible_duplicates -= self.duplicates
+
+        self.duplicates -= self.possible_duplicates
+        self.duplicates -= self.non_duplicates
 
     def _vgg_features(self, image_path):
         """

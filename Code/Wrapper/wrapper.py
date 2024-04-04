@@ -1,4 +1,9 @@
 class Wrapper:
+    """
+    Wraps a given algorithm class with compatbility layer.
+    Allows for running and getting/printing results.
+    """
+
     def __init__(self, algorithm):
         self.algorithm = algorithm
         self.name = algorithm.name
@@ -8,6 +13,13 @@ class Wrapper:
         Executes the given algorithm.
         """
         self.algorithm.process(image_paths)
+
+        if isinstance(self.algorithm.duplicates, set):
+            self.algorithm.duplicates = list(self.algorithm.duplicates)
+            self.algorithm.non_duplicates = list(self.algorithm.non_duplicates)
+            self.algorithm.possible_duplicates = list(
+                self.algorithm.possible_duplicates
+            )
 
     def get_results(self):
         """

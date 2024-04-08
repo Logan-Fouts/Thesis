@@ -23,7 +23,9 @@ def get_image_paths(directory):
 
 
 image_paths = get_image_paths("Images/Manual_Tests")
-layers = [Phash(), Dhash(), VGG(), SIFT()]
+layers = [Phash(), Dhash(), VGG(), SIFT()] # normal case
+# layers = [SIFT(plot=True)] # SIFT plot mode
+
 layered_architecure = Layers(layers)
 layered_architecure.run(image_paths)
 layered_architecure.print_final_results()

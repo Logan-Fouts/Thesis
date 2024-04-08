@@ -82,3 +82,26 @@ layered_architecture.run(image_paths)
 # Printing the final results
 layered_architecture.print_final_results()
 ```
+
+8. Running existing tests
+
+To run the test navigate to the `Tests` dir and run `pytest`
+
+9. Adding tests
+
+In order to contribute at least one test should be written for each new function. In this project we are using pytest.
+
+Conventions:
+
+- The new class should have a test folder name the same as the class inside the Tests dir.
+- Inside the test folder a test file named following test_modulename.py standard should be made.
+
+```python
+# Example test file structure. class TestVGG:
+    @pytest.fixture
+    def vgg(self):
+        return VGG()
+
+    def test_example(self):
+        assert 1 == 1
+```

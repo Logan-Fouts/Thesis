@@ -46,3 +46,22 @@ Evaluation: The effectiveness of the approach will be assessed by comparing the 
 - ~~Overall image classification.~~
 - ~~Probably grey scale the image.~~
 - ~~Probably no object location just simply object exists in the image.~~
+
+
+## Focus point next steps 
+- find datasets 
+- find relative studies to create compare 
+- find other definitions of NDD 
+- find different algorithms to include ()
+- tweak algorithms to find suiting paramas 
+- build presets of parameters/algorithms 
+- self build datasets (as backup)
+- improve overall user experience 
+
+
+### Questions to ask for next steps
+
+- when should we start implementing?
+- what should we focus on?
+- how expensive should our experiments be?
+- do we need to justify the reason why we go with layered architecure?j

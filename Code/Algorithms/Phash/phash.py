@@ -4,7 +4,7 @@ from PIL import Image
 
 class Phash:
     def __init__(self, threshold=15):
-        self.name = "Dhash"
+        self.name = "Phash"
         self.threshold = threshold
         self.duplicates = set()
         self.non_duplicates = set()

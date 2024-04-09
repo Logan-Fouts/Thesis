@@ -66,5 +66,5 @@ This should show the research gap.
 
 - when should we start implementing?
 - what should we focus on?
-- how expensive should our experiments be?
-- do we need to justify the reason why we go with layered architecure?
+- how extensive should our experiments be?
+- do we need to justify the reason why we go with layered architecure?j

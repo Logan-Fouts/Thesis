@@ -1,3 +1,7 @@
+## Intro
+This thesis will address the problem that current near duplicate image detection methods are complex and hardly customizable for highly varied data sets and different definitions of what is exactly a near duplicate image. This thesis is being made as part of a course from a Bachelors Program in Software Technology at Linnaeus University. While the shear amount of images online grows, it becomes more important for there to exist effective methods for detecting near duplicates in every increasing different domains.
+
+This work sets out to design a framework that would make designing algorithms more easily customizable and, therefore, accessible and adaptable to each individuals needs. In summary, this framework is an attempt to bridge between complex image processing algorithms  and engineering solutions in practice, with an advanced, versatile tool for users. Subsequent chapters present the design, implementation, and evaluation of a framework that has the potential to change how image processing algorithms are designed and deployed in practice instead of just in theory.
 ## Preliminary Title
 Flexible Algorithm Customization using a Layered Architecture for Efficient and Accurate Detection of Semantic Near-Duplicate Images
 

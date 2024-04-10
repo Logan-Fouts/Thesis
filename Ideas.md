@@ -1,0 +1,7 @@
+- Combine with pic purge front end
+- Customization stuff:
+	- Thorough or quick processing
+		- Thorough would mean no filtering, simply all images run through all layers.
+		- Quick would mean filtering, so images classified as duplicates are removed before the next layer.
+	- Make different "presets" that work well for specific use cases
+		- For example, this could be fingerprint processing or my moms library of images

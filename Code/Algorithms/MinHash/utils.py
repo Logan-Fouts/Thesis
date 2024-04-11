@@ -15,7 +15,7 @@ def fnv1a_hash(str_input):
   return hash_
 
 
-def main():
+def test_fnv1a_hash():
   # Example usage
   my_string = "hello world"
   hash_value = fnv1a_hash(my_string)

@@ -6,10 +6,8 @@ right now something like:
 ```
 {
   paths: string[];
-  results: Record<string, string[]>;
+  groups: Record<string, string[]>;
 }
 ```
 
-where results is a record collection (Set) of paths that each image path point to what collection they would belong too
-
-
+where results is a record collection (Set) of paths that each image path point to what collection they would belong too.

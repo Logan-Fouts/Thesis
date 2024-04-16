@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from itertools import combinations
 
 import cv2
@@ -5,92 +6,111 @@ import cv2
 
 class SIFT:
     """
-    Uses open cv to implement SIFT.
+    Uses OpenCV to implement SIFT, optimized with parallel processing for image comparisons.
     """
 
-    def __init__(self, threshold=40, image_ratio=0.35, plot=False):
+    def __init__(
+        self,
+        threshold=30,
+        image_ratio=1,
+        sigma=0.85,
+        edgeThreshold=10,
+        plot=False,
+        max_workers=None,
+    ):
         self.name = "SIFT"
         self.threshold = threshold
         self.image_ratio = image_ratio
+        self.sigma = sigma
+        self.edge_threshold = edgeThreshold
         self.plot = plot
-        self.duplicates = set()
-        self.possible_duplicates = set()
+        self.max_workers = max_workers or 4
+        self.duplicates = []
+        self.possible_duplicates = []
 
     def process(self, image_paths):
         """
-        Uses sift to classify images.
+        Process images in parallel to classify duplicates.
         """
-        preprocessed_images = self._preprocess(image_paths)
+        preprocessed_images = self._preprocess_images(image_paths)
+        total_pairs = len(image_paths) * (len(image_paths) - 1) / 2
+        processed_pairs = 0
 
-        for path1, path2 in combinations(preprocessed_images.keys(), 2):
-            _, _, descriptors1 = preprocessed_images[path1]
-            _, _, descriptors2 = preprocessed_images[path2]
+        pairs = list(combinations(preprocessed_images.keys(), 2))
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            future_to_pair = {
+                executor.submit(self._process_pair, pair, preprocessed_images): pair
+                for pair in pairs
+            }
+            for future in future_to_pair:
+                result = future.result()
+                if result is not None:
+                    result_type, path1, path2 = result
+                    if result_type == 0:
+                        self.duplicates.append((path1, path2))
+                    elif result_type == 1:
+                        self.possible_duplicates.append((path1, path2))
+                    processed_pairs += 1
+                    p = (processed_pairs / total_pairs) * 100
+                    print(f"Processed {p}%...")
 
-            if descriptors1 is None or descriptors2 is None:
-                print(f"Descriptors missing for images: {path1} or {path2}")
-                continue
+    def _process_pair(self, pair, preprocessed_images):
+        path1, path2 = pair
+        _, _, descriptors1 = preprocessed_images[path1]
+        _, _, descriptors2 = preprocessed_images[path2]
 
-            matches = cv2.BFMatcher().knnMatch(descriptors1, descriptors2, k=2)
+        if descriptors1 is None or descriptors2 is None:
+            return None
 
-            close_enough_matches = self._calc_lowe(matches)
+        matches = cv2.BFMatcher().knnMatch(descriptors1, descriptors2, k=2)
+        close_enough_matches = self._calc_lowe(matches)
 
-            if self.plot:
-                self._plot(
-                    close_enough_matches,
-                    preprocessed_images[path1],
-                    preprocessed_images[path2],
-                )
+        result = self._filter(close_enough_matches)
+        return result, path1, path2
 
-            result = self._filter(close_enough_matches)
-            if result == 0:
-                self.duplicates.update((path1, path2))
-            elif result == 1:
-                self.possible_duplicates.update((path1, path2))
+    def _preprocess_images(self, image_paths):
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            results = list(executor.map(self._preprocess_single_image, image_paths))
+        return dict(zip(image_paths, results))
 
-    def _preprocess(self, image_paths):
-        preprocessed_images = {}
-        for path in image_paths:
-            img = cv2.imread(path)
-            if img is None:
-                print(f"Failed to open image: {path}.")
-                continue
-            image = cv2.resize(img, None, fx=self.image_ratio, fy=self.image_ratio)
-            gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            sift = cv2.SIFT_create()
-            keypoints, descriptors = sift.detectAndCompute(gray_image, None)
-            preprocessed_images[path] = (gray_image, keypoints, descriptors)
-        return preprocessed_images
+    def _preprocess_single_image(self, image_path):
+        img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+        if img is None:
+            print(f"Failed to open image: {image_path}.")
+            return None, None, None
+        img = cv2.equalizeHist(img)
+        img = cv2.resize(
+            img,
+            None,
+            fx=self.image_ratio,
+            fy=self.image_ratio,
+            interpolation=cv2.INTER_AREA,
+        )
+        sift = cv2.SIFT_create(
+            nOctaveLayers=7,
+            contrastThreshold=0.04,
+            edgeThreshold=self.edge_threshold,
+            sigma=self.sigma,
+        )
+        keypoints, descriptors = sift.detectAndCompute(img, None)
+        return img, keypoints, descriptors
 
     def _calc_lowe(self, matches):
         close_enough_matches = []
-        for m, n in matches:
-            if m.distance < 0.7 * n.distance:
-                close_enough_matches.append(m)
+        for match_pair in matches:
+            if len(match_pair) >= 2:
+                m, n = match_pair
+                if m.distance < 0.7 * n.distance:
+                    close_enough_matches.append(m)
         return close_enough_matches
 
-    def _plot(self, matches, oim1, oim2):
-        import matplotlib.pyplot as plt
-
-        im1, kp1, _ = oim1
-        im2, kp2, _ = oim2
-
-        num_matches = min(200, len(matches))
-        match_img = cv2.drawMatches(
-            im1,
-            kp1,
-            im2,
-            kp2,
-            matches[:num_matches],
-            None,
-        )
-        plt.figure(figsize=(12, 6))
-        plt.imshow(match_img)
-        plt.show()
-
     def _filter(self, matches):
-        """
-        Determine category based on the number of matches.
-        """
         if len(matches) > self.threshold:
             return 0
         return 1
+
+    def get_duplicates(self):
+        return self.duplicates
+
+    def get_possible_duplicates(self):
+        return self.possible_duplicates

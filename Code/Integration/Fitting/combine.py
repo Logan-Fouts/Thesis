@@ -50,10 +50,18 @@ def test_setting(settings, dataset):
   layered_architecture = Layers(layers)
   layered_architecture.run(dataset["image_paths"])
 
+  # imagepaths = 10k 
+  # result_duplicates = 4k 
+  # result_possible_duplicates = 6k 
+
+  # database classification - {image_paths: [string], classification: Record<image_path, {image_path:string, duplicate: [string]}> }
+  
+
   # process the results based on dataset
   echo "to be implemented: parsing results based on run and current dataset"
 
 def combine(dataset, layer_size = 3, options = "all"):
+  
   echo "to be implemented"
 
 def showcase():

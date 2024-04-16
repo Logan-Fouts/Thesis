@@ -6,8 +6,8 @@ class Dhash:
     def __init__(self, threshold=15):
         self.name = "Dhash"
         self.threshold = threshold
-        self.duplicates = set()
-        self.possible_duplicates = set()
+        self.duplicates = []
+        self.possible_duplicates = []
 
     def process(self, image_paths):
         """
@@ -30,9 +30,9 @@ class Dhash:
                 result = self._filter(hash1, hash2)
 
                 if result == 0:
-                    self.duplicates.update((path1, path2))
+                    self.duplicates.extend((path1, path2))
                 elif result == 1:
-                    self.possible_duplicates.update((path1, path2))
+                    self.possible_duplicates.extend((path1, path2))
 
                 checked_pairs.add((path1, path2))
                 checked_pairs.add((path2, path1))

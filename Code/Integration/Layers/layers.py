@@ -2,37 +2,52 @@ from Wrapper.wrapper import Wrapper
 
 
 class UnionFind:
-    """A simple Union-Find class to manage merging of related groups."""
+    """
+    A simple Union-Find class to manage a collection of disjoint sets.
+    """
 
     def __init__(self):
+        """
+        Initializes the Union-Find structure.
+        """
         self.parent = {}
 
     def find(self, item):
+        """
+        Finds and returns the root of the set containing the item and does path compression.
+        """
         if self.parent[item] != item:
-            self.parent[item] = self.find(self.parent[item])
+            self.parent[item] = self.find(self.parent[item])  # Path compression
         return self.parent[item]
 
     def union(self, item1, item2):
+        """
+        Merges the sets that have item1 and item2. Uses rank.
+        """
         root1 = self.find(item1)
         root2 = self.find(item2)
         if root1 != root2:
             self.parent[root2] = root1
 
     def add(self, item):
+        """
+        Adds an item.
+        """
         if item not in self.parent:
             self.parent[item] = item
 
 
 class Layers:
     """
-    Builds and allows for execution of the layered architecure.
+    Builds and allows for execution of the layered architecture.
     """
 
-    def __init__(self, raw_layers, debug=False):
+    def __init__(self, raw_layers, debug=False, accuracy_calculator=None):
         self.layers = []
-        self.debug = debug
         self.result_duplicates = []
         self.result_possible_duplicates = []
+        self.debug = debug
+        self.accuracy_calculator = accuracy_calculator
         self._wrap_layers(raw_layers)
 
     def _wrap_layers(self, raw_layers):
@@ -67,28 +82,10 @@ class Layers:
             else:
                 print("Done Early!")
 
-    def calculate_accuracy(self, duplicate_pairs):
-        correct = 0
-        total = len(duplicate_pairs)
-
-        for path1, path2 in duplicate_pairs:
-            parts1 = path1.split("/")[-1].split("_")
-            parts2 = path2.split("/")[-1].split("_")
-
-            num1 = parts1[0]
-            num2 = parts2[0]
-
-            finger1 = "_".join(parts1[2:5]) if len(parts1) > 4 else ""
-            finger2 = "_".join(parts2[2:5]) if len(parts2) > 4 else ""
-
-            if num1 == num2 and finger1 == finger2:
-                correct += 1
-
-        accuracy = (correct / total) * 100 if total > 0 else 0
-        return accuracy
-
     def group_related_images(self):
-        """Group all related duplicate image pairs into clusters."""
+        """
+        Group all related duplicate image pairs into clusters.
+        """
         uf = UnionFind()
         for path1, path2 in self.result_duplicates:
             uf.add(path1)
@@ -113,7 +110,7 @@ class Layers:
             file.write("~~~~~~\n")
 
             if self.result_duplicates:
-                accuracy = self.calculate_accuracy(self.result_duplicates)
+                accuracy = self.accuracy_calculator(self.result_duplicates)
                 file.write(f"Accuracy: {accuracy:.2f}%\n")
                 print(f"Accuracy: {accuracy:.2f}%\n")
 

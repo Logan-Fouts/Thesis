@@ -54,7 +54,7 @@ class SIFT:
                         self.possible_duplicates.extend((path1, path2))
                     processed_pairs += 1
                     p = (processed_pairs / total_pairs) * 100
-                    print(f"Processed {p}%...")
+                    # print(f"Processed {p}%...")
 
     def _process_pair(self, pair, preprocessed_images):
         path1, path2 = pair

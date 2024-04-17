@@ -12,19 +12,21 @@ class SIFT:
     def __init__(
         self,
         threshold=30,
-        image_ratio=1,
         sigma=0.85,
-        edgeThreshold=10,
+        edge_threshold=10,
+        n_octave_layers=7,
+        contrast_threshold=0.04,
         plot=False,
-        max_workers=None,
     ):
         self.name = "SIFT"
         self.threshold = threshold
-        self.image_ratio = image_ratio
+        self.image_ratio = 1
         self.sigma = sigma
-        self.edge_threshold = edgeThreshold
+        self.edge_threshold = edge_threshold
+        self.n_octave_layers = n_octave_layers
+        self.contrast_threshold = contrast_threshold
         self.plot = plot
-        self.max_workers = max_workers or 4
+        self.max_workers = 4
         self.duplicates = []
         self.possible_duplicates = []
 
@@ -49,7 +51,7 @@ class SIFT:
                     if result_type == 0:
                         self.duplicates.append((path1, path2))
                     elif result_type == 1:
-                        self.possible_duplicates.append((path1, path2))
+                        self.possible_duplicates.extend((path1, path2))
                     processed_pairs += 1
                     p = (processed_pairs / total_pairs) * 100
                     print(f"Processed {p}%...")
@@ -87,8 +89,8 @@ class SIFT:
             interpolation=cv2.INTER_AREA,
         )
         sift = cv2.SIFT_create(
-            nOctaveLayers=7,
-            contrastThreshold=0.04,
+            nOctaveLayers=self.n_octave_layers,
+            contrastThreshold=self.contrast_threshold,
             edgeThreshold=self.edge_threshold,
             sigma=self.sigma,
         )

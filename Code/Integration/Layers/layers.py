@@ -42,13 +42,13 @@ class Layers:
     Builds and allows for execution of the layered architecture.
     """
 
-    def __init__(self, raw_layers, debug=False, accuracy_calculator=None):
+    def __init__(self, raw_layers, accuracy_calculator=None, debug=False):
         self.layers = []
+        self._wrap_layers(raw_layers)
+        self.accuracy_calculator = accuracy_calculator
+        self.debug = debug
         self.result_duplicates = []
         self.result_possible_duplicates = []
-        self.debug = debug
-        self.accuracy_calculator = accuracy_calculator
-        self._wrap_layers(raw_layers)
 
     def _wrap_layers(self, raw_layers):
         """
@@ -76,9 +76,16 @@ class Layers:
                     layer.print_results()
 
                 self.result_duplicates.extend(tmp_duplicates)
-                self.result_possible_duplicates.extend(tmp_possible_duplicates)
 
-                current_image_paths = set(tmp_possible_duplicates)
+                duplicates_set = set(path for dup in tmp_duplicates for path in dup)
+
+                # Filter current_image_paths to exclude paths found in duplicates
+                current_image_paths = set(tmp_possible_duplicates) - duplicates_set
+
+                print(len(current_image_paths))
+                import time
+
+                time.sleep(1)
             else:
                 print("Done Early!")
 

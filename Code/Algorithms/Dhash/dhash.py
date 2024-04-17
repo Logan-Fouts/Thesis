@@ -3,7 +3,7 @@ from PIL import Image
 
 
 class Dhash:
-    def __init__(self, threshold=15):
+    def __init__(self, threshold=5):
         self.name = "Dhash"
         self.threshold = threshold
         self.duplicates = []
@@ -30,7 +30,7 @@ class Dhash:
                 result = self._filter(hash1, hash2)
 
                 if result == 0:
-                    self.duplicates.extend((path1, path2))
+                    self.duplicates.append((path1, path2))
                 elif result == 1:
                     self.possible_duplicates.extend((path1, path2))
 
@@ -40,7 +40,7 @@ class Dhash:
     def _dhash(self, image_path):
         try:
             with Image.open(image_path) as image:
-                image = image.convert("L").resize((8, 8), Image.LANCZOS)
+                image = image.convert("L").resize((9, 8), Image.LANCZOS)
                 return imagehash.dhash(image)
         except IOError as e:
             print(f"Error accessing image: {image_path}: {e}")
@@ -49,7 +49,7 @@ class Dhash:
     def _filter(self, h1, h2):
         """
         Uses hamming distance to classify images.
-        0 = duplicates, 1 = possible duplicates, 2 = not duplicates
+        0 = duplicates, 1 = possible duplicates
         """
         hamming_distance = h1 - h2
         if hamming_distance <= self.threshold:

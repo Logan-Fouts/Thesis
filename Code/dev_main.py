@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 from cv2 import threshold
 
@@ -14,6 +15,7 @@ from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
 from SIFT.sift import SIFT
+from SSIM.ssim import SSIM
 from VGG.vgg import VGG
 
 
@@ -58,11 +60,24 @@ def finger_accuracy_calculator(duplicate_pairs):
 
 image_paths = get_image_paths("Images/Altered/Altered-Easy")
 layers = [
-    SIFT(threshold=20, image_ratio=1, sigma=1.7, edgeThreshold=1000**10, plot=False)
+    Phash(threshold=4),
+    Dhash(threshold=4),
+    SIFT(
+        threshold=17,
+        sigma=1.8,
+        edge_threshold=1000**10,
+        n_octave_layers=3,
+        contrast_threshold=0.01,
+        plot=False,
+    ),
 ]
 
 layered_architecure = Layers(
     raw_layers=layers, accuracy_calculator=finger_accuracy_calculator
 )
-layered_architecure.run(image_paths[:900])
+start_time = time.perf_counter()
+layered_architecure.run(image_paths[:30])
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time:.4f} seconds")
 layered_architecure.print_final_results()

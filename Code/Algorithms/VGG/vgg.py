@@ -9,8 +9,8 @@ class VGG:
     def __init__(self, threshold=0.6):
         self.name = "VGG"
         self.threshold = threshold
-        self.duplicates = set()
-        self.possible_duplicates = set()
+        self.duplicates = []
+        self.possible_duplicates = []
 
         # Don't include top classification layer
         base_model = VGG16(weights="imagenet", include_top=False)
@@ -33,9 +33,9 @@ class VGG:
                 similarity = self._cosine_similarity(features[i], features[j])
 
                 if similarity > self.threshold:
-                    self.duplicates.update((image_paths[i], image_paths[j]))
+                    self.duplicates.append((image_paths[i], image_paths[j]))
                 else:
-                    self.possible_duplicates.update((image_paths[i], image_paths[j]))
+                    self.possible_duplicates.extend((image_paths[i], image_paths[j]))
 
     def _vgg_features(self, image_path):
         """

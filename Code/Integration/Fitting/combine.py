@@ -32,6 +32,14 @@ algorithm_map = {
   "vgg": VGG
 }
 
+def combine(dataset, layer_size = 3, options = "all"):
+  
+  echo "to be implemented"
+
+def showcase():
+  echo "to be implemented"
+
+# helper functions 
 def test_setting(settings, dataset):
   layers = []
 
@@ -48,21 +56,56 @@ def test_setting(settings, dataset):
 
   # create our architecture
   layered_architecture = Layers(layers)
-  layered_architecture.run(dataset["image_paths"])
+  layered_architecture.run(dataset["paths"])
 
-  # imagepaths = 10k 
-  # result_duplicates = 4k 
-  # result_possible_duplicates = 6k 
+  # we want to get the groups of which the images belongs too (as )
+  preprocessed_results = preprocess_results(layer)
 
-  # database classification - {image_paths: [string], classification: Record<image_path, {image_path:string, duplicate: [string]}> }
-  
+  true_positives = 0
+  false_positives = 0
+
+  for group of preprocessed_results:
+    if len(group) > 0:
+      group_index = dataset['map'][group[0]]
+
+      for path in group:
+        if dataset['map'][path] == group_index:
+          true_positives += 1
+        else:
+          false_positives += 1
+
+  return true_positives, false_positivess
+        
+
 
   # process the results based on dataset
   echo "to be implemented: parsing results based on run and current dataset"
+  map_reference = {}
+  groups = []
 
-def combine(dataset, layer_size = 3, options = "all"):
-  
-  echo "to be implemented"
+  for touple in layer.result_duplicates:  
+    found_group = None 
 
-def showcase():
-  echo "to be implemented"
+    a, b = touple
+    if not preprocess_results_helper(a, b, map_reference, groups):
+      if not preprocess_results_helper(b, a, map_reference, groups):
+        # none of the elements exists so we add then both 
+        group_index = len(groups)
+        groups.append([a, b])
+        map_reference[a] = group_index
+        map_reference[b] = group_index
+
+  return groups
+
+
+# this assumes the layer.result_duplicates is a list of touples 
+def preprocess_results_helper(a, b, map_reference, groups):
+  if a in map_reference:
+    if b not in map_reference:
+      map_reference[b] = map_reference[a]
+      groups[map_reference[a]].append(b)
+      return True 
+
+  return False 
+    
+def preprocess_results(layer):

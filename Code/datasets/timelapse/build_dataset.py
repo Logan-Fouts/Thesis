@@ -40,29 +40,35 @@ def group_frames(directory, threshold):
 
   dataset = {
     'paths': [],
-    'groups': {}
+    'groups': {},
+    'map': {}
   }
 
-  entries = os.listdir(directory)
+  entries = sorted(os.listdir(directory))
   size = len(entries)
 
   poolsize = max(1, math.floor(size * threshold))
   number_of_pools = math.ceil(size / poolsize)
+  poolindex = 0
 
   for entry in entries:
-      # Construct the full path to the entry
-      full_path = os.path.join(directory, entry)
+    # Construct the full path to the entry
+    full_path = os.path.join(directory, entry)
 
-      if os.path.isfile(full_path):
-          dataset['paths'].append(full_path)
-          poolindex = frameindex % number_of_pools
+    if os.path.isfile(full_path):
+      dataset['paths'].append(full_path)
+      # poolindex = frameindex % number_of_pools
 
-          if poolindex not in dataset['groups']:
-            dataset['groups'][poolindex] = []
+      if poolindex not in dataset['groups']:
+        dataset['groups'][poolindex] = []
 
-          dataset['groups'][poolindex].append(full_path)
+      dataset['groups'][poolindex].append(full_path)
+      dataset['map'][full_path] = poolindex
 
-          frameindex += 1
+      frameindex += 1
+
+      if len(dataset['groups'][poolindex]) > number_of_pools:
+        poolindex += 1
 
   return dataset
 
@@ -72,7 +78,7 @@ def build_multiple_timelapse_set(threshold = 0.1, name = "high"):
 
   sets = {}
 
-  for entry in os.listdir(directory):
+  for entry in sorted(os.listdir(directory)):
     full_path = os.path.join(directory, entry)
 
     if os.path.isdir(full_path):

@@ -110,9 +110,3 @@ class SIFT:
         if len(matches) > self.threshold:
             return 0
         return 1
-
-    def get_duplicates(self):
-        return self.duplicates
-
-    def get_possible_duplicates(self):
-        return self.possible_duplicates

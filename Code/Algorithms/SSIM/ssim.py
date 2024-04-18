@@ -1,7 +1,5 @@
 import concurrent.futures
 
-import numpy as np
-from PIL import Image
 from skimage import img_as_float, io
 from skimage.metrics import structural_similarity as ssim
 
@@ -27,7 +25,7 @@ class SSIM:
                 for j in range(i + 1, num_images):
                     futures.append(
                         executor.submit(
-                            self.calculate_ssim,
+                            self._calculate_ssim,
                             images[i],
                             images[j],
                             image_paths[i],
@@ -42,7 +40,7 @@ class SSIM:
                 else:
                     self.possible_duplicates.extend((img1_path, img2_path))
 
-    def calculate_ssim(self, img1, img2, img1_path, img2_path):
+    def _calculate_ssim(self, img1, img2, img1_path, img2_path):
         """
         Performs ssim using skimage library and retrns results.
         """

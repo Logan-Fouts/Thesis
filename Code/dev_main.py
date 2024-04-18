@@ -1,4 +1,5 @@
 import os
+import random
 import sys
 import time
 
@@ -11,8 +12,10 @@ integration_path = os.path.join(project_root, "Integration")
 sys.path.append(algorithms_path)
 sys.path.append(integration_path)
 
+from Ahash.ahash import Ahash
 from Dhash.dhash import Dhash
 from Layers.layers import Layers
+from MinHash_LSH.minhash_lsh import MinHash_LSH
 from Phash.phash import Phash
 from SIFT.sift import SIFT
 from SSIM.ssim import SSIM
@@ -33,6 +36,16 @@ def get_image_paths(directory):
 
     paths.sort()  # Make it repeatable
     return paths
+
+
+def randomize_sets(paths, n):
+    # Split list into chunks of size n
+    chunks = [paths[i : i + n] for i in range(0, len(paths), n)]
+    random.seed(1)
+    random.shuffle(chunks)
+    shuffled_paths = [item for chunk in chunks for item in chunk]
+
+    return shuffled_paths
 
 
 def finger_accuracy_calculator(duplicate_pairs):
@@ -58,25 +71,27 @@ def finger_accuracy_calculator(duplicate_pairs):
     return (correct / total) * 100 if total > 0 else 0
 
 
-image_paths = get_image_paths("Images/Altered/Altered-Easy")
+image_paths = get_image_paths("Images/Finger_Prints/Altered/Altered-Easy")
+image_paths = randomize_sets(image_paths, 3)
 layers = [
-    Phash(threshold=4),
-    Dhash(threshold=4),
+    # Phash(threshold=3),
+    # Dhash(threshold=4),
     SIFT(
-        threshold=17,
+        threshold=30,
         sigma=1.8,
-        edge_threshold=1000**10,
-        n_octave_layers=3,
-        contrast_threshold=0.01,
+        edge_threshold=10,
+        n_octave_layers=5,
+        contrast_threshold=0.03,
         plot=False,
     ),
+    # Dhash(threshold=6),
 ]
 
 layered_architecure = Layers(
     raw_layers=layers, accuracy_calculator=finger_accuracy_calculator
 )
 start_time = time.perf_counter()
-layered_architecure.run(image_paths[:30])
+layered_architecure.run(image_paths[:300])
 end_time = time.perf_counter()
 elapsed_time = end_time - start_time
 print(f"Elapsed time: {elapsed_time:.4f} seconds")

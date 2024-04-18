@@ -93,5 +93,5 @@ def run_experiment(size, path):
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 
 
-for i in range(2700, 3300, 300):
+for i in range(300, 3300, 300):
     run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

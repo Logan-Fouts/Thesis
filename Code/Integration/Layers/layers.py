@@ -107,7 +107,7 @@ class Layers:
             groups[root].append(image)
         return list(groups.values())
 
-    def print_final_results(self, filename="results.txt"):
+    def print_final_results(self, time_elapsed, size, filename="results.txt"):
         """
         Writes the final results to a file, formatting the output.
         """
@@ -115,6 +115,8 @@ class Layers:
         with open(filename, "a") as file:
             file.write("\nFINAL RESULTS...\n")
             file.write("~~~~~~\n")
+            file.write(f"Sizw: {size}\n")
+            file.write(f"Time Elapsed: {time_elapsed:.2f}\n")
 
             if self.result_duplicates:
                 accuracy = self.accuracy_calculator(self.result_duplicates)
@@ -123,5 +125,5 @@ class Layers:
 
             file.write(f"Total Groups: {len(related_groups)}\n")
             print(f"Total Groups: {len(related_groups)}\n")
-            for i, group in enumerate(related_groups, 1):
-                file.write(f"Group {i}: {group}\n")
+            #for i, group in enumerate(related_groups, 1):
+            #    file.write(f"Group {i}: {group}\n")

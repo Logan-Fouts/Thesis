@@ -1,0 +1,70 @@
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 300
+Time Elapsed: 5.07
+Accuracy: 100.00%
+Total Groups: 97
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 600
+Time Elapsed: 10.27
+Accuracy: 100.00%
+Total Groups: 198
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 900
+Time Elapsed: 19.53
+Accuracy: 99.82%
+Total Groups: 294
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 1200
+Time Elapsed: 33.04
+Accuracy: 98.41%
+Total Groups: 390
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 1500
+Time Elapsed: 51.90
+Accuracy: 95.41%
+Total Groups: 481
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 1800
+Time Elapsed: 73.74
+Accuracy: 93.45%
+Total Groups: 579
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 2100
+Time Elapsed: 98.02
+Accuracy: 92.64%
+Total Groups: 671
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 2400
+Time Elapsed: 129.33
+Accuracy: 93.00%
+Total Groups: 764
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 2700
+Time Elapsed: 154.00
+Accuracy: 93.13%
+Total Groups: 860
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 3000
+Time Elapsed: 187.47
+Accuracy: 90.82%
+Total Groups: 940

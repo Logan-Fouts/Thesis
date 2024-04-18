@@ -2,6 +2,7 @@ import concurrent.futures
 
 from skimage import img_as_float, io
 from skimage.metrics import structural_similarity as ssim
+from skimage.transform import resize
 
 
 class SSIM:
@@ -16,7 +17,13 @@ class SSIM:
         Uses ssim to classify images as duplicates or not.
         """
         image_paths = list(image_paths)
-        images = [img_as_float(io.imread(path, as_gray=True)) for path in image_paths]
+        images = []
+        for path in image_paths:
+            img = img_as_float(io.imread(path, as_gray=True))
+            if img is not None:
+                new_shape = (int(img.shape[0] * 0.65), int(img.shape[1] * 0.65))
+                img = resize(img, new_shape, anti_aliasing=True)
+                images.append(img)
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = []

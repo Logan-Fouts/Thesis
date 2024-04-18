@@ -2,6 +2,7 @@ import os
 import random
 import sys
 import time
+from collections import defaultdict
 
 from cv2 import threshold
 
@@ -34,18 +35,19 @@ def get_image_paths(directory):
             if os.path.splitext(file)[1].lower() in extensions:
                 paths.append(os.path.join(root, file))
 
-    paths.sort()  # Make it repeatable
+    paths.sort()
     return paths
 
 
-def randomize_sets(paths, n):
-    # Split list into chunks of size n
-    chunks = [paths[i : i + n] for i in range(0, len(paths), n)]
-    random.seed(1)
-    random.shuffle(chunks)
-    shuffled_paths = [item for chunk in chunks for item in chunk]
+def group_images(paths):
+    grouped_paths = defaultdict(list)
+    for path in paths:
+        filename = os.path.basename(path)
+        parts = filename.split("_")
+        group_key = "_".join(parts[:5])
+        grouped_paths[group_key].append(path)
 
-    return shuffled_paths
+    return grouped_paths
 
 
 def finger_accuracy_calculator(duplicate_pairs):
@@ -71,28 +73,33 @@ def finger_accuracy_calculator(duplicate_pairs):
     return (correct / total) * 100 if total > 0 else 0
 
 
+SZ = 1800
 image_paths = get_image_paths("Images/Finger_Prints/Altered/Altered-Easy")
-image_paths = randomize_sets(image_paths, 3)
+groups = group_images(image_paths[:SZ])
+test_paths = []
+for group in groups.values():
+    test_paths.extend(group)
+print(len(groups))
 layers = [
-    # Phash(threshold=3),
-    # Dhash(threshold=4),
+    Phash(threshold=4),
+    Dhash(threshold=3),
     SIFT(
-        threshold=30,
+        threshold=17,
         sigma=1.8,
-        edge_threshold=10,
-        n_octave_layers=5,
-        contrast_threshold=0.03,
+        edge_threshold=1000 * 10,
+        n_octave_layers=3,
+        contrast_threshold=0.01,
         plot=False,
     ),
-    # Dhash(threshold=6),
+    # Not sure if we should keep ssim here or not.
+    SSIM(threshold=0.95),
 ]
-
 layered_architecure = Layers(
     raw_layers=layers, accuracy_calculator=finger_accuracy_calculator
 )
 start_time = time.perf_counter()
-layered_architecure.run(image_paths[:300])
+layered_architecure.run(test_paths)
 end_time = time.perf_counter()
 elapsed_time = end_time - start_time
-print(f"Elapsed time: {elapsed_time:.4f} seconds")
 layered_architecure.print_final_results()
+print(f"Elapsed time: {elapsed_time:.4f} seconds")

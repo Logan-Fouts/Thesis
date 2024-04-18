@@ -12,9 +12,9 @@ class SIFT:
     def __init__(
         self,
         threshold=30,
-        sigma=0.85,
+        sigma=1.6,
         edge_threshold=10,
-        n_octave_layers=7,
+        n_octave_layers=3,
         contrast_threshold=0.04,
         plot=False,
     ):

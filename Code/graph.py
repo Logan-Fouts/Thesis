@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 
-sizes = np.array([300, 900, 1500, 3000])
-times = np.array([4.4, 12.1, 28.9, 109])
+sizes = np.array([300, 600, 60])
+times = np.array([26, 104, 2])
 
 
 def poly_func(x, a, b, c):
@@ -12,7 +12,7 @@ def poly_func(x, a, b, c):
 
 popt, pcov = curve_fit(poly_func, sizes, times)
 
-PREDICT_SIZE = 17500
+PREDICT_SIZE = 1000
 predicted_time = poly_func(PREDICT_SIZE, *popt)
 print(f"Predicted time for size {PREDICT_SIZE}: {predicted_time:.2f} seconds")
 

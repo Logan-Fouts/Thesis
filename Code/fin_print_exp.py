@@ -56,37 +56,42 @@ def finger_accuracy_calculator(duplicate_pairs):
     return (correct / total) * 100 if total > 0 else 0
 
 
-# Config for Finger Prints Dataset
-SZ = 900
-image_paths = get_image_paths("Images/Finger_Prints/Altered/Altered-Easy")
-groups = group_images(image_paths[:SZ])
-test_paths = [path for group in groups.values() for path in group]
+def run_experiment(size, path):
+    # Config for Finger Prints Dataset
+    SZ = size
+    image_paths = get_image_paths(path)
+    groups = group_images(image_paths[:SZ])
+    test_paths = [path for group in groups.values() for path in group]
 
-print(f"Number of groups: {len(groups)}")
+    print(f"Number of groups: {len(groups)}")
 
-layers = [
-    Phash(threshold=4),
-    Dhash(threshold=3),
-    SIFT(
-        threshold=17,
-        sigma=1.8,
-        edge_threshold=10000,
-        n_octave_layers=3,
-        contrast_threshold=0.01,
-        plot=False,
-    ),
-    # SSIM(threshold=0.95),  # Not sure if we should keep ssim here or not.
-]
+    layers = [
+        Phash(threshold=4),
+        Dhash(threshold=3),
+        SIFT(
+            threshold=17,
+            sigma=1.8,
+            edge_threshold=10000,
+            n_octave_layers=3,
+            contrast_threshold=0.01,
+            plot=False,
+        ),
+        # SSIM(threshold=0.95),  # Not sure if we should keep ssim here or not.
+    ]
 
-layered_architecture = Layers(
-    raw_layers=layers, accuracy_calculator=finger_accuracy_calculator
-)
+    layered_architecture = Layers(
+        raw_layers=layers, accuracy_calculator=finger_accuracy_calculator
+    )
 
-# Measure execution time
-start_time = time.perf_counter()
-layered_architecture.run(test_paths)
-end_time = time.perf_counter()
-elapsed_time = end_time - start_time
+    # Measure execution time
+    start_time = time.perf_counter()
+    layered_architecture.run(test_paths)
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
 
-layered_architecture.print_final_results()
-print(f"Elapsed time: {elapsed_time:.4f} seconds")
+    layered_architecture.print_final_results()
+    print(f"Elapsed time: {elapsed_time:.4f} seconds")
+
+
+for i in range(300, 3300, 300):
+    run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

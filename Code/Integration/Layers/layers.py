@@ -112,8 +112,7 @@ class Layers:
         Writes the final results to a file, formatting the output.
         """
         related_groups = self.group_related_images()
-        print(related_groups)
-        with open(filename, "w") as file:
+        with open(filename, "a") as file:
             file.write("\nFINAL RESULTS...\n")
             file.write("~~~~~~\n")
 

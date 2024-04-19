@@ -2,6 +2,7 @@ import sys
 import os
 import json 
 from itertools import permutations
+import time
 
 # create path from current file-path 
 current_script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -38,9 +39,10 @@ algorithm_map = {
 #   echo "to be implemented"
 
 # helper functions 
-def test_setting(settings, dataset, size=-1):
+def test_setting(settings, dataset, size=-1, accuracy_calculator=None):
   layers = []
 
+  setting_name = ""
   # building layered algorithm based on setting
   for setting in settings:
     # get the algorithm from MAP (defined in presets.py)
@@ -48,41 +50,47 @@ def test_setting(settings, dataset, size=-1):
     if algorithm_class:
       # now get the params based on mode (low | high)
       params = setting["params"]
-
+      setting_name += f"{setting['name']}#{setting['params']}-"
       if params:
         # finally we build our layered algorithm 
         layers.append(algorithm_class(*params))
 
   # create our architecture
-  layered_architecture = Layers(layers)
+  layered_architecture = Layers(raw_layers=layers, accuracy_calculator=accuracy_calculator)
+  
+  # TODO move time into layer 
+  start_time = time.perf_counter()
   layered_architecture.run(dataset['paths'][:size])
+  end_time = time.perf_counter()
+  elapsed_time = end_time - start_time
 
   # we want to get the groups of which the images belongs too (as )
   # preprocessed_results = preprocess_results(layered_architecture)
   preprocessed_results = layered_architecture.group_related_images()
 
-  layered_architecture.print_final_results()
+  if accuracy_calculator:
+    layered_architecture.print_final_results(time_elapsed=elapsed_time, size=size, filename=f"experiment-outputs/{setting_name}.txt")
+  else:
+    true_positives = 0
+    false_positives = 0
 
-  true_positives = 0
-  false_positives = 0
+    for group in preprocessed_results:
+      if len(group) > 0:
+        compare_map = {}
 
-  for group in preprocessed_results:
-    if len(group) > 0:
-      compare_map = {}
+        for path in group:
+          if dataset['map'][path] not in compare_map:
+            compare_map[dataset['map'][path]] = 0
 
-      for path in group:
-        if dataset['map'][path] not in compare_map:
-          compare_map[dataset['map'][path]] = 0
+          compare_map[dataset['map'][path]] += 1
 
-        compare_map[dataset['map'][path]] += 1
-
-      sorted_compare = sorted(list(compare_map.values()), reverse=True)
-      
-      # excellent compare 
-      true_positives += sorted_compare[0]
-      false_positives += sum(sorted_compare[1:])
-  
-  return true_positives, false_positives
+        sorted_compare = sorted(list(compare_map.values()), reverse=True)
+        
+        # excellent compare 
+        true_positives += sorted_compare[0]
+        false_positives += sum(sorted_compare[1:])
+    
+    return true_positives, false_positives
         
 
 def preprocess_results(layer):
@@ -117,7 +125,7 @@ def preprocess_results_helper(a, b, map_reference, groups):
 
 
 # config = Array<{ name:string, params: Array<number> }>
-def compare(dataset, layer_size = 3, dataset_size=-1, config = "all"):
+def compare(dataset, layer_size = 3, dataset_size=-1, config = "all", accuracy_calculator=None):
 
   if config == "all":
     config = []
@@ -128,13 +136,11 @@ def compare(dataset, layer_size = 3, dataset_size=-1, config = "all"):
 
   perumation_sets = list(permutations(config, layer_size))
 
-  tp, fp = test_setting([{'name': "phash", 'params': [4]}, {'name': 'dhash', 'params': [3]}, {'name': 'sift', 'params': [17, 1.8, 10000, 3, 0.01]}], dataset, dataset_size)
-  print(f"# experiment finished ✅\nTP: {tp}, FP: {fp}")
+  # tp, fp = test_setting(settings=[{'name': "phash", 'params': [4]}, {'name': 'dhash', 'params': [3]}, {'name': 'sift', 'params': [17, 1.8, 10000, 3, 0.01]}], dataset=dataset, size=dataset_size, accuracy_calculator=accuracy_calculator)
+  # print(f"# experiment finished ✅\nTP: {tp}, FP: {fp}")
 
-  # for setting in perumation_sets:
-  #   tp, fp = test_setting(setting, dataset, dataset_size)
-    # print(f"# experiment finished ✅\nTP: {tp}, FP: {fp}\nset: {setting}")
-
+  for setting in perumation_sets:
+    test_setting(settings=setting, dataset=dataset, size=dataset_size, accuracy_calculator=accuracy_calculator)
 
 def get_dataset(path):
   filepath = os.path.normpath(os.path.join(current_script_dir, path))
@@ -144,13 +150,27 @@ def get_dataset(path):
     dataset = json.load(file)
     return dataset
 
+# accuracy caculaters 
+def finger_accuracy_calculator(duplicate_pairs):
+  """
+  Calculates the accuracy for the images classified as duplicates.
+  """
+  correct = sum(
+      path1.split("/")[-1].split("_")[0] == path2.split("/")[-1].split("_")[0]
+      and "_".join(path1.split("/")[-1].split("_")[2:5])
+      == "_".join(path2.split("/")[-1].split("_")[2:5])
+      for path1, path2 in duplicate_pairs
+  )
+  total = len(duplicate_pairs)
+  return (correct / total) * 100 if total > 0 else 0
+
 
 # dataset defenition 
 def timelapse_dataset():
   return get_dataset("datasets/timelapse/multiple-timelapse/highfit.dataset.json")
 
 def finger_print_dataset():
-  return get_dataset("datasets/fingerprint/output.json")
+  return get_dataset("datasets/fingerprint/output.json"), finger_accuracy_calculator
 
-dataset = finger_print_dataset()
-compare(dataset=dataset, dataset_size=30)
+dataset, accuracy_calculator = finger_print_dataset()
+compare(dataset=dataset, dataset_size=90, accuracy_calculator=accuracy_calculator)

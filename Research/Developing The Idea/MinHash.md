@@ -36,7 +36,7 @@ h(x) = (ax + b) % c
 **Jaccard Similarity**:
 > *Lets say you and I are both subscribers to Netflix, and we’ve each watched roughly 100 movies on Netflix. The list of movies I’ve seen is a set, and the list of movies you’ve seen is another set. To measure the similarity between these two sets, you can use the Jaccard Similarity,* **which is given by the intersection of the sets divided by their union**. That is, count the number of movies we’ve both seen, and divide that by the total number of unique movies that we’ve both collectively seen. [^2]
 
-[^1]: [chapter3 minhash.pdf](../Current%20Research/Research/research-dump-henry/chapter3%20minhash.pdf)
+[^1]: [chapter3 minhash.pdf](chapter3%20minhash.pdf)
 [^2]: [https://mccormickml.com/2015/06/12/minhash-tutorial-with-python-code/](https://mccormickml.com/2015/06/12/minhash-tutorial-with-python-code/)
 [^3]: [stackoverflow](https://stackoverflow.com/questions/2758922/using-minhash-to-find-similarities-between-2-images)
 [^4]: [geometric minhash](../Current%20Research/Primary/Geometric_min-Hashing_Finding_a_thick_needle_in_a_haystack.pdf)

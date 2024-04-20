@@ -5,3 +5,4 @@
 		- Quick would mean filtering, so images classified as duplicates are removed before the next layer.
 	- Make different "presets" that work well for specific use cases
 		- For example, this could be fingerprint processing or my moms library of images
+- Use chat gpt for testing against

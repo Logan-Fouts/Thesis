@@ -59,7 +59,7 @@ The multi-block approach produces multiple binary codes for each image, so they 
 ## Geometric min hash: 
 main algorithm to determine feature extraction is divided into 2 parts, central and secondary features. Central features is normal min-hash but unique visual words are used (unique features of image). With this unique list of features spatial and scale information is obtained which is used to guide the selection of the secondary features. We can think of it like we zoom in into the main features that was extracted and produce a more clooser look at these regions to produce a more detailed feature list. This would result in a more richer hash which is used for comparision. 
 
-[See MinHash Notes](./MinHash.md)
+[See MinHash Notes](MinHash.md)
 
 ---
 #Degree-Project

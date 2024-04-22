@@ -86,7 +86,7 @@ def run_experiment(size, path):
             edge_threshold=1000**10,
             n_octave_layers=8,
             contrast_threshold=0.01,
-            image_ration=0.3,
+            image_ratio=0.3,
             plot=False,
         ),
     ]

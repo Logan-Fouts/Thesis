@@ -1,3 +1,5 @@
+import random
+
 from Wrapper.wrapper import Wrapper
 
 
@@ -17,7 +19,7 @@ class UnionFind:
         Finds and returns the root of the set containing the item and does path compression.
         """
         if self.parent[item] != item:
-            self.parent[item] = self.find(self.parent[item])  # Path compression
+            self.parent[item] = self.find(self.parent[item])
         return self.parent[item]
 
     def union(self, item1, item2):
@@ -45,7 +47,7 @@ class Layers:
     def __init__(self, raw_layers, accuracy_calculator=None, debug=False):
         self.layers = []
         self._wrap_layers(raw_layers)
-        self.accuracy_calculator = accuracy_calculator
+        self.acc_calc = accuracy_calculator
         self.debug = debug
         self.result_duplicates = []
         self.result_possible_duplicates = []
@@ -67,37 +69,60 @@ class Layers:
         """
         Executes the classes given in sequence.
         """
-        current_image_paths = set(image_paths)
+        curr_paths = set(image_paths)
+
         for layer in self.layers:
-            if len(current_image_paths) > 1:
-                layer.run(current_image_paths)
-                tmp_duplicates, tmp_possible_duplicates = layer.get_results()
-                if self.debug:
-                    layer.print_results()
+            if len(curr_paths) < 1:
+                continue
 
-                self.result_duplicates.extend(tmp_duplicates)
+            layer.run(curr_paths)
+            tmp_dups, _ = layer.get_results()
 
-                duplicates_set = set(path for dup in tmp_duplicates for path in dup)
+            curr_paths = self._setup_further_processing(tmp_dups, curr_paths)
 
-                # Filter current_image_paths to exclude paths found in duplicates
-                current_image_paths = set(tmp_possible_duplicates) - duplicates_set
+            if self.debug:
+                layer.print_results()
 
-                print(len(current_image_paths))
-                import time
+        lst = [item for tup in self.result_duplicates for item in tup]
+        self.result_possible_duplicates = list(set(curr_paths) - set(lst))
 
-                time.sleep(1)
-            else:
-                print("Done Early!")
+    def _setup_further_processing(self, duplicates, image_paths):
+        """
+        Clean up curr_paths and result_duplicates for further processing.
+        """
+        for duplicate_group in duplicates:
+            if duplicate_group not in self.result_duplicates:
+                self.result_duplicates.append(duplicate_group)
 
-    def group_related_images(self):
+        lst = [item for tup in self.result_duplicates for item in tup]
+        curr_paths = set(image_paths) - set(lst)
+
+        self.result_duplicates = self.group_related_images(self.result_duplicates)
+
+        # Grab a random image from each group and add to the current_image_paths to give further layers a chance
+        for group in self.result_duplicates:
+            if group:
+                rand_img = random.choice(group)
+                curr_paths.add(rand_img)
+
+        return curr_paths
+
+    def group_related_images(self, tuples):
         """
         Group all related duplicate image pairs into clusters.
+        Assume that tuples might be a list of lists or list of tuples with more than two items.
         """
         uf = UnionFind()
-        for path1, path2 in self.result_duplicates:
-            uf.add(path1)
-            uf.add(path2)
-            uf.union(path1, path2)
+        for group in tuples:
+            if isinstance(group, (list, tuple)):
+                for i in range(len(group) - 1):
+                    for j in range(i + 1, len(group)):
+                        uf.add(group[i])
+                        uf.add(group[j])
+                        uf.union(group[i], group[j])
+            else:
+                uf.add(group)
+                uf.union(group, group)
 
         groups = {}
         for image in uf.parent:
@@ -107,23 +132,68 @@ class Layers:
             groups[root].append(image)
         return list(groups.values())
 
-    def print_final_results(self, time_elapsed, size, filename="results.txt"):
+    def calculate_metrics(self, tp, fp, tn, fn):
+        """
+        Calculate precision, recall, F1-score, and accuracy
+        """
+        precision = tp / (tp + fp) if tp + fp > 0 else 0
+        recall = tp / (tp + fn) if tp + fn > 0 else 0
+        f1_score = (
+            2 * (precision * recall) / (precision + recall)
+            if precision + recall > 0
+            else 0
+        )
+        accuracy = (tp + tn) / (tp + fp + tn + fn) if tp + fp + tn + fn > 0 else 0
+
+        return precision, recall, f1_score, accuracy
+
+    def print_final_results(self, filename="results.txt"):
         """
         Writes the final results to a file, formatting the output.
         """
-        related_groups = self.group_related_images()
-        with open(filename, "a") as file:
-            file.write("\nFINAL RESULTS...\n")
-            file.write("~~~~~~\n")
-            file.write(f"Sizw: {size}\n")
-            file.write(f"Time Elapsed: {time_elapsed:.2f}\n")
+        lst = [item for sub_lst in self.result_duplicates for item in sub_lst]
 
-            if self.result_duplicates:
-                accuracy = self.accuracy_calculator(self.result_duplicates)
-                file.write(f"Accuracy: {accuracy:.2f}%\n")
-                print(f"Accuracy: {accuracy:.2f}%\n")
+        print(
+            "Final length of all results:",
+            len(lst) + len(self.result_possible_duplicates),
+        )
 
-            file.write(f"Total Groups: {len(related_groups)}\n")
-            print(f"Total Groups: {len(related_groups)}\n")
-            #for i, group in enumerate(related_groups, 1):
-            #    file.write(f"Group {i}: {group}\n")
+        self._write(filename)
+
+    def _write(self, filename):
+        with open(filename, "w", encoding="utf-8") as file:
+
+            if not self.result_duplicates:
+                return
+
+            true_pos, false_pos, true_neg, false_neg = self.acc_calc(
+                self.result_duplicates, self.result_possible_duplicates
+            )
+            precision, recall, f1_score, accuracy = self.calculate_metrics(
+                true_pos, false_pos, true_neg, false_neg
+            )
+
+            result_text = (
+                f"TP: {true_pos}\n"
+                f"FP: {false_pos}\n"
+                f"TN: {true_neg}\n"
+                f"FN: {false_neg}\n"
+            )
+            result_metrics = (
+                f"Precision: {precision:.4f}\n"
+                f"Recall: {recall:.4f}\n"
+                f"F1-Score: {f1_score:.4f}\n"
+                f"Accuracy: {accuracy:.4f}\n"
+            )
+
+            print(result_text)
+            print(result_metrics)
+            print(f"Total: {true_pos + true_neg + false_pos + false_neg}")
+            print(f"Total Groups: {len(self.result_duplicates)}\n")
+
+            file.write("\nFINAL RESULTS...\n~~~~~~\n")
+            file.write(result_text)
+            file.write(result_metrics)
+            file.write(f"Total Groups: {len(self.result_duplicates)}\n")
+            # for i, group in enumerate(related_groups, 1):
+            #     file.write(f"Group {i}: {group}\n")

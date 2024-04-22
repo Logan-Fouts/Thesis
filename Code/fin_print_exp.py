@@ -1,7 +1,7 @@
 import os
 import sys
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 # Make python see the modules by adding paths to the path
 project_root = os.path.dirname(os.path.abspath(__file__))
@@ -42,18 +42,30 @@ def group_images(paths):
     return grouped_paths
 
 
-def finger_accuracy_calculator(duplicate_pairs):
+def finger_accuracy_calculator(duplicate_groups, non_duplicate_list):
     """
-    Calculates the accuracy for the images classified as duplicates.
+    Method to calculate the accuracy of duplicate detection.
     """
-    correct = sum(
-        path1.split("/")[-1].split("_")[0] == path2.split("/")[-1].split("_")[0]
-        and "_".join(path1.split("/")[-1].split("_")[2:5])
-        == "_".join(path2.split("/")[-1].split("_")[2:5])
-        for path1, path2 in duplicate_pairs
-    )
-    total = len(duplicate_pairs)
-    return (correct / total) * 100 if total > 0 else 0
+    true_pos = 0
+    false_pos = 0
+    true_neg = 0
+    false_neg = len(non_duplicate_list)
+
+    for dup_group in duplicate_groups:
+        relevant_parts = [item.split("/")[-1].split("_")[0:5] for item in dup_group]
+        relevant_parts_combined = ["_".join(parts) for parts in relevant_parts]
+        most_common_segment, _ = Counter(relevant_parts_combined).most_common(1)[0]
+
+        for path in dup_group:
+            relevant_part = "_".join(path.split("/")[-1].split("_")[:5])
+            match = most_common_segment == relevant_part
+
+            if match:
+                true_pos += 1
+            else:
+                false_pos += 1
+
+    return true_pos, false_pos, true_neg, false_neg
 
 
 def run_experiment(size, path):
@@ -66,17 +78,17 @@ def run_experiment(size, path):
     print(f"Number of groups: {len(groups)}")
 
     layers = [
-        Phash(threshold=4),
-        Dhash(threshold=3),
+        Phash(threshold=5),
+        Dhash(threshold=0.93, lsh=True),
         SIFT(
-            threshold=17,
-            sigma=1.8,
-            edge_threshold=10000,
-            n_octave_layers=3,
+            threshold=13,
+            sigma=1.2,
+            edge_threshold=1000**10,
+            n_octave_layers=8,
             contrast_threshold=0.01,
+            image_ration=0.3,
             plot=False,
         ),
-        # SSIM(threshold=0.95),  # Not sure if we should keep ssim here or not.
     ]
 
     layered_architecture = Layers(
@@ -89,9 +101,9 @@ def run_experiment(size, path):
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
 
-    layered_architecture.print_final_results(time_elapsed=elapsed_time, size=SZ)
+    layered_architecture.print_final_results()
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 
 
-for i in range(300, 3300, 300):
+for i in range(300, 400, 300):
     run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

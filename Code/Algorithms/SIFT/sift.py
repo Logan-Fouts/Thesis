@@ -16,11 +16,12 @@ class SIFT:
         edge_threshold=10,
         n_octave_layers=3,
         contrast_threshold=0.04,
+        image_ratio=0.3,
         plot=False,
     ):
         self.name = "SIFT"
         self.threshold = threshold
-        self.image_ratio = 1
+        self.image_ratio = image_ratio
         self.sigma = sigma
         self.edge_threshold = edge_threshold
         self.n_octave_layers = n_octave_layers

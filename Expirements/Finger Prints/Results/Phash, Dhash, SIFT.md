@@ -12,16 +12,17 @@
     {
       "type": "dhash",
       "parameters": {
-        "threshold": 3
+	    "sim": True,
+        "threshold": 0.95
       }
     },
     {
       "type": "sift",
       "parameters": {
-        "threshold": 17,
-        "sigma": 1.8,
-        "edge_threshold": 10000,
-        "noctavelayers": 3,
+        "threshold": 13,
+        "sigma": 1.2,
+        "edge_threshold": 1000**10,
+        "noctavelayers": 8,
         "contrast_threshold": 0.01
       }
     }
@@ -33,56 +34,115 @@
 
 ## Final Results
 
-- **Size: 300**
-  - Time Elapsed: 5.07 seconds
-  - Accuracy: 100.00%
-  - Total Groups: 97
+### Num images: 300
+- **Total Results**: 300
+- **True Positives (TP)**: 300
+- **False Positives (FP)**: 0
+- **False Negatives (FN)**: 0
+- **Precision**: 1.0000
+- **Recall**: 1.0000
+- **F1-Score**: 1.0000
+- **Accuracy**: 1.0000
+- **Elapsed Time**: 2.5530 seconds
 
-- **Size: 600**
-  - Time Elapsed: 10.27 seconds
-  - Accuracy: 100.00%
-  - Total Groups: 198
+### Num images: 600
+- **Total Results**: 600
+- **TP**: 598
+- **FP**: 0
+- **FN**: 2
+- **Precision**: 1.0000
+- **Recall**: 0.9967
+- **F1-Score**: 0.9983
+- **Accuracy**: 0.9967
+- **Elapsed Time**: 9.1599 seconds
 
-- **Size: 900**
-  - Time Elapsed: 19.53 seconds
-  - Accuracy: 99.82%
-  - Total Groups: 294
+### Num images: 900
+- **Total Results**: 900
+- **TP**: 883
+- **FP**: 7
+- **FN**: 10
+- **Precision**: 0.9921
+- **Recall**: 0.9888
+- **F1-Score**: 0.9905
+- **Accuracy**: 0.9811
+- **Elapsed Time**: 19.7361 seconds
 
-- **Size: 1200**
-  - Time Elapsed: 33.04 seconds
-  - Accuracy: 98.41%
-  - Total Groups: 390
+### Num images: 1200
+- **Total Results**: 1200
+- **TP**: 1162
+- **FP**: 23
+- **FN**: 15
+- **Precision**: 0.9806
+- **Recall**: 0.9873
+- **F1-Score**: 0.9839
+- **Accuracy**: 0.9683
+- **Elapsed Time**: 33.8846 seconds
 
-- **Size: 1500**
-  - Time Elapsed: 51.90 seconds
-  - Accuracy: 95.41%
-  - Total Groups: 481
+### Num images: 1500
+- **Total Results**: 1500
+- **TP**: 1433
+- **FP**: 47
+- **FN**: 20
+- **Precision**: 0.9682
+- **Recall**: 0.9862
+- **F1-Score**: 0.9772
+- **Accuracy**: 0.9553
+- **Elapsed Time**: 51.8370 seconds
 
-- **Size: 1800**
-  - Time Elapsed: 73.74 seconds
-  - Accuracy: 93.45%
-  - Total Groups: 579
+### Num images: 1800
+- **Total Results**: 1800
+- **TP**: 1720
+- **FP**: 58
+- **FN**: 22
+- **Precision**: 0.9674
+- **Recall**: 0.9874
+- **F1-Score**: 0.9773
+- **Accuracy**: 0.9556
+- **Elapsed Time**: 73.3654 seconds
 
-- **Size: 2100**
-  - Time Elapsed: 98.02 seconds
-  - Accuracy: 92.64%
-  - Total Groups: 671
+### Num images: 2100
+- **Total Results**: 2100
+- **TP**: 1999
+- **FP**: 74
+- **FN**: 27
+- **Precision**: 0.9643
+- **Recall**: 0.9867
+- **F1-Score**: 0.9754
+- **Accuracy**: 0.9519
+- **Elapsed Time**: 98.9018 seconds
 
-- **Size: 2400**
-  - Time Elapsed: 129.33 seconds
-  - Accuracy: 93.00%
-  - Total Groups: 764
+### Num images: 2400
+- **Total Results**: 2400
+- **TP**: 2269
+- **FP**: 96
+- **FN**: 35
+- **Precision**: 0.9594
+- **Recall**: 0.9848
+- **F1-Score**: 0.9719
+- **Accuracy**: 0.9454
+- **Elapsed Time**: 129.8883 seconds
 
-- **Size: 2700**
-  - Time Elapsed: 154.00 seconds
-  - Accuracy: 93.13%
-  - Total Groups: 860
+### Num images: 2700
+- **Total Results**: 2700
+- **TP**: 2535
+- **FP**: 122
+- **FN**: 43
+- **Precision**: 0.9541
+- **Recall**: 0.9833
+- **F1-Score**: 0.9685
+- **Accuracy**: 0.9389
+- **Elapsed Time**: 154.1421 seconds
 
-- **Size: 3000**
-  - Time Elapsed: 187.47 seconds
-  - Accuracy: 90.82%
-  - Total Groups: 940
+### Num images: 3000
+- **Total Results**: 3000
+- **TP**: 2796
+- **FP**: 153
+- **FN**: 51
+- **Precision**: 0.9481
+- **Recall**: 0.9821
+- **F1-Score**: 0.9648
+- **Accuracy**: 0.9320
+- **Elapsed Time**: 187.5546 seconds
 
 ---
   
-  ![[Time+Prediction.png]]

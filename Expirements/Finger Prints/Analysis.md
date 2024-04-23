@@ -1,3 +1,10 @@
+## Graphs
+
+![[Metrics_Graph.png]]
+
+![[time-graph.png]]
+
+---
 
 Comparing the individual performances of algorithms to the layered architecture proves that the individual algorithms integrated into the layered architecture enhance the system's capabilities of handling more diversified datasets. Each unique strength is brought in by the algorithms—DHash, Phase, and SIFT. When these algorithms are forced to operate together, at the same time, they operate in silos, presenting different inefficiencies and accuracies concerning the diversity in size of the datasets.
 
@@ -5,7 +12,7 @@ For example, DHash provides good performance for small datasets because it can p
 
 On the other hand, Phash may present a degree of resilience in some aspects of image similarity detection based on its very underlying mechanisms of being. It, however, is still unfortunately very susceptible to the same challenges of scaling and a consistent accuracy drawback with larger datasets that have been used in this project. The feature extraction used the fully explained standalone SIFT algorithm, which may not be efficient for use when running computations on big data in terms of time.
 
-However, when all these algorithms are combined into a layered structure, a synergetic effect is likely to occur. Combining the strengths of the algorithms will yield a sound system that maintains high precision at any size of the dataset.
+However, when all these algorithms are combined into a layered structure, a synergetic effect can occur. Combining the strengths of the algorithms will yield a sound system that maintains high precision at any size of the dataset.
 
 The more exciting part was to have found that with the use of the Near-Perfect Matching criterion, it produced excellent performance in small datasets while still maintaining high accuracy with the datasets growing in size. It portrays the adaptability and resilience of the layered architecture.
 

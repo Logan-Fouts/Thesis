@@ -4,7 +4,8 @@
 {
   "type": "dhash",
   "parameters": {
-	"threshold": 9
+	"lsh": True,
+	"threshold": 0.9
   }
 }
 ```
@@ -12,52 +13,131 @@
 ---
 ## Final Results
 
-- **Size: 300**
-  - Time Elapsed: 1.31 seconds
-  - Accuracy: 97.45%
-  - Total Groups: 93
+### Num Images: 300
+- TP: 232
+- FP: 0
+- TN: 0
+- FN: 68
 
-- **Size: 600**
-  - Time Elapsed: 2.06 seconds
-  - Accuracy: 90.93%
-  - Total Groups: 173
+- Precision: 1.0000
+- Recall: 0.7733
+- F1-Score: 0.8722
+- Accuracy: 0.7733
+- Elapsed Time: 0.5860
 
-- **Size: 900**
-  - Time Elapsed: 3.22 seconds
-  - Accuracy: 87.93%
-  - Total Groups: 249
 
-- **Size: 1200**
-  - Time Elapsed: 4.99 seconds
-  - Accuracy: 80.12%
-  - Total Groups: 298
+### Num Images: 600
+- TP: 469
+- FP: 11
+- TN: 0
+- FN: 120
 
-- **Size: 1500**
-  - Time Elapsed: 7.15 seconds
-  - Accuracy: 69.53%
-  - Total Groups: 344
+- Precision: 0.9771
+- Recall: 0.7963
+- F1-Score: 0.8775
+- Accuracy: 0.7817
+- Elapsed Time: 1.5984
 
-- **Size: 1800**
-  - Time Elapsed: 9.76 seconds
-  - Accuracy: 65.88%
-  - Total Groups: 383
 
-- **Size: 2100**
-  - Time Elapsed: 13.41 seconds
-  - Accuracy: 61.22%
-  - Total Groups: 413
+### Num Images: 900
+- TP: 681
+- FP: 33
+- TN: 0
+- FN: 186
 
-- **Size: 2400**
-  - Time Elapsed: 17.04 seconds
-  - Accuracy: 60.13%
-  - Total Groups: 457
+- Precision: 0.9538
+- Recall: 0.7855
+- F1-Score: 0.8615
+- Accuracy: 0.7567
+- Elapsed Time: 3.4829
 
-- **Size: 2700**
-  - Time Elapsed: 21.70 seconds
-  - Accuracy: 58.57%
-  - Total Groups: 503
 
-- **Size: 3000**
-  - Time Elapsed: 27.46 seconds
-  - Accuracy: 54.55%
-  - Total Groups: 531
+### Num Images: 1200
+- TP: 861
+- FP: 91
+- TN: 0
+- FN: 248
+
+- Precision: 0.9044
+- Recall: 0.7764
+- F1-Score: 0.8355
+- Accuracy: 0.7175
+- Elapsed Time: 5.9875
+
+
+### Num Images: 1500
+- TP: 994
+- FP: 191
+- TN: 0
+- FN: 315
+
+- Precision: 0.8388
+- Recall: 0.7594
+- F1-Score: 0.7971
+- Accuracy: 0.6627
+- Elapsed Time: 9.1050
+
+
+### Num Images: 1800
+- TP: 1151
+- FP: 269
+- TN: 0
+- FN: 380
+
+- Precision: 0.8106
+- Recall: 0.7518
+- F1-Score: 0.7801
+- Accuracy: 0.6394
+- Elapsed Time: 13.0436
+
+
+### Num Images: 2100
+- TP: 1287
+- FP: 383
+- TN: 0
+- FN: 430
+
+- Precision: 0.7707
+- Recall: 0.7496
+- F1-Score: 0.7600
+- Accuracy: 0.6129
+- Elapsed Time: 17.7709
+
+
+### Num Images: 2400
+- TP: 1467
+- FP: 443
+- TN: 0
+- FN: 490
+
+- Precision: 0.7681
+- Recall: 0.7496
+- F1-Score: 0.7587
+- Accuracy: 0.6112
+- Elapsed Time: 23.1121
+
+
+### Num Images: 2700
+- TP: 1604
+- FP: 544
+- TN: 0
+- FN: 552
+
+- Precision: 0.7467
+- Recall: 0.7440
+- F1-Score: 0.7454
+- Accuracy: 0.5941
+- Elapsed Time: 28.8299
+
+
+### Num Images: 3000
+- TP: 1727
+- FP: 641
+- TN: 0
+- FN: 632
+
+- Precision: 0.7293
+- Recall: 0.7321
+- F1-Score: 0.7307
+- Accuracy: 0.5757
+- Elapsed Time: 35.2138

@@ -147,7 +147,7 @@ class Layers:
 
         return precision, recall, f1_score, accuracy
 
-    def print_final_results(self, filename="results.txt"):
+    def print_final_results(self, elapsed_time, filename="results.txt"):
         """
         Writes the final results to a file, formatting the output.
         """
@@ -158,10 +158,10 @@ class Layers:
             len(lst) + len(self.result_possible_duplicates),
         )
 
-        self._write(filename)
+        self._write(filename, elapsed_time)
 
-    def _write(self, filename):
-        with open(filename, "w", encoding="utf-8") as file:
+    def _write(self, filename, elapsed_time):
+        with open(filename, "a", encoding="utf-8") as file:
 
             if not self.result_duplicates:
                 return
@@ -174,26 +174,27 @@ class Layers:
             )
 
             result_text = (
-                f"TP: {true_pos}\n"
-                f"FP: {false_pos}\n"
-                f"TN: {true_neg}\n"
-                f"FN: {false_neg}\n"
+                f"- TP: {true_pos}\n"
+                f"- FP: {false_pos}\n"
+                f"- TN: {true_neg}\n"
+                f"- FN: {false_neg}\n\n"
             )
             result_metrics = (
-                f"Precision: {precision:.4f}\n"
-                f"Recall: {recall:.4f}\n"
-                f"F1-Score: {f1_score:.4f}\n"
-                f"Accuracy: {accuracy:.4f}\n"
+                f"- Precision: {precision:.4f}\n"
+                f"- Recall: {recall:.4f}\n"
+                f"- F1-Score: {f1_score:.4f}\n"
+                f"- Accuracy: {accuracy:.4f}\n"
             )
 
+            total_images = true_pos + true_neg + false_pos + false_neg
             print(result_text)
             print(result_metrics)
-            print(f"Total: {true_pos + true_neg + false_pos + false_neg}")
+            print(f"Total: {total_images}")
             print(f"Total Groups: {len(self.result_duplicates)}\n")
 
-            file.write("\nFINAL RESULTS...\n~~~~~~\n")
+            file.write(f"\n## Num Images: {total_images}\n")
             file.write(result_text)
             file.write(result_metrics)
-            file.write(f"Total Groups: {len(self.result_duplicates)}\n")
+            file.write(f"Elapsed Time: {elapsed_time:.4f}\n\n")
             # for i, group in enumerate(related_groups, 1):
             #     file.write(f"Group {i}: {group}\n")

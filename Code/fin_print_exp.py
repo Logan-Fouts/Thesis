@@ -14,6 +14,7 @@ from Layers.layers import Layers
 from Phash.phash import Phash
 from SIFT.sift import SIFT
 from SSIM.ssim import SSIM
+from SURF.surf import SURF
 
 
 def get_image_paths(directory):
@@ -78,8 +79,9 @@ def run_experiment(size, path):
     print(f"Number of groups: {len(groups)}")
 
     layers = [
-        Phash(threshold=5),
-        Dhash(threshold=0.93, lsh=True),
+        Phash(threshold=7),
+        Dhash(threshold=0.90, sim=True),
+        # SURF(),
         SIFT(
             threshold=13,
             sigma=1.2,
@@ -101,9 +103,11 @@ def run_experiment(size, path):
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
 
-    layered_architecture.print_final_results()
+    layered_architecture.print_final_results(elapsed_time=elapsed_time)
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 
 
-for i in range(300, 400, 300):
-    run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")
+run_experiment(600, "Images/Finger_Prints/Altered/Altered-Easy")
+
+# for i in range(300, 33000, 300):
+#     run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

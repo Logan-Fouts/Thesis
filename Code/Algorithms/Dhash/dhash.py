@@ -3,12 +3,12 @@ from PIL import Image
 
 
 class Dhash:
-    def __init__(self, threshold=0.95, lsh=True):
+    def __init__(self, threshold=0.95, sim=True):
         self.name = "Dhash"
         self.threshold = threshold
         self.duplicates = []
         self.possible_duplicates = []
-        self.lsh = lsh
+        self.sim = sim
 
     def process(self, image_paths):
         """
@@ -55,7 +55,7 @@ class Dhash:
         """
         hamming_distance = h1 - h2
 
-        if self.lsh:
+        if self.sim:
             hash_squared = len(h1)
             similarity = (hash_squared - hamming_distance) / hash_squared
             if similarity > self.threshold:

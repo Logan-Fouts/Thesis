@@ -1,8 +1,10 @@
+## Data
+[[Phash, Dhash, SIFT]]
 ## Graphs
 
 ![[Metrics_Graph.png]]
 
-![[time-graph.png]]
+![[Time_Graph.png]]
 
 ---
 

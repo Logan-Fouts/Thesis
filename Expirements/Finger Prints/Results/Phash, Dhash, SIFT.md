@@ -1,3 +1,7 @@
+## Individual Results
+- [[Phash]]
+- [[Dhash]]
+- [[SIFT]]
 ## Presets
 
 ```json

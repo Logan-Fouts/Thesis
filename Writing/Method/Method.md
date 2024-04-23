@@ -1,6 +1,6 @@
 ## Research Project
 
-In order to address the issue of the ambiguous definition of what constitutes a near duplicate image, and the seemingly infinite possibilities of this, we purpose an interesting technique. This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them. We will then validate our approach by comparison to current state of the art techniques for near duplicate image detection and their results as well as comparing results of individual algorithms to the combination.
+In order to address the issue of the ambiguous definition of what constitutes a near duplicate image, and the seemingly infinite possible definitions of this, we purpose an interesting technique. This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them. We will then validate our approach by comparison to current state of the art techniques for near duplicate image detection and their results as well as comparing results of individual algorithms to the combination.
 ## Research methods
 ### Controlled Experiments
 

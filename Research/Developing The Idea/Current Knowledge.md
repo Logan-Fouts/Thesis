@@ -1,5 +1,4 @@
-\[\[Project Idea\]\]
-
+[[Project Idea]]
 ## Research Article Notes
 
 ### Revisiting Gist-PCA Hashing for Near Duplicate Image Detection

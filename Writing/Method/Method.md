@@ -24,7 +24,7 @@ Validity, relates to the accuracy and legitimacy of our findings. To aid in the 
 	
 ## Ethical considerations
 
-For our image detection study, we have made the following ethical considerations:
+For our study, we have made the following ethical considerations:
 
 - **Confidentiality**: If the layers were put into production many security issues would need to be ironed out such as securely storing images both in the data bases as well as during processing. However, we do not intend for this to be put into production, simply we are exploring if the idea of layers of image processing is a viable option to allow for greater flexibility as well as reaping the benefits of the filter like flow.
 

@@ -8,3 +8,14 @@ To initiate the project, the proposal was drafted:
 The current parts include:
 1. [[Introduction]]
 2. [[Method]]
+
+## All Necessary Parts
+1. Introduction
+2. Method
+3. Theoretical Background
+4. Research Project - Implementation
+5. Results
+6. Analysis
+7. Discussion
+8. Conclusions and Future Work
+9. References

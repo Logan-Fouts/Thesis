@@ -111,8 +111,19 @@ The problem can be summarized into a few main questions that guide our research 
 
 ## Scope/Limitation
 
-> [!TODO]
-> You cannot solve everything. Here you describe what you do, and what you don’t do, in your project. Limitations can for example be that you only compare some frameworks of all frameworks available on the market, that you only suggest an architecture for a specific software product and not a general architecture, or that you only include university students in a study and not a broader population sample. (Not about our methodology but the problem itself)
+**Scope**
+- Development of the Layered Architecture: This is the development of this modular architecture that will allow easy composition of various near duplicate image detection algorithms. The approach should be flexible to allow for adaptation to certain needs within different datasets and use cases.
+- **Evaluation through Controlled Experiments:** In this evaluation, the effectiveness and performance of our proposed idea will we compared with traditional methods of image detection as well as an any found examples of horizontal combinations of algorithms. The goal is to see if a layered approach can be highly flexible as well and remain less complex than previous approaches.
+
+**Limitations:**
+- **Algorithm Selection:** Existing image detection algorithms form the basis of our study. Our research covers customization and combinations of these algorithms under the new architecture, but there will be no development of completely unique detection algorithm in this thesis scope.
+
+**Data constraints:** Given the time and resources are very limited, the experiments will be conducted with a small and limited subset of publicly available datasets. Even though data sets will be selected to be representative of the different kinds of images and settings, these will not span all conceivable scenarios.
+- **Generalizability of the Results:** The level of generalizability that could be accorded to the results would mainly be based on the specific algorithms and datasets used in our research. For example, although valid for indicating the potential of the framework, these results should not be generalized to all cases of image data or detection scenarios.
+
+- **Production Deployment**: The thesis does not discuss the deployment of the project into any production environment.
+
+Most of the issues in scalability, continuous integration, and real-time processing are acknowledged but not focused on. With these boundaries set, the aim of the thesis is to take a focused look at the proposed architecture, understanding that there are practical limits met during its research.
 
 ## Target group
 

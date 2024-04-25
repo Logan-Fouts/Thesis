@@ -147,7 +147,7 @@ class Layers:
 
         return precision, recall, f1_score, accuracy
 
-    def print_final_results(self, elapsed_time, filename="results.txt"):
+    def print_final_results(self, elapsed_time, lonely_imgs, filename="results.txt"):
         """
         Writes the final results to a file, formatting the output.
         """
@@ -158,16 +158,16 @@ class Layers:
             len(lst) + len(self.result_possible_duplicates),
         )
 
-        self._write(filename, elapsed_time)
+        self._write(filename, elapsed_time, lonely_imgs)
 
-    def _write(self, filename, elapsed_time):
+    def _write(self, filename, elapsed_time, lonely_imgs):
         with open(filename, "a", encoding="utf-8") as file:
 
             if not self.result_duplicates:
                 return
 
             true_pos, false_pos, true_neg, false_neg = self.acc_calc(
-                self.result_duplicates, self.result_possible_duplicates
+                self.result_duplicates, self.result_possible_duplicates, lonely_imgs
             )
             precision, recall, f1_score, accuracy = self.calculate_metrics(
                 true_pos, false_pos, true_neg, false_neg

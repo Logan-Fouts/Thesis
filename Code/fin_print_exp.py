@@ -43,14 +43,19 @@ def group_images(paths):
     return grouped_paths
 
 
-def finger_accuracy_calculator(duplicate_groups, non_duplicate_list):
+def finger_accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs):
     """
     Method to calculate the accuracy of duplicate detection.
     """
     true_pos = 0
     false_pos = 0
     true_neg = 0
-    false_neg = len(non_duplicate_list)
+
+    for img in non_duplicate_list:
+        if img in lonely_imgs:
+            true_neg += 1
+
+    false_neg = len(non_duplicate_list) - true_neg
 
     for dup_group in duplicate_groups:
         relevant_parts = [item.split("/")[-1].split("_")[0:5] for item in dup_group]
@@ -70,17 +75,26 @@ def finger_accuracy_calculator(duplicate_groups, non_duplicate_list):
 
 
 def run_experiment(size, path):
+    """
+    Sets up the layers and params then runs the architecture with size and path.
+    """
     # Config for Finger Prints Dataset
-    SZ = size
     image_paths = get_image_paths(path)
-    groups = group_images(image_paths[:SZ])
+    groups = group_images(image_paths[:size])
+
+    lonely_imgs = set()
+    for _, group in groups.items():
+        if len(group) == 1:
+            lonely_imgs.add(group[0])
+            print(f"Lonely boy: {group[0]}")
+
     test_paths = [path for group in groups.values() for path in group]
 
     print(f"Number of groups: {len(groups)}")
 
     layers = [
-        Phash(threshold=7),
-        Dhash(threshold=0.90, sim=True),
+        Phash(threshold=4),
+        Dhash(threshold=0.95, sim=True),
         # SURF(),
         SIFT(
             threshold=13,
@@ -103,11 +117,11 @@ def run_experiment(size, path):
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
 
-    layered_architecture.print_final_results(elapsed_time=elapsed_time)
+    layered_architecture.print_final_results(
+        elapsed_time=elapsed_time, lonely_imgs=lonely_imgs
+    )
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 
 
-run_experiment(600, "Images/Finger_Prints/Altered/Altered-Easy")
-
-# for i in range(300, 33000, 300):
-#     run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")
+for i in range(300, 3300, 300):
+    run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

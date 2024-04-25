@@ -50,7 +50,7 @@ class Dhash:
 
     def _filter(self, h1, h2):
         """
-        Uses hamming distance to classify images.
+        Uses hamming distance or similarity to classify images.
         0 = duplicates, 1 = possible duplicates
         """
         hamming_distance = h1 - h2

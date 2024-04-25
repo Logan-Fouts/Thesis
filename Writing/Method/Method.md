@@ -1,7 +1,9 @@
 ## Research Project
 
 In order to address the issue of the ambiguous definition of what constitutes a near duplicate image, and the seemingly infinite possible definitions of this, we purpose an interesting technique. This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them. We will then validate our approach by comparison to current state of the art techniques for near duplicate image detection and their results as well as comparing results of individual algorithms to the combination.
+
 ## Research methods
+
 ### Controlled Experiments
 
 In order to build the algorithms targeted for a specific domain, we will utilize controlled experiments. Initially, layers will be manually tuned by manipulating each parameter independently to optimize performance for the specific input data. Once each layer is tuned, then each combination of layers can be automatically exhaustively tested. From the history of performance data, the best combination can be selected for further comparative analysis. This method allows for clear control over variables, preventing other factors from skewing the results. Furthermore, automation will help to avoid any possible oversights that could occur from manual testing.

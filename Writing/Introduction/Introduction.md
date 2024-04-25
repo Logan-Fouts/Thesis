@@ -1,6 +1,12 @@
-This thesis will address the problem that current near duplicate image detection methods are complex and hardly flexible for varied data sets and different definitions of what constitutes a near duplicate image. This thesis is being made as part of a course from a Bachelors Program in Software Technology at Linnaeus University. While the sheer amount of images online grows, it becomes more important for there to exist effective and simple methods for detecting near duplicates in an ever-increasing amount of different domains.
+With the every increasing digital, this thesis from Linnaeus University's Bachelor Programme in Software Technology, hopes to contribute information to the intricate challenge of near-duplicate image detection across the various domains and use cases. Traditional methods alone cannot be expected to work properly in this ever-diversifying dataset, together with the fluid definitions of what might be considered as a near-duplicate image. And the current solutions that aim to address this problem often are highly complicated.
 
-This work sets out to design an architecture that will make designing algorithms easily customize-able and, therefore, accessible and adaptable to each individual's needs. In summary, this is an attempt to bridge between complex image processing algorithms and engineering solutions in practice, with an advanced, versatile architecture for users. Subsequent chapters present the design, implementation, and evaluation of a framework that has the potential to change how image processing algorithms are designed and deployed in practice instead of just in theory.
+As the sheer number of images grows, the need for more generalizable methods of detection on differing datasets and definitions of near duplicates becomes clear. This work is an endeavor to engineer a new architecture—one that makes it easier to combine image processing algorithms for more flexible and effective solutions.
+
+In this respect, the thesis proposes a possible solution to the missing link between the theoretical algorithmic complexity and the engineering solution with a flexible architectural approach. The following chapters look into more detail into the design of the architecture, describe practical implementation, and outline evaluation—all with a single aim: contributing an idea as to how solutions for image processing could be implemented. 
+
+~~This thesis will address the problem that current near duplicate image detection methods are complex and hardly flexible for varied data sets and different definitions of what constitutes a near duplicate image. This thesis is being made as part of a course from a Bachelors Program in Software Technology at Linnaeus University. While the sheer amount of images online grows, it becomes more important for there to exist effective and simple methods for detecting near duplicates in an ever-increasing amount of different domains.~~
+
+~~This work sets out to design an architecture that will make designing algorithms easily customize-able and, therefore, accessible and adaptable to each individual's needs. In summary, this is an attempt to bridge between complex image processing algorithms and engineering solutions in practice, with an advanced, versatile architecture. Subsequent chapters present the design, implementation, and evaluation of a framework that has the potential to change how some image processing solutions are designed and deployed in practice.~~
 
 
 > [!NOTE]
@@ -30,12 +36,6 @@ Image processing in general is a very useful tool across many different areas fo
 
 The idea of duplicate image detection done in a new efficient and accurate manner falls nicely in the field of image processing within computer science. More specifically, this project aims to contribute information and potentially a new useful technique to the duplicate image detection research area. The tool built for the technique may be considered as part of the software engineering field.
 
-### Current Knowledge and Why Change
-
-Research for duplication image detection solutions includes current and previous works that range from basic hashing techniques to more intense ones, such as Convolutional Neural Networks (CNNs). All these have their strengths and weaknesses, usually with trade-offs between execution speed, accuracy, and in some cases, the ability to apply on other datasets. Currently, there exists a horizontal approach to combining methods together but this proves to be highly complex and more difficult to get working. In our approach, a layered architecture is proposed, where known methods are applied at each layer to progressively filter out images in hopes that suitable solutions for each problem domain can be made. Our approach aims to allow specifically tailored algorithms to be made in a more simple manner for whatever the users input domain and near duplicate image definitions are.
-
-This solution could have significant societal, ethical, and economic benefits. Further improvements in the detection of duplicate images would be an improvement in the current quality of information on the Internet, making access to the correct form more reliable and even lessening the amount of misinformation. Ethically, it complies with copyright enforcement, and hence the reduction of illegal contents on the web. Implementation for each specific domain could minimize economic waste of computing resources in a more ecologically disposed online world both for companies and individuals. All these considered together, this approach aims not only to more effectively allow content management online but also to ensure a more informed, properly-managed, ethically-clear, and resource-effective world is facilitated.
-
 | Feature                    | DHash                                                                      | Geometric Min Hash                                                      | VGG Net                                                                               |
 | -------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | Accuracy                   | Low to Medium, effective for simple duplicates                             | Medium to High, captures geometric similarities                         | Very high, even on complex images                                                     |
@@ -48,7 +48,7 @@ This solution could have significant societal, ethical, and economic benefits. F
 *Table 1: Comparative Analysis of Image Detection Techniques*
 
 ---
-### Related work
+## Related work
 
 In the paper, *Bimodal Fusion of Low-Level Features and High-Level Semantic Features for Near-Duplicate Video Clip Detection*, a new approach for near duplicate video clip detection is explored that leverages bimodal fusion, which involves combining low-level features with high-level semantic information. Inspired by this idea of combining different algorithms to extract more information, our purposed approach is a layered architecture including different algorithms at each level for near duplicate image detection. Since this new approach provided promising results, we intend to reform and expand upon it in a different direction.
 
@@ -58,14 +58,16 @@ The work done in this article shows promising results by combining three distinc
 
 ## Motivation
 
-### Knowledge Gap/Challenge/Problem
+This solution could have significant societal, ethical, and economic benefits. Further improvements in the detection of duplicate images would be an improvement in the current quality of information on the Internet, making access to the correct form more reliable and even lessening the amount of misinformation. Ethically, it complies with copyright enforcement, and hence the reduction of illegal contents on the web. Implementation for each specific domain could minimize economic waste of computing resources in a more ecologically disposed online world both for companies and individuals. All these considered together, this approach aims not only to more effectively allow content management online but also to ensure a more informed, properly-managed, ethically-clear, and resource-effective world is facilitated.
 
-Though many techniques are available for image duplicate detection including horizontal combinations, there exists a lack of a simple methodology to combine algorithms that exhibits good performance across diverse datasets and near duplicate image definitions. The most promising methods usually suffer from their complexity, and the implementation itself becomes quite a difficult task as well as being very technical to effectively tune to specific needs.
+### ~~Knowledge Gap/Challenge/Problem~~
 
-### Knowledge Contribution/Action
+~~Research for duplication image detection solutions includes current and previous works that range from basic hashing techniques to more intense ones, such as Convolutional Neural Networks (CNNs). All these have their strengths and weaknesses, usually with trade-offs between execution speed, accuracy, and in some cases, the ability to apply on other datasets. Currently, there exists a horizontal approach to combining methods together but this proves to be highly complex and more difficult to get working. In our approach, a layered architecture, known methods are applied at each layer to progressively filter out images in hopes that suitable solutions for each problem domain can be made. Our approach aims to allow specifically tailored algorithms to be made in a more simple manner for whatever the users input domain and near duplicate image definitions are.~~~~
+~~
+### ~~Knowledge Contribution/Action~~
 
-This paper introduces the idea of using a layered architecture of combining various near duplicate image detection techniques together in a filter-like structure. Thus, we will be taking more simple and less flexible algorithms and combining them for a more flexible result, while aiming for easy-to-understand algorithms.
-
+~~This paper introduces the idea of using a layered architecture of combining various near duplicate image detection techniques together in a filter-like structure. Thus, we will be taking more simple and less flexible algorithms and combining them for a more flexible result, while aiming for easy-to-understand algorithms.~~~~
+~~
 ### Empirical Evidence/Evaluation
 
 We plan to evaluate our solution by use of controlled experiments, which will be guided by methodology seen in related work. Our results will be compared with standard methods such as accuracy, precision, recall, and efficiency that were detailed in articles we plan on targeting as use cases.
@@ -97,6 +99,15 @@ The problem can be summarized into a few main questions that guide our research 
 2. **In what ways can the proposed architecture improve the efficiency and flexibility of near-duplicate detection compared to existing methods?**
 3. ~~**How can this new framework be implemented to ensure it is accessible and usable by a broad spectrum of users, from researchers to commercial developers?**~~
 ## Results
+### Empirical Evidence/Evaluation
+
+We plan to evaluate our solution by use of controlled experiments, which will be guided by methodology seen in related work. Our results will be compared with standard methods such as accuracy, precision, recall, and efficiency that were detailed in articles we plan on targeting as use cases.
+
+**Evaluation Strategy:** Directly compare under controlled conditions the selected metrics; evaluate with different image datasets to demonstrate the effectiveness and adaptability of this new solution in relation to results gathered from each specific article.
+
+**Performance Metrics:** These will be the accuracy, computational efficiency, performance across differing datasets, and other commonly used metrics for performance in this research field (ROC for example). These metrics can be used to see how this solution works in comparison to other current solutions for each use case.
+
+If we can elicit good results for diverse input domains and definitions of near duplicate images, then we can say that we have created a more easily understood flexible approach to combining image processing techniques.
 
 > [!TODO]
 > Present results and the result types for your project. Describe each in a paragraph and refer to the question(s), or part(s) of question(s) it contributes to answer. Also discuss briefly how the results were validated. Use Shaw’s article discussed above as a source of inspiration. The article discusses several results types that you may adopt for your work.

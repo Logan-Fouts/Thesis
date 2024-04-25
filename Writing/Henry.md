@@ -1,0 +1,29 @@
+# Layered architecture approach to solve near duplicate image detection 
+
+## Abstract
+This comes at no surprise, complex problem equals complex solutions, but what is interessting is what if an approach would be to combine all possible solutions together? Reaking the benifits while disgurage the negatives, something that seems like a dream is easier then thought. By utalizing a framework that basically is a layered architecture we hope to combine different near duplicate image detection algorithms and see if there can be some benifit. This allows for easy setup of algorithms and exhuastive testing can be done to quickly give a combination that suites the context needs the most. 
+
+## Introduction 
+
+Today people's life is ever so infused with techonlogy it could almost be consdered as a foundamental to human life at this point [^1]. With an ever so increasing fuzement of software and people data is increasing at a asthonsing rate [^2]. In a study by the International Data Coporation (IDC) showed the digital fingerprint of the world is around 1.8ZB in 2012 and by 2020 it should exceed 40ZB where latest claims by 2025 we are going to reach 175ZB [^3]. A study contucted by Microsoft in 2012 showed that between 50% to 85% of their data is considered as near duplicated data [^4].
+Most of this data is in form of video and images, this comes of course with the burdon of memory allocation and storage which heavily affects cost [^5]. To make an easy perspective: when buying a iphone, one quickly discoveres the price difference based on memeory within the same version of the iphone [^6]. Most people are heavily affected by their missuse of storage and will at some point have to clean their devices or buy in on cloud solutions where the risk of theft is increasing [^7]. The use of smart solutions to deal with near image detection would offer great increase in memory management which could help cleanup lots of data.
+
+From another perspective of the ever increasing data and the problem that comes with it, we face problems in the shadows of the Internet where illegal content being spread [^8], copyright violations where small changes of original content can be applied to avoid current copyright detection and reuploaded [^9]. By having near duplication detection solutions illegal content can be found easier, by better near detection copyright violations can be detected sooner [^10]. 
+
+To combat these problems and so many more, at this point it should be clear that the need of good near-duplicate detection (NDD) is requested. With the primary data related to image this study focused primarilly on near image duplicate detection (NIDD). The first problem faced when trying to combat NIDD is the question itself: *"what is a near image duplication?"* this can be considered anything and purly depends on the context. The importance of NIDD solutions is accuracy and performance, huge budget solution can impose a vast large language model with image feature extraction capabilities but this would not fit all cases in terms of security and cost. Further exploring different solutions for NIDD quickly draws a clear picture, this is a complex problem with multiple solutions out there. Most of the solution stems from each other, ranging from sophisticated convulution nueral networks (cnn) to simple hashing algorithms (dhash for example). They have different strengths and weaknesses all of them. There exists hybrid solutions where complex mathematical combination of hashing or transfer learning is applied to achive improved algorightms [^11]. 
+
+## Method
+
+
+
+[^1]: [insert reference to combat IT and human life]
+[^2]: [insert reference to backup data increasement]
+[^3]: [IDC study]
+[^4]: [microsoft study]
+[^5]: [insert reference for memory = expenses]
+[^6]: [iphone price memory difference]
+[^7]: [reference that can show cloud services exposes users data to higher levels of theft]
+[^8]: [illegal content spread on the Internet]
+[^9]: [copyright violation, especially regarding how current stuff can be jsut edited and reuploaded]
+[^10]: [difficult one, but would be nice to have a way to show how NND can help with illigal content to be found and copyright vilation detection]
+[^11]: [multiple references to different combined algorightms (fingrprint e.g.)]

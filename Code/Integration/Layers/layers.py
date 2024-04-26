@@ -16,7 +16,7 @@ class UnionFind:
 
     def find(self, item):
         """
-        Finds and returns the root of the set containing the item and does path compression.
+        Finds and returns the root of the set containing the item.
         """
         if self.parent[item] != item:
             self.parent[item] = self.find(self.parent[item])
@@ -24,7 +24,7 @@ class UnionFind:
 
     def union(self, item1, item2):
         """
-        Merges the sets that have item1 and item2. Uses rank.
+        Merges the sets that have item1 and item2.
         """
         root1 = self.find(item1)
         root2 = self.find(item2)
@@ -44,13 +44,17 @@ class Layers:
     Builds and allows for execution of the layered architecture.
     """
 
-    def __init__(self, raw_layers, accuracy_calculator=None, debug=False):
+    def __init__(self, raw_layers, accuracy_calculator, debug=False):
         self.layers = []
         self._wrap_layers(raw_layers)
         self.acc_calc = accuracy_calculator
         self.debug = debug
         self.result_duplicates = []
         self.result_possible_duplicates = []
+
+        if not accuracy_calculator:
+            print("You must provide a accuracy calculator!")
+            exit()
 
     def _wrap_layers(self, raw_layers):
         """
@@ -59,11 +63,6 @@ class Layers:
         for layer in raw_layers:
             self.layers.append(Wrapper(layer))
 
-    def get_wrapped_layers(self):
-        """
-        Returns an array of the wrapped layers.
-        """
-        return self.layers
 
     def run(self, image_paths):
         """
@@ -110,7 +109,6 @@ class Layers:
     def group_related_images(self, tuples):
         """
         Group all related duplicate image pairs into clusters.
-        Assume that tuples might be a list of lists or list of tuples with more than two items.
         """
         uf = UnionFind()
         for group in tuples:

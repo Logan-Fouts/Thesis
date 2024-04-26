@@ -2,4 +2,5 @@
 .obsidian/
 __pycache__/
 thesis_venv/
+pyrightconfig.json
 

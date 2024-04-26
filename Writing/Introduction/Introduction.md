@@ -8,17 +8,6 @@ In this respect, the thesis proposes a possible solution to the missing link bet
 
 ~~This work sets out to design an architecture that will make designing algorithms easily customize-able and, therefore, accessible and adaptable to each individual's needs. In summary, this is an attempt to bridge between complex image processing algorithms and engineering solutions in practice, with an advanced, versatile architecture. Subsequent chapters present the design, implementation, and evaluation of a framework that has the potential to change how some image processing solutions are designed and deployed in practice.~~
 
-
-> [!NOTE]
->In the subsections below you have four goals. Keep the funnel analogy, Figure 1, in mind all the time. Add details along the way, as you go.
->
->1. **Background** – Provide a sufficient, but not too detailed, context to the reader to understand what challenge you address in your thesis.
->2. **Related work** – Inform the reader about what has been done in the area related to the challenge.
->3. **Problem formulation** – Present the knowledge gap you intend to bridge! What is not known?
->4. **Motivation** – Argue why your work is relevant.
->
->Now you should have introduced and motivated a problem you address in your thesis.
-
 ---
 ## Background
 
@@ -108,17 +97,6 @@ We plan to evaluate our solution by use of controlled experiments, which will be
 **Performance Metrics:** These will be the accuracy, computational efficiency, performance across differing datasets, and other commonly used metrics for performance in this research field (ROC for example). These metrics can be used to see how this solution works in comparison to other current solutions for each use case.
 
 If we can elicit good results for diverse input domains and definitions of near duplicate images, then we can say that we have created a more easily understood flexible approach to combining image processing techniques.
-
-> [!TODO]
-> Present results and the result types for your project. Describe each in a paragraph and refer to the question(s), or part(s) of question(s) it contributes to answer. Also discuss briefly how the results were validated. Use Shaw’s article discussed above as a source of inspiration. The article discusses several results types that you may adopt for your work.
-> 
-> **Example:**
-> 
-> We propose a new technique for the evaluation of information security and information privacy at the architecture level. The technique prescribes a process and provides checklists to guide mainly architects but also other stakeholders in the evaluation work.
-> 
-> We evaluate the technique by demonstration and interviews with practitioners. In the demonstration, we show how the technique is used in three cases, by three different evaluator groups. Continuing, we argue that the technique satisfies the objectives. The interviews collect data on stakeholders’ assessments of the technique. Here we focus on precision and reliability; however, we also collect data on the technique’s applicability and ease of use.
-> 
-> Don’t give away too much information about the method here. It will be covered in the next chapter.
 
 ## Scope/Limitation
 

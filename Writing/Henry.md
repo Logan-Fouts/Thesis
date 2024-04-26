@@ -3,6 +3,19 @@
 ## Abstract
 This comes at no surprise, complex problem equals complex solutions, but what is interessting is what if an approach would be to combine all possible solutions together? Reaking the benifits while disgurage the negatives, something that seems like a dream is easier then thought. By utalizing a framework that basically is a layered architecture we hope to combine different near duplicate image detection algorithms and see if there can be some benifit. This allows for easy setup of algorithms and exhuastive testing can be done to quickly give a combination that suites the context needs the most. 
 
+
+> [!NOTE] About the abstract
+> >**I like the first part, I would just say instead:**
+>> - **Original**- "This comes at no surprise, complex problem equals complex solutions, but what is interesting is what if an approach would be to combine all possible solutions together?"
+>>
+> > - **Updated**- This comes at no surprise, complex problem equals complex solutions, but what if it doesn't have to always be this way. What if an approach was taken where current solutions are combined to not only reap benefits from each, but to see if the whole is greater than the sum of its parts.
+>> 	- *Remove*- "Reaping the benefits while discouraging the negatives, something that seems like a dream is easier then thought."
+> ---
+> > **We need to add these parts to complete the abstract:**
+>> - What methods you have done to address the problems
+> > - A short summary of your result
+
+
 ## Introduction 
 
 Today people's life is ever so infused with techonlogy it could almost be consdered as a foundamental to human life at this point [^1]. With an ever so increasing fuzement of software and people data is increasing at a asthonsing rate [^2]. In a study by the International Data Coporation (IDC) showed the digital fingerprint of the world is around 1.8ZB in 2012 and by 2020 it should exceed 40ZB where latest claims by 2025 we are going to reach 175ZB [^3]. A study contucted by Microsoft in 2012 showed that between 50% to 85% of their data is considered as near duplicated data [^4].

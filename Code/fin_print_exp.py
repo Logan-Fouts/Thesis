@@ -13,8 +13,6 @@ from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
 from SIFT.sift import SIFT
-from SSIM.ssim import SSIM
-from SURF.surf import SURF
 
 
 def get_image_paths(directory):
@@ -95,7 +93,6 @@ def run_experiment(size, path):
     layers = [
         Phash(threshold=4),
         Dhash(threshold=0.95, sim=True),
-        # SURF(),
         SIFT(
             threshold=13,
             sigma=1.2,

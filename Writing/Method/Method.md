@@ -10,6 +10,28 @@ In order to build the algorithms targeted for a specific domain, we will utilize
 ### Comparative Analysis
 
 Our decided algorithms outputs will be bench marked against other more traditional near duplicate image detection techniques. Statistics such as precision, recall, run time, and resource usage will be both recorded then considered while comparing methods. Comparing these metrics will allow us to effectively highlight any pro's or con's of the new algorithms as well as the layered approach. In order to compare, a subset of the same input data will be used and the same metrics will be compared for each. Results from these comparisons will allow us to evaluate if our method is an effective way to allow for flexible near duplicate image detection.
+
+### Prototype Assessment
+
+In order to back up our claim that our vertical method of combining algorithms is "easier" compared to the horizontal method, a review of the two workflows will be done. This assessment hope to highlight the relative simplicity/speed of set up, understand-ability, and operating efficiency with respect to our approach, despite limited practical access to implementations in a horizontal approach.
+
+#### **Theoretical Assessment**
+
+Our theoretical assessment is an analysis of the workflow involved in both the vertical and horizontal methods. We will focus on:
+- **Setup/Configuration Complexity**: Count the number of steps, configuration requirements, and the level of knowledge required to build with both approaches.
+- **Understand-ability**: This involves taking a look at the difficulty to comprehend and run each approach. This will avoid discuss any front end user interfaces as we aim to reason about the underlying tooling.
+- **Integration of Components**: We assess how each method handles the combination of the various algorithms into a single system, and discuss potential benefits and draw backs of each.
+
+#### **Practical Assessment**
+
+Due to limited access to the horizontal approach, our practical assessment revolves around our implementation of the vertical method. We can replicate conditions that have been recorded in articles and infer the horizontal method's performance against ours:
+- **Operational Efficiency**: We measure the time taken to complete runs on each approach. Metrics such as throughput and resource usage are recorded to evaluate performance and time complexity.
+- **Error Rate and Maintenance**: Analyzing the error rate and other rates, we provide insights into the usability and reliability of our method. Comparison is done with reported metrics from horizontal systems, when available.
+
+#### **Outcomes and Future Directions**
+
+The results from both theoretical and practical assessments hope to argue that the vertical approach is a similarly performative option, but an easier and more user-friendly solution for image processing algorithm combination.
+
 ## Reliability and Validity
 
 Reliability in research refers to the consistency of the results obtained from the study. It explores whether other researchers can produce similar results under the same conditions, using the same methods. In our study, we aim to document in detail all relevant testing and experimentation information in order to allow for others to run them for themselves.

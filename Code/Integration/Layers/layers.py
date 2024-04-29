@@ -1,4 +1,6 @@
+import os
 import random
+import shutil
 
 from Wrapper.wrapper import Wrapper
 
@@ -62,7 +64,6 @@ class Layers:
         """
         for layer in raw_layers:
             self.layers.append(Wrapper(layer))
-
 
     def run(self, image_paths):
         """
@@ -145,7 +146,7 @@ class Layers:
 
         return precision, recall, f1_score, accuracy
 
-    def print_final_results(self, elapsed_time, lonely_imgs, filename="results.txt"):
+    def print_final_results(self, elapsed_time, lonely_imgs, filename="results.txt", move=False):
         """
         Writes the final results to a file, formatting the output.
         """
@@ -156,9 +157,9 @@ class Layers:
             len(lst) + len(self.result_possible_duplicates),
         )
 
-        self._write(filename, elapsed_time, lonely_imgs)
+        self._write(filename, elapsed_time, lonely_imgs, move)
 
-    def _write(self, filename, elapsed_time, lonely_imgs):
+    def _write(self, filename, elapsed_time, lonely_imgs, move):
         with open(filename, "a", encoding="utf-8") as file:
 
             if not self.result_duplicates:
@@ -194,5 +195,23 @@ class Layers:
             file.write(result_text)
             file.write(result_metrics)
             file.write(f"Elapsed Time: {elapsed_time:.4f}\n\n")
+
+            related_groups = self.group_related_images(self.result_duplicates)
             # for i, group in enumerate(related_groups, 1):
-            #     file.write(f"Group {i}: {group}\n")
+                # print(f"Group {i}: {group}\n")
+                # file.write(f"Group {i}: {group}\n")
+
+            if move:
+                related_groups = self.group_related_images(self.result_duplicates)
+                base_path = "duplicates_directory"
+                if not os.path.exists(base_path):
+                    os.makedirs(base_path)
+
+                for i, group in enumerate(related_groups, 1):
+                    group_dir = os.path.join(base_path, f"group_{i}")
+                    if not os.path.exists(group_dir):
+                        os.makedirs(group_dir)
+
+                    for img_path in group:
+                        if os.path.exists(img_path):
+                            shutil.copy(img_path, group_dir)

@@ -128,3 +128,68 @@ Elapsed Time: 380.2407
 - Accuracy: 0.9387
 Elapsed Time: 469.4598
 
+
+## Num Images: 0
+- TP: 0
+- FP: 0
+- TN: 0
+- FN: 0
+
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-Score: 0.0000
+- Accuracy: 0.0000
+Elapsed Time: 2.9237
+
+
+## Num Images: 0
+- TP: 0
+- FP: 0
+- TN: 0
+- FN: 0
+
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-Score: 0.0000
+- Accuracy: 0.0000
+Elapsed Time: 11.6244
+
+
+## Num Images: 0
+- TP: 0
+- FP: 0
+- TN: 0
+- FN: 0
+
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-Score: 0.0000
+- Accuracy: 0.0000
+Elapsed Time: 11.2405
+
+
+## Num Images: 0
+- TP: 0
+- FP: 0
+- TN: 0
+- FN: 0
+
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-Score: 0.0000
+- Accuracy: 0.0000
+Elapsed Time: 38.2840
+
+
+## Num Images: 0
+- TP: 0
+- FP: 0
+- TN: 0
+- FN: 0
+
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-Score: 0.0000
+- Accuracy: 0.0000
+Elapsed Time: 113.5722
+

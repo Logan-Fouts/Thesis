@@ -18,7 +18,6 @@ if integration_dir not in sys.path:
 
 # import from Algorithms
 from Dhash.dhash import Dhash
-
 # import from Integration
 from Layers.layers import Layers
 from Phash.phash import Phash

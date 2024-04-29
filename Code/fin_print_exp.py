@@ -100,7 +100,6 @@ def run_experiment(size, path):
             n_octave_layers=8,
             contrast_threshold=0.01,
             image_ratio=0.3,
-            plot=False,
         ),
     ]
 
@@ -115,7 +114,7 @@ def run_experiment(size, path):
     elapsed_time = end_time - start_time
 
     layered_architecture.print_final_results(
-        elapsed_time=elapsed_time, lonely_imgs=lonely_imgs
+        elapsed_time=elapsed_time, lonely_imgs=lonely_imgs, move=False
     )
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 

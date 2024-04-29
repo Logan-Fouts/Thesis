@@ -43,6 +43,9 @@ Our theoretical assessment is an analysis of the workflow involved in both the v
 - **Understand-ability**: This involves taking a look at the difficulty to comprehend and run each approach. This will avoid discuss any front end user interfaces as we aim to reason about the underlying tooling.
 - **Integration of Components**: We assess how each method handles the combination of the various algorithms into a single system, and discuss potential benefits and draw backs of each.
 
+>Are we going to try to "theoreically" go over how to implement a more advancer algorithm like maybe geo-minhash and based on this theoretical by exposing the fact they have to combine their hashes in a smart way then having to iterate and check where things are considered "near" duplicate\
+compared to ours: you find one that works and you mess with its parameters then you see if it combined with other algorithms could give even better results? (maybe even without that algorithm)?
+
 #### **Practical Assessment**
 
 Due to limited access to the horizontal approach, our practical assessment revolves around our implementation of the vertical method. We can replicate conditions that have been recorded in articles and infer the horizontal method's performance against ours:

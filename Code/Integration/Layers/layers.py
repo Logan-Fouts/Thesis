@@ -202,16 +202,34 @@ class Layers:
                 # file.write(f"Group {i}: {group}\n")
 
             if move:
-                related_groups = self.group_related_images(self.result_duplicates)
-                base_path = "duplicates_directory"
-                if not os.path.exists(base_path):
-                    os.makedirs(base_path)
+                base_dir = "classified_images"  # Parent directory for both duplicates and non-duplicates
+                if not os.path.exists(base_dir):
+                    os.makedirs(base_dir)
 
+                # Handle duplicates
+                dups_dir = os.path.join(base_dir, "duplicates_directory")
+                if not os.path.exists(dups_dir):
+                    os.makedirs(dups_dir)
+
+                related_groups = self.group_related_images(self.result_duplicates)
                 for i, group in enumerate(related_groups, 1):
-                    group_dir = os.path.join(base_path, f"group_{i}")
+                    group_dir = os.path.join(dups_dir, f"group_{i}")
                     if not os.path.exists(group_dir):
                         os.makedirs(group_dir)
 
                     for img_path in group:
                         if os.path.exists(img_path):
                             shutil.copy(img_path, group_dir)
+                        else:
+                            print(f"Image path does not exist: {img_path}")
+
+                # Handle non-duplicates
+                non_dups_dir = os.path.join(base_dir, "non_duplicates_directory")
+                if not os.path.exists(non_dups_dir):
+                    os.makedirs(non_dups_dir)
+
+                for i, img_path in enumerate(self.result_possible_duplicates, 1):
+                    if os.path.exists(img_path):
+                        shutil.copy(img_path, non_dups_dir)
+                    else:
+                        print(f"Image path does not exist: {img_path}")

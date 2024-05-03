@@ -1,6 +1,8 @@
 ## Research Project
 
-In order to address the issue of the ambiguous definition of what constitutes a near duplicate image, and the seemingly infinite possible definitions of this, we purpose an interesting technique. This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them. We will then validate our approach by comparison to current state of the art techniques for near duplicate image detection and their results as well as comparing results of individual algorithms to the combination.
+~~In order to address the issue of the ambiguous definition of what constitutes a near duplicate image, and the seemingly infinite possible definitions of this, we purpose an interesting technique. This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them. We will then validate our approach by comparison to current state of the art techniques for near duplicate image detection and their results as well as comparing results of individual algorithms to the combination.~~
+  
+To address the challenge of defining and identifying near duplicate images, which lacks a uniform exact definition, we propose a technique utilizing a layered architecture. Our methodology is inspired by design science principles, so it facilitates the development and evaluation of a modular architecture. Through this, we hope to integrate various algorithms for near duplicate image detection together. This not only seeks to enhance flexibility but also aims to optimize simplicity. Our prototype will be validated against existing techniques and their results with their datasets, comparing both the efficacy of individual algorithms and their combined effect when deployed within our layered framework. We will as well go into a theoretical discussion to reason about the perceived ease of use and implementation for our approach compared to others. 
 
 >im having some problem with this sentence, it is good but I feel it caputeres a bit falsly: *"This study uses aspects of the design science approach to develop and evaluate new algorithms and potentially a small framework created to easily build them."*\
 How are we using aspects of design science to develop & evaluate "new algorithms"
@@ -18,7 +20,7 @@ and then potentially creating a small framework, that will be used to build them
 
 In order to build the algorithms targeted for a specific domain, we will utilize controlled experiments. Initially, layers will be manually tuned by manipulating each parameter independently to optimize performance for the specific input data. Once each layer is tuned, then each combination of layers can be automatically exhaustively tested. From the history of performance data, the best combination can be selected for further comparative analysis. This method allows for clear control over variables, preventing other factors from skewing the results. Furthermore, automation will help to avoid any possible oversights that could occur from manual testing.
 
-> Maybe give a quick outline to give reading understanding how the automation will take place which should also clear up any question of how we do testing (as its all same dataseet?) - maybe also just to increase lines ^^
+> Maybe give a quick outline to give reading understanding how the automation will take place which should also clear up any question of how we do testing (as its all same dataset?) - maybe also just to increase lines ^^
 
 ```python
 	def run_experiments(dataset, size):
@@ -43,7 +45,7 @@ Our theoretical assessment is an analysis of the workflow involved in both the v
 - **Understand-ability**: This involves taking a look at the difficulty to comprehend and run each approach. This will avoid discuss any front end user interfaces as we aim to reason about the underlying tooling.
 - **Integration of Components**: We assess how each method handles the combination of the various algorithms into a single system, and discuss potential benefits and draw backs of each.
 
->Are we going to try to "theoreically" go over how to implement a more advancer algorithm like maybe geo-minhash and based on this theoretical by exposing the fact they have to combine their hashes in a smart way then having to iterate and check where things are considered "near" duplicate\
+>Are we going to try to "theoretically" go over how to implement a more advanced algorithm like maybe geo-minhash and based on this theoretical by exposing the fact they have to combine their hashes in a smart way then having to iterate and check where things are considered "near" duplicate\
 compared to ours: you find one that works and you mess with its parameters then you see if it combined with other algorithms could give even better results? (maybe even without that algorithm)?
 
 #### **Practical Assessment**

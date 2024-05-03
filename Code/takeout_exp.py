@@ -12,6 +12,7 @@ sys.path.append(os.path.join(project_root, "Integration"))
 from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
+from VGG.vgg import VGG
 from SIFT.sift import SIFT
 
 
@@ -79,26 +80,20 @@ def run_experiment(size, path):
     """
     # Config for Finger Prints Dataset
     image_paths = get_image_paths(path)
-    # groups = group_images(image_paths[:size])
-
-    # lonely_imgs = set()
-    # for _, group in groups.items():
-    #     if len(group) == 1:
-    #         lonely_imgs.add(group[0])
-    #         print(f"Lonely boy: {group[0]}")
 
 
     layers = [
-        # Phash(threshold=4),
-        # Dhash(threshold=0.85, sim=True),
+        Phash(threshold=17),
+        Dhash(threshold=0.77, sim=True),
         SIFT(
-            threshold=13,
-            sigma=1.8,
+            threshold=16,
+            sigma=1.6,
             edge_threshold=10,
             n_octave_layers=3,
-            contrast_threshold=1.2,
+            contrast_threshold=0.04,
             image_ratio=0.3,
         ),
+        VGG(threshold=.5)
     ]
 
     layered_architecture = Layers(
@@ -116,7 +111,7 @@ def run_experiment(size, path):
     )
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
 
-run_experiment(1000, "Images/GoogleTakeout")
+run_experiment(50, "./Images/californiaND/Photos/")
 
 # for i in range(300, 3300, 300):
 #     run_experiment(i, "Images/Finger_Prints/Altered/Altered-Easy")

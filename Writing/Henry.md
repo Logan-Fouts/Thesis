@@ -1,7 +1,7 @@
 # Layered architecture approach to solve near duplicate image detection 
 
 ## Abstract
-This comes at no surprise, complex problem equals complex solutions, but what is interessting is what if an approach would be to combine all possible solutions together? Reaking the benifits while disgurage the negatives, something that seems like a dream is easier then thought. By utalizing a framework that basically is a layered architecture we hope to combine different near duplicate image detection algorithms and see if there can be some benifit. This allows for easy setup of algorithms and exhuastive testing can be done to quickly give a combination that suites the context needs the most. 
+This comes at no surprise, complex problem equals complex solutions, but what is interesting is what if an approach would be to combine all possible solutions together? Reaping the benefits while discourage the negatives, something that seems like a dream is easier then thought. By utilizing a framework that basically is a layered architecture we hope to combine different near duplicate image detection algorithms and see if there can be some benefit. This allows for easy setup of algorithms and exhaustive testing can be done to quickly give a combination that suites the context needs the most. 
 
 
 > [!NOTE] About the abstract

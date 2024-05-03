@@ -25,7 +25,7 @@ class SIFT:
         self.edge_threshold = edge_threshold
         self.n_octave_layers = n_octave_layers
         self.contrast_threshold = contrast_threshold
-        self.max_workers = 40
+        self.max_workers = 4
         self.duplicates = []
         self.possible_duplicates = []
 

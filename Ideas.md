@@ -12,3 +12,5 @@
 - **Since there is no real definition of what a near duplicate image image there needs to exists a flexible way to detect near duplicates.**
 - **We want to flexible and accessible/relatively lightweight**
 - **False positives bad**
+
+- Define vertical and horizontal meaning

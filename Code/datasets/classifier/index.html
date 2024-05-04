@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classifier</title>
+
+  <script defer src="main.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="start">
+    <div class="field">
+      <label for="source">Select a Directory</label>
+      <input id="source" type="file" webkitdirectory="true" directory="true" multiple onchange="handleDirectoryInput(event)">
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div id="image-gallery"></div>
+  </section>
+</body>
+</html>
+

@@ -8,6 +8,7 @@ To initiate the project, the proposal was drafted:
 The current parts include:
 1. [[Introduction]]
 2. [[Method]]
+3. [[Theoretical Background]]
 
 ## All Necessary Parts
 1. Introduction

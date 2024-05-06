@@ -6,9 +6,9 @@ To initiate the project, the proposal was drafted:
 - [[SPP]]
 
 The current parts include:
-1. [[Introduction]]
-2. [[Method]]
-3. [[Theoretical Background]]
+1. [Introduction](Introduction)
+2. [Method](Method)
+3. [Theoretical Background](Theoretical%20Background)
 
 ## All Necessary Parts
 1. Introduction

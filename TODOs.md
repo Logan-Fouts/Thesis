@@ -1,3 +1,0 @@
-- [x] Definitions for vertical and horizontal approaches
-- [x] Definitions for ND and NDI
-- [ ] Write more related work

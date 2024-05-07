@@ -17,6 +17,7 @@ class SIFT:
         n_octave_layers=3,
         contrast_threshold=0.04,
         image_ratio=0.3,
+        showprogress=False, # in the perumtation its hard to set this
     ):
         self.name = "SIFT"
         self.threshold = threshold
@@ -28,6 +29,7 @@ class SIFT:
         self.max_workers = 4
         self.duplicates = []
         self.possible_duplicates = []
+        self.showprogress = showprogress
 
     def process(self, image_paths):
         """
@@ -53,7 +55,9 @@ class SIFT:
                         self.possible_duplicates.extend((path1, path2))
                     processed_pairs += 1
                     p = (processed_pairs / total_pairs) * 100
-                    print(f"Processed {p}%...")
+
+                    if self.showprogress == True:
+                        print(f"Processed {p}%...")
 
     def _process_pair(self, pair, preprocessed_images):
         path1, path2 = pair

@@ -16,8 +16,9 @@ def accuracy_calculator(duplicate_pairs):
 print("running fingerprint experiment")
 
 permutation.compare(
-  dataset=permutation.get_dataset("datasets/fingerprint/output.json"), 
-  dataset_size=90, 
+  dataset=permutation.get_dataset("fingerprint/output.json"), 
+  dataset_size=10, 
   accuracy_calculator=accuracy_calculator,
-  preset=permutation.preset['fingerprint']
+  presets=permutation.presets['fingerprint'],
+  foldername="fingerprint-easy-size=10"
 )

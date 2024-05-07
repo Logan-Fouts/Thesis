@@ -22,16 +22,17 @@ from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
 from SIFT.sift import SIFT
-from VGG.vgg import VGG
+# from VGG.vgg import VGG
 
 # Open the file and load the data
 with open('presets.json', 'r') as file:
     presets = json.load(file)
 
-algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
+# algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
+algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
 
 # helper functions
-def test_setting(settings, dataset, size=-1, accuracy_calculator=None):
+def test_setting(foldername, settings, dataset, size=-1, accuracy_calculator=None):
     layers = []
 
     setting_name = ""
@@ -60,13 +61,13 @@ def test_setting(settings, dataset, size=-1, accuracy_calculator=None):
 
     # we want to get the groups of which the images belongs too (as )
     # preprocessed_results = preprocess_results(layered_architecture)
-    preprocessed_results = layered_architecture.group_related_images()
+    preprocessed_results = layered_architecture.group_related_images(layered_architecture.result_duplicates)
 
     if accuracy_calculator:
         layered_architecture.print_final_results(
-            time_elapsed=elapsed_time,
-            size=size,
-            filename=f"experiment-outputs/{setting_name}.txt",
+            elapsed_time=elapsed_time,
+            lonely_imgs=None,
+            filename=os.path.join(current_script_dir, "outputs", foldername, f"{setting_name}.txt"),
         )
     else:
         true_positives = 0
@@ -123,18 +124,29 @@ def preprocess_results_helper(a, b, map_reference, groups):
 
 
 # config = Array<{ name:string, params: Array<number> }>
-def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None, presets={}):
+def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None, presets={}, foldername=""):
+    output_path = os.path.join(current_script_dir, "outputs", foldername)
+    if not os.path.exists(output_path):
+        # If it doesn't exist, create it
+        os.makedirs(output_path)
+
     if config == "all":
         config = []
         for algorithm_name in algorithm_map:
             if presets[algorithm_name]:
-                for mode in presets[algorithm_name]:
-                    config.append(
-                        {
-                            "name": algorithm_name,
-                            "params": presets[algorithm_name][mode],
-                        }
-                    )
+                config.append(
+                    {
+                        "name": algorithm_name,
+                        "params": presets[algorithm_name],
+                    }
+                )
+                # for mode in presets[algorithm_name]:
+                #     config.append(
+                #         {
+                #             "name": algorithm_name,
+                #             "params": presets[algorithm_name][mode],
+                #         }
+                #     )
 
     perumation_sets = list(permutations(config, layer_size))
 
@@ -144,6 +156,7 @@ def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calcu
     for setting in perumation_sets:
         test_setting(
             settings=setting,
+            foldername=foldername,
             dataset=dataset,
             size=dataset_size,
             accuracy_calculator=accuracy_calculator,
@@ -151,13 +164,21 @@ def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calcu
 
 
 def get_dataset(path):
-    filepath = os.path.normpath(os.path.join(current_script_dir, path))
+    rootfolder = os.path.normpath(os.path.join(current_script_dir, ".."))
+    filepath = os.path.join(rootfolder, "datasets", path)
 
     # Open the file and parse the JSON
     with open(filepath, "r") as file:
-        dataset = json.load(file)
-        return dataset
+        data = json.load(file)
 
+    # Update 'paths' with the rootfolder
+    data['paths'] = [os.path.join(rootfolder, path) for path in data['paths']]
 
+    # Update each string in 'groups'
+    data['groups'] = [[os.path.join(rootfolder, path) for path in group] for group in data['groups']]
 
+    # Update the keys in 'map' with the rootfolder
+    data['map'] = {os.path.join(rootfolder, key): value for key, value in data['map'].items()}
+
+    return data
 

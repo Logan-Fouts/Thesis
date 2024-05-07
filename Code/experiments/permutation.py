@@ -6,8 +6,8 @@ from itertools import permutations
 
 # create path from current file-path
 current_script_dir = os.path.dirname(os.path.abspath(__file__))
-algorithms_dir = os.path.normpath(os.path.join(current_script_dir, "Algorithms"))
-integration_dir = os.path.normpath(os.path.join(current_script_dir, "Integration"))
+algorithms_dir = os.path.normpath(os.path.join(current_script_dir, "../Algorithms"))
+integration_dir = os.path.normpath(os.path.join(current_script_dir, "../Integration"))
 
 # append directories to sys.path for sake of import
 if algorithms_dir not in sys.path:
@@ -24,14 +24,11 @@ from Phash.phash import Phash
 from SIFT.sift import SIFT
 from VGG.vgg import VGG
 
-# import local
-from presets import presets
+# Open the file and load the data
+with open('presets.json', 'r') as file:
+    presets = json.load(file)
 
 algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
-
-# def combine(dataset, layer_size = 3, options = "all"):
-#   echo "to be implemented"
-
 
 # helper functions
 def test_setting(settings, dataset, size=-1, accuracy_calculator=None):
@@ -126,10 +123,7 @@ def preprocess_results_helper(a, b, map_reference, groups):
 
 
 # config = Array<{ name:string, params: Array<number> }>
-def compare(
-    dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None
-):
-
+def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None, presets={}):
     if config == "all":
         config = []
         for algorithm_name in algorithm_map:
@@ -165,30 +159,5 @@ def get_dataset(path):
         return dataset
 
 
-# accuracy caculaters
-def finger_accuracy_calculator(duplicate_pairs):
-    """
-    Calculates the accuracy for the images classified as duplicates.
-    """
-    correct = sum(
-        path1.split("/")[-1].split("_")[0] == path2.split("/")[-1].split("_")[0]
-        and "_".join(path1.split("/")[-1].split("_")[2:5])
-        == "_".join(path2.split("/")[-1].split("_")[2:5])
-        for path1, path2 in duplicate_pairs
-    )
-    total = len(duplicate_pairs)
-    return (correct / total) * 100 if total > 0 else 0
 
-
-# dataset defenition
-def timelapse_dataset():
-    return get_dataset("datasets/timelapse/multiple-timelapse/highfit.dataset.json")
-
-
-def finger_print_dataset():
-    return get_dataset("datasets/fingerprint/output.json"), finger_accuracy_calculator
-
-
-dataset, accuracy_calculator = finger_print_dataset()
-compare(dataset=dataset, dataset_size=90, accuracy_calculator=accuracy_calculator)
 

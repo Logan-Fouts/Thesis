@@ -1,0 +1,36 @@
+{
+  "fingerprint": {
+    "minhash": {
+      "low": []
+    },
+    "dhash": {
+      "low": [3]
+    },
+    "phash": {
+      "low": [4]
+    },
+    "sift": {
+      "low": [17, 1.8, 10000, 3, 0.01]
+    },
+    "vgg": {
+      "low": [0.6]
+    }
+  },
+  "california": {
+    "minhash": {
+      "low": []
+    },
+    "dhash": {
+      "low": [3]
+    },
+    "phash": {
+      "low": [4]
+    },
+    "sift": {
+      "low": [17, 1.8, 10000, 3, 0.01]
+    },
+    "vgg": {
+      "low": [0.6]
+    }
+  }
+}

@@ -57,13 +57,30 @@ for group, count in sorted(group_count.items(), key=lambda x: -x[1]):
 
 # Convert sets to lists for JSON serialization and format numbers with leading zeros
 median_groups_formatted = []
+output = {
+    'paths': [],
+    'groups': [],
+    'map': {}
+}
+
+groupindex = -1
 for group in median_groups:
-    formatted_group = [f"{photo:03}" for photo in group]  # Format as three-digit numbers
-    median_groups_formatted.append(formatted_group)
+    groupindex += 1
+    formatted_group = []
+    for photo in group:
+        formatted = f"datasets/california/californiaND/{photo:03}.jpg"
+        output['paths'].append(formatted)
+        output['map'][formatted] = groupindex
+        formatted_group.append(formatted)
+    
+    output['groups'].append(formatted_group)
+
+    # formatted_group = [f"{photo:03}" for photo in group]  # Format as three-digit numbers
+    # median_groups_formatted.append(formatted_group)
 
 # Save results
-output_file_path = 'median_groups.json'
+output_file_path = 'output.json'
 with open(os.path.join(script_dir, output_file_path), 'w') as file:
-    json.dump(median_groups_formatted, file)
+    json.dump(output, file)
 
-print("Median groups saved to:", output_file_path)
+# print("Median groups saved to:", output_file_path)

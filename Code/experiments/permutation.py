@@ -22,14 +22,14 @@ from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
 from SIFT.sift import SIFT
-# from VGG.vgg import VGG
+from VGG.vgg import VGG
 
 # Open the file and load the data
 with open('presets.json', 'r') as file:
     presets = json.load(file)
 
-# algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
-algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
+algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
+# algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
 
 # helper functions
 def test_permutation(foldername, settings, dataset, size=-1, accuracy_calculator=None):
@@ -52,6 +52,8 @@ def test_permutation(foldername, settings, dataset, size=-1, accuracy_calculator
     layered_architecture = Layers(
         raw_layers=layers, accuracy_calculator=accuracy_calculator
     )
+
+    print(f"running permutation: {setting_name}")
 
     # TODO move time into layer
     start_time = time.perf_counter()

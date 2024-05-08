@@ -77,6 +77,7 @@ def accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs):
   return tp, fp, tn, fn
 
 def parameter_tuning_sift():
+  """
   permutation.experiment(
     dataset=dataset,
     dataset_size=10,
@@ -103,5 +104,78 @@ def parameter_tuning_sift():
     presets=permutation.presets['california'],
     foldername="california-sift-tuning"
   )
+  """
 
-parameter_tuning_sift()
+  """ 
+  PARAMETERS
+  - threshold=30,
+  - sigma=1.6,
+  - edge_threshold=10,
+  - n_octave_layers=3,
+  - contrast_threshold=0.04,
+  - image_ratio=0.3,
+  """
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=400,
+    config=[{'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.1]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-sift-tuning"
+  )
+
+def parameter_tuning_dhash():
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "dhash", 'params': [0.895]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-dhash-tuning"
+  )
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "dhash", 'params': [0.899]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-dhash-tuning"
+  )
+
+def parameter_tuning_phash():
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "phash", 'params': [10]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-phash-tuning"
+  )
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "phash", 'params': [11]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-phash-tuning"
+  )
+  # permutation.experiment(
+  #   dataset=dataset,
+  #   dataset_size=300,
+  #   config=[{'name': "phash", 'params': [14]}],
+  #   accuracy_calculator=accuracy_calculator,
+  #   presets=permutation.presets['california'],
+  #   foldername="california-phash-tuning"
+  # )
+
+# test phash, dhash and sift 
+def phash_dhash_sift():
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "phash", 'params': [11]}, {'name': "dhash", 'params': [0.9]}, {'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.1]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-phash-dhash-sift"
+  )
+phash_dhash_sift()

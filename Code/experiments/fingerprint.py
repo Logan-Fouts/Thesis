@@ -40,5 +40,5 @@ permutation.experiment(
   dataset_size=10, 
   accuracy_calculator=accuracy_calculator,
   presets=permutation.presets['fingerprint'],
-  foldername="fingerprint-easy-size=10"
+  foldername="fingerprint-easy"
 )

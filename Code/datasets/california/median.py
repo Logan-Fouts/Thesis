@@ -68,7 +68,7 @@ for group in median_groups:
     groupindex += 1
     formatted_group = []
     for photo in group:
-        formatted = f"datasets/california/californiaND/{photo:03}.jpg"
+        formatted = f"datasets/california/californiaND/Photos/{photo:03}.jpg"
         output['paths'].append(formatted)
         output['map'][formatted] = groupindex
         formatted_group.append(formatted)

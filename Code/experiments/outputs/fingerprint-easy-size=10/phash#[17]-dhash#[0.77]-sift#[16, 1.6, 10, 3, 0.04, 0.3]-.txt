@@ -9,5 +9,5 @@
 - Recall: 0.7500
 - F1-Score: 0.7500
 - Accuracy: 0.6000
-Elapsed Time: 0.1406
+Elapsed Time: 0.0156
 

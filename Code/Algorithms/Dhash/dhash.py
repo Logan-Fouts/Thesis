@@ -53,7 +53,10 @@ class Dhash:
         Uses hamming distance or similarity to classify images.
         0 = duplicates, 1 = possible duplicates
         """
-        hamming_distance = h1 - h2
+        if h1 and h2:
+            hamming_distance = h1 - h2
+        else:
+            return
 
         if self.sim:
             hash_squared = len(h1)

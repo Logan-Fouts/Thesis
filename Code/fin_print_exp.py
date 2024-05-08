@@ -49,9 +49,10 @@ def finger_accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs
     false_pos = 0
     true_neg = 0
 
-    for img in non_duplicate_list:
-        if img in lonely_imgs:
-            true_neg += 1
+    if lonely_imgs:
+        for img in non_duplicate_list:
+            if img in lonely_imgs:
+                true_neg += 1
 
     false_neg = len(non_duplicate_list) - true_neg
 

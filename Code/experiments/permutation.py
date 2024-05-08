@@ -154,6 +154,7 @@ def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calcu
     # print(f"# experiment finished ✅\nTP: {tp}, FP: {fp}")
 
     for setting in perumation_sets:
+        print("here")
         test_setting(
             settings=setting,
             foldername=foldername,

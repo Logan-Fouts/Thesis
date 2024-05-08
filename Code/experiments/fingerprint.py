@@ -1,17 +1,37 @@
 import permutation
+from collections import Counter
 
 # accuracy caculaters
-def accuracy_calculator(duplicate_pairs):
-  # Calculates the accuracy for the images classified as duplicates.
-  correct = sum(
-    path1.split("/")[-1].split("_")[0] == path2.split("/")[-1].split("_")[0]
-    and "_".join(path1.split("/")[-1].split("_")[2:5])
-    == "_".join(path2.split("/")[-1].split("_")[2:5])
-    for path1, path2 in duplicate_pairs
-  )
+def accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs):
+    """
+    Method to calculate the accuracy of duplicate detection.
+    """
+    true_pos = 0
+    false_pos = 0
+    true_neg = 0
 
-  total = len(duplicate_pairs)
-  return (correct / total) * 100 if total > 0 else 0
+    if lonely_imgs:
+        for img in non_duplicate_list:
+            if img in lonely_imgs:
+                true_neg += 1
+
+    false_neg = len(non_duplicate_list) - true_neg
+
+    for dup_group in duplicate_groups:
+        relevant_parts = [item.split("/")[-1].split("_")[0:5] for item in dup_group]
+        relevant_parts_combined = ["_".join(parts) for parts in relevant_parts]
+        most_common_segment, _ = Counter(relevant_parts_combined).most_common(1)[0]
+
+        for path in dup_group:
+            relevant_part = "_".join(path.split("/")[-1].split("_")[:5])
+            match = most_common_segment == relevant_part
+
+            if match:
+                true_pos += 1
+            else:
+                false_pos += 1
+
+    return true_pos, false_pos, true_neg, false_neg
 
 print("running fingerprint experiment")
 

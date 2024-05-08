@@ -51,7 +51,11 @@ class Phash:
         Uses hamming distance to classify images.
         0 = duplicates, 1 = possible duplicates, 2 = not duplicates
         """
-        hamming_distance = h1 - h2
+        if h1 and h2:
+            hamming_distance = h1 - h2
+        else:
+            return
+
         if hamming_distance <= self.threshold:
             return 0
         return 1

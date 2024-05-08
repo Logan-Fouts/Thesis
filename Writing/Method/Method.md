@@ -1,7 +1,7 @@
 ## Research Project
 
-![[DSRM Chart.png]]
-*Figure i: Our DSRM Flow Chart Heavily Influenced by the DSMR article \cite{dsmr}*
+![[DSRM.png]]
+*Figure i.i: Our DSRM Flow Chart Heavily Influenced by the DSMR article \cite{dsmr}*
 ### Overview of Design Science
 For out thesis we will use the design science research methodology (DSRM). It is aimed at the creation and evaluation of IT artifacts intended to solve identified problems, offering a rigorous process to design, evaluate, and communicate the artifacts and their attributes \cite{dsmr}. This description closely fits our needs as we would like to design a framework which would be an artifact. Unlike purely empirical methods, such as the observational study, that hope to understand through observation, design science aims to address issues through the design and refinement of practical solutions. The DSRM process has six main steps: problem identification and motivation, definition of the objectives for a solution, design and development, demonstration, evaluation, and communication. This structured approach ensures comprehensive and proper treatment of the research and development of the concrete solutions \cite{dsmr}.
 
@@ -11,7 +11,7 @@ The challenge we address is within the definition and identification of near dup
 The current methods lack flexibility, rely upon a horizontal approach of combining methods, and/or are simply too computationally expensive to be feasibly ran on integrated or even consumer hardware. The horizontal approach is the closest to our idea, and it is very effective when built correctly to address the issues of complex NDI definitions and scenarios. This can be seen in this paper \cite{GmH}, and furthermore in this paper as well \cite{fingerprintelevation}. Despite the impressive performance, this approach is highly complex requiring deep knowledge in the area therefore, building your own tailored system by combining and tuning methods in this way proves to be quite difficult.
 
 ### 2. Objectives of a Solution
-Since the combination of many methods shows promise, the goal for our thesis is a modular architecture that allows for integration of various algorithms for NDI detection. This architecture aims to enhance flexibility by optimizing simplicity.
+Since the combination of many methods shows promise, the goal for our thesis is a modular architecture that allows for integration of various algorithms for NDI detection. This architecture aims to enhance flexibility by optimizing simplicity all while maintaining the efficacy of multi-method approaches.
 
 ### 3. Design and Development
 We propose a layered architecture approach where different algorithms are placed as an individual layers and are tuned individually first, then refined while combined. The use of many methods allows for better performance much like the horizontal approach, while also providing improvements in terms of easy adaptability/flexibility.
@@ -30,10 +30,10 @@ The prototype will be shown running two vastly different datasets: the Sokoto Co
 #### Details About The Datasets
 
 ![[photo-collage fingers.png]]
-*Figure i: Example of fingerprints from SOCOFing dataset*
+*Figure i.i: Example of fingerprints from SOCOFing dataset*
 
 ![[photo-collage California.png]]
-*Figure i: Example of images from California-ND dataset*
+*Figure i.i: Example of images from California-ND dataset*
 
 SOCOFing \cite{shehu2018sokoto} was created from 600 participants capturing each of their 10 fingers building a subset of 55,273 images in total. The SOCOFing is split into real, easy, medium and hard subsets with a resolution of 96x103 pixels. We will use a subset of the easy section for our demonstration and evaluation due to resource constraints. This dataset is great to be able to capture high detail differences in what are all very similar images. The California-ND data set \cite{californiaND}  contains 701 images from a real user's holiday photo collection with resolution of 1024×768. The target of the data was to represent a real personal photo collection. Participants of 10 has individually created annotations making California a good set for detecting real life near image duplication. 
 
@@ -47,10 +47,6 @@ Findings will be documented and shared through scholarly publications in the for
 Reliability in research refers to the consistency of the results obtained from the study. It explores whether other researchers can produce similar results under the same conditions, using the same methods. In our study, we aim to document in detail all relevant testing and experimentation information in order to allow for others to run them for themselves.
 
 Validity, relates to the accuracy and legitimacy of our findings. To aid in the validity of our study, we engage in rigorous exhaustive testing to find a base algorithm, then tune the layers to fit the domain, maximizing our algorithms ability to identify near duplicate images while limiting wrong classifications.
-
-
-> [!TODO] Write more shit more reliability validity
-
 ### Addressing Reliability and Validity Issues
 - **Threats to Reliability**: 
 	- The main potential threat to reliability comes from non-uniform test environments or inconsistent data sets. To mitigate this, we will use subsets of defined image sets for each algorithm and make sure to have consistent testing conditions across all experiments.

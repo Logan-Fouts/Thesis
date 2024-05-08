@@ -5,16 +5,16 @@ This section lays the foundational theories involving the integration of multipl
 The field of image processing has started off from simple image manipulation techniques, such as cropping, resizing, and color adjustments. In recent times it has grown into complex detection systems that utilize advanced techniques, including heavy artificial intelligence networks \cite{Gonzalez2018}. NDI detection, an area of critical importance within this field, has relied upon largely hash-based and feature extraction and comparison techniques, each with its inherent advantages and disadvantages. Hash based methods tend to be faster and simpler but are not able to *understand* higher level aspects of images, while feature based methods work well to understand and classify images but tend to be more complicated and more computationally expensive. In general, one method on its own cannot accommodate the complexities inherit in many NDI domains \cite{dupsinlarge}.
 
 ### Combining Approaches
-![[horizontal-approach.png]]
-*Figure i: Horizontal Approach Simplified Flow*
+![[Horizontal.png]]
+*Figure i.i: Horizontal Approach Simplified Flow*
 
-Each method has its pros and cons, it seems if there was some way to have benefits from many methods together in one algorithm, a very strong approach could be made. This leads us to the idea of fusing two or more different techniques together. As Szeliski discusses in *Computer Vision: Algorithms and Applications*, integrating multiple image processing techniques can enhance performance beyond what is achievable with isolated applications, suggesting a compounded effect from the diverse methodologies. \cite{Szeliski2010}. As of now, research in this field of NDI detection has used a horizontal approach where algorithms are used on the same layer directly together with combining hashes, features, and etc, see the figure above. For example, Dongre et al. \cite{fingerprintelevation} combined three different algorithms together, Dhash, SIFT, and LSH, in order to accomplish astonishing results when compared to previous methods. However, this horizontal approach despite being highly accurate is also highly complex, difficult to implement, and hard to understand. This means that we do have a way of combining algorithms to bolster the performance as a whole, but the inherent complexities make it so significant understanding and expertise is needed to build it for your own use cases.
+Each method has its pros and cons, it seems if there was some way to have benefits from many methods together in one algorithm, a very strong approach could be made. This leads us to the idea of fusing two or more different techniques together. As Szeliski discusses in *Computer Vision: Algorithms and Applications*, integrating multiple image processing techniques can enhance performance beyond what is achievable with isolated applications, suggesting a compounded effect from the diverse methodologies. \cite{Szeliski2010}. As of now, research in this field of NDI detection has used a horizontal approach where algorithms are used on the same layer directly together with combining hashes, features, and etc, see the figure above. For example, Dongre et al. \cite{fingerprintelevation} combined three different algorithms together, Dhash, SIFT, and LSH, in order to accomplish astonishing results when compared to previous methods. Their approach can be seen simplified in **Figure i.i**. However, this horizontal approach despite being highly accurate is also highly complex, difficult to implement, and hard to understand. This means that we do have a way of combining algorithms to bolster the performance as a whole, but the inherent complexities make it so significant understanding and expertise is needed to build it for your own use cases.
 
 ### Near Duplicate Image Philosophy
-As discussed in the *Handbook of Face Recognition*, near duplicate detection is subjective, and dependent on the context and intended application \cite{face-recognition}. The need for all these different algorithms that target the same goal but try to accomplish it in different ways are indicative of this fact. A photo of a person smiling versus not smiling with the same background may not want to be identified as duplicates, but then for fingerprinting, high levels of accuracy are needed to distinguish what fingerprints are from the same person. An algorithm built for one domain may perform poorly on another. Data sets like California ND, provide a non-binary ground truth in annotations. In simple words they include multiple different peoples opinions on what images are and are not duplicates. The figure below is a graph showing the distribution of agreement for image pairs from the 10 people. This is a great example of how varied definitions of near duplicates images may be even within the same data set \cite{californiaND}.
-![[Cali-ND Results.png]]
-*Figure i: California-ND Results*
+As discussed in the *Handbook of Face Recognition*, near duplicate detection is subjective, and dependent on the context and intended application \cite{face-recognition}. The need for all these different algorithms that target the same goal but try to accomplish it in different ways are indicative of this fact. A photo of a person smiling versus not smiling with the same background may not want to be identified as duplicates, but then for fingerprinting, high levels of accuracy are needed to distinguish what fingerprints are from the same person. An algorithm built for one domain may perform poorly on another. Data sets like California ND, provide a non-binary ground truth in annotations. In simple words they include multiple different peoples opinions on what images are and are not duplicates. **Figure i.i** below is a graph showing the distribution of agreement for image pairs from the 10 people. This is a great example of how varied definitions of near duplicates images may be even within the same data set \cite{californiaND}.
 
+![[Cali-Results.png]]
+*Figure i.i: Adapted Results from California-ND Article*
 ### Similarity Measures
 An essential part of near duplicate image detection algorithms is the method used to measure similarity between images. The choice of similarity measure can have a great impact the performance of the systems, influencing both their accuracy and computational cost. Below are paraphrased overviews of a few common techniques as outlined by Murty et al. \cite{similarity-measures}.
 
@@ -28,9 +28,9 @@ An essential part of near duplicate image detection algorithms is the method use
 
 ## Review of Image Detection Techniques
 
-An examination of image detection techniques available reveals many different methodologies, from simple deterministic algorithms to complex neural networks. Each with trade-offs in terms of accuracy, efficiency, flexibility, and/or scalability. By understanding current methods, this research can identify areas where improvements can be made and how a layered approach can address and utilize them.
+An examination of image detection techniques available reveals many different methodologies, from simple deterministic algorithms to complex neural networks. By understanding current methods, this research can identify areas where improvements can be made and how a layered approach can address and utilize them.
 
-To give a quick understanding a few commonly used methods and their theories are explained in the following section.
+To give a quick understanding a few commonly used methods and their theories are explained briefly in the following section.
 
 ### Dhash
 Difference Hash (Dhash), is a well known image hashing algorithm used for very quick near-duplicate image identification. It works by converting images into gray scale, resizing them, and then comparing adjacent pixel values to generate a binary hash which is often then converted into a hexadecimal format. Then, typically the hamming distance is used as the similarity measure \cite{Dhash}.
@@ -45,13 +45,13 @@ Convolutional Neural Networks (CNNs) are a class of deep neural networks whose a
 Scale-Invariant Feature Transform (SIFT) is a computer vision algorithm made to find and describe important parts of an image. It's performs very well when handling changes in images, such as scaling, rotation, or lighting changes. SIFT works by grabbing specific spots in an image that are considered unique and then it describes them in a way such that it can be identified in separate images. We can say these key points are "invariant to scale changes" \cite{fingerprintelevation}.
 
 ![[SIFT-Example.png]]
-*Figure i: Sift Feature Matching Example*
+*Figure i.i: Sift Feature Matching Example*
 ## Research Gap
 
-The gap we intend to fill is the integration of NDI detection algorithms in a layered architecture for optimized simplicity while retaining benefits associated with the use of multiple methods. The resulting artifact will be a simple framework for building NDI detection systems in this manner.
+The gap we intend to fill is the integration of NDI detection algorithms in a layered architecture for optimized simplicity while retaining benefits associated with the use of multiple methods. The resulting artifact will be a simple framework for building NDI detection systems in this manner. A visual representation of this approach is shown in **Figure i.i** below.
 
-![[vertical-approach.png]]
-*Figure i: Vertical Approach Simplified Flow*
+![[Vertical.png]]
+*Figure i.i: Vertical Approach Simplified Flow*
 
 The concept of combining multiple algorithms into a single system is not a new idea, it has been explored in various use cases. However, its application in near duplicate image detection seems unexplored. This section reviews the theory of NDI detection algorithm integration within a layered architecture, discussing theoretical benefits and negatives.
 

@@ -15,9 +15,9 @@ Algorithms who are readily available in libraries and who are also effective in 
 ### Framework Design
 
 ![[component diagram.png]]
-*Figure i: Component diagram of the framework architecture \cite{umlComponentDiagrams}*
+*Figure i.i: Component diagram of the framework architecture \cite{umlComponentDiagrams}*
 
-The framework is written in python due to its use in machine learning. It is structured around classes that allow for flexible integration of various image detection algorithms. The main components include:
+The framework is written in python due to its use in machine learning. It is structured around classes that allow for flexible integration of various image detection algorithms. A detailed component diagram in **Figure i.i** gives a visual as to what the system looks like. The main components include:
 
 - **Algorithms inside python classes**: Each detection algorithm is encapsulated in a Python class that provides a `process` function. This function accepts a list of image paths and updates two lists. One for images labeled as duplicates and another for those not labeled yet. This allows each algorithm to act as a black box where we do not need to know or really care what is going on inside. We are only concerned with input and output. These layers may or may not have parallel processing utilized inside of them.
 - **Initialization parameters**: Each algorithm class constructor (`__init__`) takes named arguments as parameters to the algorithm, allowing for easy hyper parameter tuning of each algorithm. Default values are set in case no parameters are provided by the user. These values were selected to be middle of the road options.
@@ -28,25 +28,29 @@ The framework is written in python due to its use in machine learning. It is str
 - **Error handling**: Throughout the program in areas where errors could occur, proper handling is done to gracefully resolve the issue.
 - **Easy expansion**: Due to the black box idea for each layer, plunging in of other algorithms directly or even through external APIs should be easy to implement. The greater the amount and the more advanced the algorithms the better the framework may get. This is an important detail, as me and my partner had limited time. So we are here to show if the simple layered approach works well for NDI detection with the algorithms we had on hand, not to see the real end game potential possible when combined with more advanced algorithms that are out there.
 
-No graphical interface has been implemented but all a user needs to do to build with this approach is import the required modules, instantiate and put them into a list, and provide the desired path to images folder.
+No graphical interface has been implemented but all a user needs to do to build with this approach is import the required modules, instantiate and put them into a list, and provide the desired path to images folder. An example can be seen in **Figure i.i.**
 ```python
 # Import modules
-from Dhash.dhash import Dhash
 from Layers.layers import Layers
 from Phash.phash import Phash
+from SURF.surf import SURF
 from SIFT.sift import SIFT
 
 image_paths = get_image_paths(path)
 
-layers = [Phash(), Dhash(), SIFT()]
+layers = [Phash(), SURF(), SIFT()]
 layered_architecture = Layers(raw_layers=layers, accuracy_calculator=None)
 
 layered_architecture.run(test_paths)
 ```
+*Figure i.i: Example setup of an algorithmic suite*
 
-
-> [!TODO] Permutations/time-lapse ?
-> Henry knows more about this then I do, so maybe you can write a section here about how you did it and whatnot.
+> [!TODO] Permutations/Median ?
+> - Henry knows more about this then I do, so maybe you can write a section here about how you did it and whatnot.
+> 
+> - Also anything else Henry wrote like cali median stuff
+> 
+> - Maybe Logan need to write about union find a bit
 
 ### Dataset Utilization for Demonstration
 Two different datasets were used to show the abilities of the new framework. These are the SOCOFing and California-ND datasets.
@@ -55,12 +59,15 @@ Two different datasets were used to show the abilities of the new framework. The
 - **Subset Selection**: For illustration purposes and due to constraints, random subsets of these images have been selected to illustrate the capabilities of our framework when tested under the same conditions as the articles we plan on comparing against.
 - **Exhaustive testing of permutations**: Using a training subset of the data, all combination of algorithms are tested. The suite with the best recorded metrics is selected for further optimization by hand.
 - **Manual Tuning**: The selected suite of algorithms are tuned by hand on the training subset of data to achieve a balance between accuracy and time taken.
-- **Final suites tested**: Once tuned each suite is ran on increasing larger and larger testing sets of the data.
+- **Final suites tested**: Once tuned each suite is ran on increasing larger and larger testing sets of the data. The simple code can be seen in Figure i.i below.
+
 ```python
  for i in range(300, 3300, 300):
     run_experiment(i, "DataSet")
 ```
+*Figure i.i: Example of running increasingly large experiments*
+
 - **Individual method measurement**: From the selected suite of algorithmic layers each algorithm is run by itself and its result are recorded to allow for better discussion. 
 
 #### Data Collection and Analysis
-All experiments were conducted with the following hardware and software setup: 11th Gen Intel i7-1165G7 CPU, 16 GB RAM, and Linux kernel 6.8.9-arch1-1. Collection of outputs of the automated testing is maintained in text files. Each includes used algorithms with presets and the processing outcomes with execution times. These files are used for the comparative analysis and creation of relevant graphs using matplotlib \cite{mpl} in order to provide insightful visuals.
+All experiments were conducted with the following hardware and software setup: 11th Gen Intel i7-1165G7 CPU, 16 GB RAM, and Linux kernel 6.8.9-arch1-1. A collection of outputs of the automated testing is maintained in text files. Each includes used algorithms with presets and the processing outcomes with execution times. These files are used for the comparative analysis and creation of relevant graphs using matplotlib \cite{mpl} in order to provide insightful visuals. This includes both the permutation and final tests.

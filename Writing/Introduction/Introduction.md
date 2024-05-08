@@ -38,7 +38,7 @@ In the table below a few of the most common and interesting algorithms in the ND
 | **Implementation Complexity**  | Low, simple to implement                                                   | Moderate, requires understanding of geometric hashing                   | High, requires deep learning and AI expertise                                         |
 | **Dataset Domain**             | Best for straightforward, less complex image sets (e.g., documents, icons) | Effective in datasets with spatial transformations (rotations, scaling) | Diverse datasets with high detail variability (e.g., natural images, medical imaging) |
 
-*Figure i: Comparative Analysis of Image Detection Techniques*
+*Figure i.i: Comparative Analysis of Image Detection Techniques*
 
 ### Related work
 In the paper, Bimodal Fusion of Low-Level Features and High-Level Semantic Features for Near-Duplicate Video Clip Detection \cite{bimodalfusion}, a new approach for ND video clip detection is explored that is leveraged in order to increase accuracy. This technique is called bimodal fusion and it involves combining low-level features with high-level semantic information. Inspired by this idea of combining different algorithms to extract more information, our purposed approach is a layered architecture including different algorithms at each level for NDI detection. Since this new approach provided promising results, we intend to reform and expand upon it in a different direction.
@@ -62,7 +62,7 @@ The primary objective of this research is to design and evaluate a versatile arc
 ### Problem Statements
 The problem can be summarized into a few main questions that guide our research and development:
 1. Can a layered architecture be used to provide a flexible and reasonable way to combine image processing algorithms?
-2. In what ways can the proposed framework improve the efficiency and flexibility of near-duplicate detection compared to existing methods?
+2. In what ways can the proposed framework improve the efficacy and flexibility of near-duplicate detection compared to existing methods?
 
 ## Results
 We plan to evaluate our solution through design science including controlled experiments, which will be guided by methodologies seen in related work. Our results will be compared with standard metrics such as accuracy, precision, recall, and efficiency that were detailed in articles we plan on targeting as use cases. Finally, with great theoretical knowledge, we will assess the easy of use and understanding for our method compared to others.

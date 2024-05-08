@@ -8,11 +8,11 @@ To initiate the project, the proposal was drafted:
 
 The current parts include:
 [[Abstract]]
-
-1. [Introduction](Introduction)
-2. [Method](Method)
-3. [Theoretical Background](Theoretical%20Background)
-4. [Research Project Implementation](Research%20Project%20Implementation)
+1. [Introduction](Introduction.md)
+2. [Method](Method.md)
+3. [Theoretical Background](Theoretical%20Background.md)
+4. [Research Project Implementation](Research%20Project%20Implementation.md)
+5. [Results](Results.md)
 
 ## All Necessary Parts
 

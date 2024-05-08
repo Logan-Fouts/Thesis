@@ -32,7 +32,7 @@ with open('presets.json', 'r') as file:
 algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
 
 # helper functions
-def test_setting(foldername, settings, dataset, size=-1, accuracy_calculator=None):
+def test_permutation(foldername, settings, dataset, size=-1, accuracy_calculator=None):
     layers = []
 
     setting_name = ""
@@ -124,7 +124,7 @@ def preprocess_results_helper(a, b, map_reference, groups):
 
 
 # config = Array<{ name:string, params: Array<number> }>
-def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None, presets={}, foldername=""):
+def experiment(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calculator=None, presets={}, foldername=""):
     output_path = os.path.join(current_script_dir, "outputs", foldername)
     if not os.path.exists(output_path):
         # If it doesn't exist, create it
@@ -150,12 +150,11 @@ def compare(dataset, layer_size=3, dataset_size=-1, config="all", accuracy_calcu
 
     perumation_sets = list(permutations(config, layer_size))
 
-    # tp, fp = test_setting(settings=[{'name': "phash", 'params': [4]}, {'name': 'dhash', 'params': [3]}, {'name': 'sift', 'params': [17, 1.8, 10000, 3, 0.01]}], dataset=dataset, size=dataset_size, accuracy_calculator=accuracy_calculator)
+    # tp, fp = test_permutation(settings=[{'name': "phash", 'params': [4]}, {'name': 'dhash', 'params': [3]}, {'name': 'sift', 'params': [17, 1.8, 10000, 3, 0.01]}], dataset=dataset, size=dataset_size, accuracy_calculator=accuracy_calculator)
     # print(f"# experiment finished ✅\nTP: {tp}, FP: {fp}")
 
     for setting in perumation_sets:
-        print("here")
-        test_setting(
+        test_permutation(
             settings=setting,
             foldername=foldername,
             dataset=dataset,

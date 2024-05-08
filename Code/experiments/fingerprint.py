@@ -32,10 +32,10 @@ def accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs):
                 false_pos += 1
 
     return true_pos, false_pos, true_neg, false_neg
-
+    
 print("running fingerprint experiment")
 
-permutation.compare(
+permutation.experiment(
   dataset=permutation.get_dataset("fingerprint/output.json"), 
   dataset_size=10, 
   accuracy_calculator=accuracy_calculator,

@@ -77,35 +77,6 @@ def accuracy_calculator(duplicate_groups, non_duplicate_list, lonely_imgs):
   return tp, fp, tn, fn
 
 def parameter_tuning_sift():
-  """
-  permutation.experiment(
-    dataset=dataset,
-    dataset_size=10,
-    config=[{'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.3]}],
-    accuracy_calculator=accuracy_calculator,
-    presets=permutation.presets['california'],
-    foldername="california-sift-tuning"
-  )
-
-  permutation.experiment(
-    dataset=dataset,
-    dataset_size=50,
-    config=[{'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.3]}],
-    accuracy_calculator=accuracy_calculator,
-    presets=permutation.presets['california'],
-    foldername="california-sift-tuning"
-  )
-
-  permutation.experiment(
-    dataset=dataset,
-    dataset_size=200,
-    config=[{'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.3]}],
-    accuracy_calculator=accuracy_calculator,
-    presets=permutation.presets['california'],
-    foldername="california-sift-tuning"
-  )
-  """
-
   """ 
   PARAMETERS
   - threshold=30,
@@ -117,7 +88,7 @@ def parameter_tuning_sift():
   """
   permutation.experiment(
     dataset=dataset,
-    dataset_size=400,
+    dataset_size=701,
     config=[{'name': "sift", 'params': [16, 1.6, 10, 3, 0.04, 0.1]}],
     accuracy_calculator=accuracy_calculator,
     presets=permutation.presets['california'],
@@ -168,7 +139,42 @@ def parameter_tuning_phash():
   #   foldername="california-phash-tuning"
   # )
 
-# test phash, dhash and sift 
+def parameter_tuning_vgg():
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "vgg", 'params': [0.7]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-vgg-tuning"
+  )
+  permutation.experiment(
+    dataset=dataset,
+    dataset_size=701,
+    config=[{'name': "vgg", 'params': [0.8]}],
+    accuracy_calculator=accuracy_calculator,
+    presets=permutation.presets['california'],
+    foldername="california-vgg-tuning"
+  )
+  # permutation.experiment(
+  #   dataset=dataset,
+  #   dataset_size=100,
+  #   config=[{'name': "vgg", 'params': [0.5]}],
+  #   accuracy_calculator=accuracy_calculator,
+  #   presets=permutation.presets['california'],
+  #   foldername="california-vgg-tuning"
+  # )
+  # permutation.experiment(
+  #   dataset=dataset,
+  #   dataset_size=100,
+  #   config=[{'name': "vgg", 'params': [0.7]}],
+  #   accuracy_calculator=accuracy_calculator,
+  #   presets=permutation.presets['california'],
+  #   foldername="california-vgg-tuning"
+  # )
+
+
+# controlled combined tests 
 def phash_dhash_sift():
   permutation.experiment(
     dataset=dataset,
@@ -178,4 +184,12 @@ def phash_dhash_sift():
     presets=permutation.presets['california'],
     foldername="california-phash-dhash-sift"
   )
-phash_dhash_sift()
+
+
+permutation.experiment(
+  dataset=dataset,
+  dataset_size=701,
+  accuracy_calculator=accuracy_calculator,
+  presets=permutation.presets['california'],
+  foldername="california-experiment"
+)

@@ -28,8 +28,8 @@ from VGG.vgg import VGG
 with open('presets.json', 'r') as file:
     presets = json.load(file)
 
-# algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
-algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
+algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT, "vgg": VGG}
+# algorithm_map = {"dhash": Dhash, "phash": Phash, "sift": SIFT}
 
 # helper functions
 

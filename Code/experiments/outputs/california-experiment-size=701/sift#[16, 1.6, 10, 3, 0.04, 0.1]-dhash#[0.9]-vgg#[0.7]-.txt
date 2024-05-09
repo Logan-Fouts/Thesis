@@ -1,0 +1,13 @@
+
+## Num Images: 613
+- TP: 512
+- FP: 10
+- TN: 0
+- FN: 91
+
+- Precision: 0.9808
+- Recall: 0.8491
+- F1-Score: 0.9102
+- Accuracy: 0.8352
+Elapsed Time: 170.5191
+

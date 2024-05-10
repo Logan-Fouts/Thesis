@@ -116,20 +116,20 @@ def parameter_tuning_dhash():
 def parameter_tuning_phash():
   permutation.experiment(
     dataset=dataset,
-    dataset_size=701,
-    config=[{'name': "phash", 'params': [10]}],
-    accuracy_calculator=accuracy_calculator,
-    presets=permutation.presets['california'],
-    foldername="california-phash-tuning"
-  )
-  permutation.experiment(
-    dataset=dataset,
-    dataset_size=701,
+    dataset_size=100,
     config=[{'name': "phash", 'params': [11]}],
     accuracy_calculator=accuracy_calculator,
     presets=permutation.presets['california'],
     foldername="california-phash-tuning"
   )
+  # permutation.experiment(
+  #   dataset=dataset,
+  #   dataset_size=701,
+  #   config=[{'name': "phash", 'params': [11]}],
+  #   accuracy_calculator=accuracy_calculator,
+  #   presets=permutation.presets['california'],
+  #   foldername="california-phash-tuning"
+  # )
   # permutation.experiment(
   #   dataset=dataset,
   #   dataset_size=300,
@@ -185,11 +185,12 @@ def phash_dhash_sift():
     foldername="california-phash-dhash-sift"
   )
 
+parameter_tuning_phash()
 
-permutation.experiment(
-  dataset=dataset,
-  dataset_size=701,
-  accuracy_calculator=accuracy_calculator,
-  presets=permutation.presets['california'],
-  foldername="california-experiment"
-)
+# permutation.experiment(
+#   dataset=dataset,
+#   dataset_size=701,
+#   accuracy_calculator=accuracy_calculator,
+#   presets=permutation.presets['california'],
+#   foldername="california-experiment"
+# )

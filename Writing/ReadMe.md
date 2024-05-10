@@ -13,6 +13,9 @@ The current parts include:
 3. [Theoretical Background](Theoretical%20Background.md)
 4. [Research Project Implementation](Research%20Project%20Implementation.md)
 5. [Results](Results.md)
+...
+8.  [Conclusions and Future Work](Conclusions%20and%20Future%20Work.md)
+9. [References](References.md)
 
 ## All Necessary Parts
 

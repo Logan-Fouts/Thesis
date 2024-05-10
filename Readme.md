@@ -14,7 +14,7 @@ Welcome to the GitHub repository for me and Henry Pap's Bachelor's Thesis on Nea
 For detailed explanations of theory and the architecture in this repository, refer to the thesis and proposal documents on Overleaf:
 
 - **SPP (Student Project Proposal)**: [View SPP on Overleaf](https://www.overleaf.com/read/srnrdvgdddsv#e126f6)
-- **Thesis Document**: [View Thesis on Overleaf](https://www.overleaf.com/project/6602993b249616091ffe7e34)
+- **Thesis Document**: [View Thesis on Overleaf](https://www.overleaf.com/read/dbffjmbjdpkf#f0c6a6)
 
 ---
 ## Getting Started

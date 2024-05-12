@@ -18,8 +18,8 @@ For detailed explanations of theory and the architecture in this repository, ref
 ---
 ## Getting Started
 
-Refer to the [GetStarted](GetStarted.md) guide
+Refer to the [GetStarted](Code/GetStarted.md) guide
 
 ## Contributing
 
-Refer to the [Contributing](Contributing.md) guide
+Refer to the [Contributing](Code/Contributing.md) guide

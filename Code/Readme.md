@@ -1,4 +1,4 @@
-# Layered Architecture Leveraged For Flexible Algorithm Building For Efficient and Accurate Detection of Visually Near-Duplicate Images
+# Multi-Method NDI Detection Using a Layered Architecture Framework for Optimized Simplicity and Flexibility
 
 ## Getting Started
 

@@ -1,0 +1,39 @@
+
+## Num Images: 10
+- TP: 8
+- FP: 0
+- TN: 0
+- FN: 2
+
+- Precision: 1.0000
+- Recall: 0.8000
+- F1-Score: 0.8889
+- Accuracy: 0.8000
+Elapsed Time: 0.0182
+
+
+## Num Images: 10
+- TP: 6
+- FP: 3
+- TN: 0
+- FN: 1
+
+- Precision: 0.6667
+- Recall: 0.8571
+- F1-Score: 0.7500
+- Accuracy: 0.6000
+Elapsed Time: 0.1077
+
+
+## Num Images: 10
+- TP: 6
+- FP: 3
+- TN: 0
+- FN: 1
+
+- Precision: 0.6667
+- Recall: 0.8571
+- F1-Score: 0.7500
+- Accuracy: 0.6000
+Elapsed Time: 0.0424
+

@@ -1,0 +1,26 @@
+
+## Num Images: 80
+- TP: 76
+- FP: 0
+- TN: 0
+- FN: 4
+
+- Precision: 1.0000
+- Recall: 0.9500
+- F1-Score: 0.9744
+- Accuracy: 0.9500
+Elapsed Time: 1.0857
+
+
+## Num Images: 80
+- TP: 76
+- FP: 0
+- TN: 0
+- FN: 4
+
+- Precision: 1.0000
+- Recall: 0.9500
+- F1-Score: 0.9744
+- Accuracy: 0.9500
+Elapsed Time: 1.1550
+

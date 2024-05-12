@@ -1,0 +1,12 @@
+Our research aimed to address the challenges of NDI detection by proposing a layered architecture-based framework that combines multiple detection algorithms. This approach was hypothesized to increase flexibility and simplicity while benefiting from these many algorithms in terms of accuracy and performance.  
+
+## Integration of Multi-Method Approach
+Our findings highlight the practicality of the vertical architecture, which effectively utilizes the power of diverse algorithms. This approach, characterized by a 'pipe and filter' paradigm, has demonstrated its adaptability to various datasets, which is often difficult for more conventional methods.
+
+For instance, the application on the SOCOFing dataset showed that while the peak performance of horizontal methods might be better in a controlled environment, the vertical approach offers competitive accuracy with considerably reduced complexity and increased adaptability. This adaptability is what we are targeting and is crucial for real-world applications where media is ever-increasing. 
+
+## Simplifying Complex Solutions
+One of the original propositions of this project was inspired by Occam's Razor—simpler solutions are preferable under equivalent outcomes. Our framework architecture allows for a simple approach to combine or stitch algorithms together. By treating them as individual modules or black boxes, we simply give them the input they expect and collect what they would give without having to delve within. However, some inherent complexity still exists, such as tuning parameters and understanding which algorithms will be used at what layer will affect the parameters for the specific algorithm. Despite the lack of a proper user interface for building systems, the framework provides simple interfaces to interact with from inside the code, which greatly decreases the difficulty of building using our system.
+
+## Comparison with Existing Approaches
+The results closely align with the current horizontal approach while outperforming the more traditional single-method approaches when it comes to image detection results. Ours, however, offers great flexibility, as demonstrated by its performance on the two very different datasets. This flexibility has only been seen in rich CNNs with millions or billions of parameters, which comes at high costs—something our approach avoids.

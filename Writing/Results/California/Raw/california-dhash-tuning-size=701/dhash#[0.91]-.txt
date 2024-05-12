@@ -1,0 +1,26 @@
+
+## Num Images: 613
+- TP: 246
+- FP: 0
+- TN: 0
+- FN: 367
+
+- Precision: 1.0000
+- Recall: 0.4013
+- F1-Score: 0.5728
+- Accuracy: 0.4013
+Elapsed Time: 9.7296
+
+
+## Num Images: 613
+- TP: 246
+- FP: 0
+- TN: 0
+- FN: 367
+
+- Precision: 1.0000
+- Recall: 0.4013
+- F1-Score: 0.5728
+- Accuracy: 0.4013
+Elapsed Time: 8.2245
+

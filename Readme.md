@@ -1,11 +1,10 @@
-# Layered Architecture Leveraged For Flexible Algorithm Building For Efficient and Accurate Detection of Visually Near-Duplicate Images
+# Multi-Method NDI Detection Using a Layered Architecture Framework for Optimized Simplicity and Flexibility  
 
-Welcome to the GitHub repository for me and Henry Pap's Bachelor's Thesis on Near-Duplicate Image Detection at Linnaeus University. This repo contains all resources, code, and documentation developed during the process. The thesis focuses on designing a flexible and simple architecture to improve the accessibility and adaptability of near-duplicate image detection algorithms across varied datasets.
+Welcome to the GitHub repository for me and Henry Pap's Bachelor's Thesis on Near-Duplicate Image Detection at Linnaeus University. This repo contains all resources, code, and documentation developed during the process. The thesis focuses on designing a flexible and simple architecture to improve the accessibility and adaptability of multi-method near-duplicate image detection algorithms/systems across varied datasets.
 
 ## Repository Structure
 
 - **Code/**: Contains all the source code developed for the thesis.
-- **Experiments/**: This holds all experiment results and analysis.
 - **Research/**: All articles and general research done for the thesis.
 - **Writing/**: All separate parts of the final thesis document in mark down.
 
@@ -19,8 +18,8 @@ For detailed explanations of theory and the architecture in this repository, ref
 ---
 ## Getting Started
 
-Refer to the [[GetStarted]] guide
+Refer to the [GetStarted](GetStarted.md) guide
 
 ## Contributing
 
-Refer to the [[Contributing]] guide
+Refer to the [Contributing](Contributing.md) guide

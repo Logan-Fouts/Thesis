@@ -1,15 +1,7 @@
-
-> [!NOTE] Note
-> This is a revised version of our SPP.
-> - Updated it to be more about the flexibility of the layered approach
-> - Talked about comparative analysis with subsets of others experiments
-> - Should be good to go to show Rafael
-> - Went ahead and updated the [latex](https://www.overleaf.com/read/srnrdvgdddsv#e126f6)	
-
 **Authors:** Logan Fouts, Henry Pap  
 **LNU Supervisor:**  Rafael Messias Martins
 **Supervision status according to student:**
-- [ ] Currently working with (Ongoing project)
+- [x] Currently working with (Ongoing project)
 - [ ] Agreed but not started
 - [ ] Wish to work with (or unclear of status)
 - [ ] No preference, help me find one

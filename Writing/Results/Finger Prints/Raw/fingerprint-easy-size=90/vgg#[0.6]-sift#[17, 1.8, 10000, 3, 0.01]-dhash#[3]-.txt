@@ -1,0 +1,7 @@
+
+FINAL RESULTS...
+~~~~~~
+Sizw: 90
+Time Elapsed: 8.78
+Accuracy: 23.99%
+Total Groups: 6

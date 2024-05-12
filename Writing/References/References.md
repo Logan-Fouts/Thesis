@@ -242,4 +242,20 @@ doi = {10.5244/C.22.50}
   howpublished = {\url{https://www.uml-diagrams.org/component-diagrams.html}},
   note = {Accessed: 2023-05-07}
 }
+
+@InProceedings{cali-comparative,
+author="Eshkol, Adi
+and Grega, Micha{\l}
+and Leszczuk, Miko{\l}aj
+and Weintraub, Ofer",
+editor="Dziech, Andrzej
+and Czy{\.{z}}ewski, Andrzej",
+title="Practical Application of Near Duplicate Detection for Image Database",
+booktitle="Multimedia Communications, Services and Security",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="73--82",
+isbn="978-3-319-07569-3"
+}
 ```

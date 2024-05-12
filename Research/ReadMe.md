@@ -1,8 +1,8 @@
 # Structure
 
-- [Primary](Primary) contains the most relevant articles for us.
-- [Secondary](Secondary) has all other articles that have been considered.
-- [Research Dumps](ResearchDumps) holds articles to be further examined for both contributors.
+- [Primary](Research/Primary) contains the most relevant articles for us.
+- [Secondary](Research/Secondary) has all other articles that have been considered.
+- [Research Dumps](Research/research-dump-henry) holds articles to be further examined for both contributors.
 
 ## Resources
 

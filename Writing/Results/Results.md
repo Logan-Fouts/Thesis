@@ -110,6 +110,7 @@ As mentioned before the California dataset is a collection of personal holiday p
 Here is the results from the individual algorithms.
 
 #### 1. Dhash
+
 | Data size | TP  | FP  | FN  | Precision | Recall | F1-Score | Accuracy | Elapsed Time (s) |
 | :-------: | :-: | :-: | :-: | :-------: | :----: | :------: | :------: | :--------------: |
 |    100    | 50  |  0  | 50  |  1.0000   | 0.5000 |  0.6667  |  0.5000  |      1.2313      |

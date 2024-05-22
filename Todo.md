@@ -1,7 +1,15 @@
-- [x] Finish second experiment and get results.
-- [ ] Write more related work
-- [ ] Henry write section on Research implementation about permutations
-- [ ] Provide details on selected parameters and why they are tuned the way they are.
-- [x] Permutations results and tables need to be added
-- [x] Tables and Figures shall be labeled with chapter.number, for example Table 4.1 and Figure 1.6.
-- [x] Maybe write more about limitations and reliability/validity
+- [x] Ease into intro and abstract better
+- [x] No full names of papers
+- [x] Present or past tense only
+- [ ] Move placement of descriptions of vertical/horizontal approaches
+- [x] Move Theory chapter before method
+- [x] Figure captions should have a period
+- [x] Make sure figure numbers match in text
+- [x] All figures need to be mentioned in text
+- [ ] More references if possible
+- [x] Figures != Tables
+- [x] Move 2.6 Research Gap Into Intro
+- [ ] Make graphs fonts bigger
+	- [ ] 5.13
+	- [ ] 5.15
+	- [ ] 5.16

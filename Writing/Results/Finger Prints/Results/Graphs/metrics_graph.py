@@ -180,7 +180,6 @@ combined_recall = [
     0.9833,
     0.9821,
 ]
-
 combined_f1 = [
     1.0000,
     0.9983,
@@ -279,7 +278,7 @@ df = pd.DataFrame(
 )
 
 # Plotting
-fig, axs = plt.subplots(2, 2, figsize=(14, 10))
+fig, axs = plt.subplots(2, 2, figsize=(16, 12))
 
 # Precision
 for column in [
@@ -288,27 +287,30 @@ for column in [
     "SIFT Precision",
     "Combined Precision",
 ]:
-    axs[0, 0].plot(df["Images"], df[column], label=column.split()[0])
-axs[0, 0].set_title("Precision by Number of Images")
-axs[0, 0].set_xlabel("Number of Images")
-axs[0, 0].set_ylabel("Precision")
-axs[0, 0].legend()
+    axs[0, 0].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
+axs[0, 0].set_title("Precision by Number of Images", fontsize=20)
+axs[0, 0].set_xlabel("Number of Images", fontsize=18)
+axs[0, 0].set_ylabel("Precision", fontsize=18)
+axs[0, 0].legend(fontsize=16)
+axs[0, 0].tick_params(axis="both", which="major", labelsize=16)
 
 # Recall
 for column in ["Dhash Recall", "Phash Recall", "SIFT Recall", "Combined Recall"]:
-    axs[0, 1].plot(df["Images"], df[column], label=column.split()[0])
-axs[0, 1].set_title("Recall by Number of Images")
-axs[0, 1].set_xlabel("Number of Images")
-axs[0, 1].set_ylabel("Recall")
-axs[0, 1].legend()
+    axs[0, 1].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
+axs[0, 1].set_title("Recall by Number of Images", fontsize=20)
+axs[0, 1].set_xlabel("Number of Images", fontsize=18)
+axs[0, 1].set_ylabel("Recall", fontsize=18)
+axs[0, 1].legend(fontsize=16)
+axs[0, 1].tick_params(axis="both", which="major", labelsize=16)
 
 # F1-Score
 for column in ["Dhash F1", "Phash F1", "SIFT F1", "Combined F1"]:
-    axs[1, 0].plot(df["Images"], df[column], label=column.split()[0])
-axs[1, 0].set_title("F1-Score by Number of Images")
-axs[1, 0].set_xlabel("Number of Images")
-axs[1, 0].set_ylabel("F1-Score")
-axs[1, 0].legend()
+    axs[1, 0].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
+axs[1, 0].set_title("F1-Score by Number of Images", fontsize=20)
+axs[1, 0].set_xlabel("Number of Images", fontsize=16)
+axs[1, 0].set_ylabel("F1-Score", fontsize=16)
+axs[1, 0].legend(fontsize=14)
+axs[1, 0].tick_params(axis="both", which="major", labelsize=14)
 
 # Accuracy
 for column in [
@@ -317,26 +319,38 @@ for column in [
     "SIFT Accuracy",
     "Combined Accuracy",
 ]:
-    axs[1, 1].plot(df["Images"], df[column], label=column.split()[0])
-axs[1, 1].set_title("Accuracy by Number of Images")
-axs[1, 1].set_xlabel("Number of Images")
-axs[1, 1].set_ylabel("Accuracy")
-axs[1, 1].legend()
+    axs[1, 1].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
+axs[1, 1].set_title("Accuracy by Number of Images", fontsize=20)
+axs[1, 1].set_xlabel("Number of Images", fontsize=18)
+axs[1, 1].set_ylabel("Accuracy", fontsize=18)
+axs[1, 1].legend(fontsize=16)
+axs[1, 1].tick_params(axis="both", which="major", labelsize=14)
 
 plt.tight_layout()
 plt.show()
 
+plt.figure(figsize=(12, 8))
 
-plt.figure(figsize=(10, 6))
+plt.plot(
+    image_counts, dhash_times, marker="o", color="blue", label="Dhash", linewidth=2
+)
+plt.plot(image_counts, sift_times, marker="o", color="red", label="SIFT", linewidth=2)
+plt.plot(
+    image_counts, phash_times, marker="o", color="green", label="Phash", linewidth=2
+)
+plt.plot(
+    image_counts,
+    combined_times,
+    marker="o",
+    color="purple",
+    label="Combined",
+    linewidth=2,
+)
 
-plt.plot(image_counts, dhash_times, marker="o", color="blue", label="Dhash")
-plt.plot(image_counts, sift_times, marker="o", color="red", label="SIFT")
-plt.plot(image_counts, phash_times, marker="o", color="green", label="Phash")
-plt.plot(image_counts, combined_times, marker="o", color="purple", label="Combined")
-
-plt.title("Time Elapsed for Image Processing Algorithms")
-plt.xlabel("Number of Images")
-plt.ylabel("Time Elapsed (seconds)")
-plt.legend()
+plt.title("Time Elapsed for Image Processing Algorithms", fontsize=20)
+plt.xlabel("Number of Images", fontsize=18)
+plt.ylabel("Time Elapsed (seconds)", fontsize=18)
+plt.legend(fontsize=16)
 plt.grid(True)
+plt.tick_params(axis="both", which="major", labelsize=16)
 plt.show()

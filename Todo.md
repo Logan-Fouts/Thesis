@@ -1,15 +1,17 @@
 - [x] Ease into intro and abstract better
 - [x] No full names of papers
 - [x] Present or past tense only
-- [ ] Move placement of descriptions of vertical/horizontal approaches
+- [x] Move placement of descriptions of vertical/horizontal approaches
 - [x] Move Theory chapter before method
 - [x] Figure captions should have a period
 - [x] Make sure figure numbers match in text
 - [x] All figures need to be mentioned in text
 - [ ] More references if possible
+- [x] Bold parts of table to highlight it
 - [x] Figures != Tables
 - [x] Move 2.6 Research Gap Into Intro
-- [ ] Make graphs fonts bigger
-	- [ ] 5.13
-	- [ ] 5.15
-	- [ ] 5.16
+- [x] Make graphs fonts bigger
+	- [x] 5.12
+	- [x] 5.14
+	- [x] 5.15
+	- [x] 5.17

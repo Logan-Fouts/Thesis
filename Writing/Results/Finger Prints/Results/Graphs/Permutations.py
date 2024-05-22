@@ -112,27 +112,27 @@ x = np.arange(len(algorithms))
 fig, ax1 = plt.subplots(figsize=(14, 8))
 
 color = "blue"
-ax1.set_xlabel("Algorithms Combination", fontsize=16)
-ax1.set_ylabel("Time Elapsed (s)", color=color, fontsize=16)
+ax1.set_xlabel("Algorithms Combination", fontsize=20)
+ax1.set_ylabel("Time Elapsed (s)", color=color, fontsize=20)
 ax1.bar(x, time_elapsed, color=color, label="Time Elapsed (s)")
-ax1.tick_params(axis="y", labelcolor=color)
-ax1.tick_params(axis="x", rotation=90, labelsize=14)
+ax1.tick_params(axis="y", labelcolor=color, labelsize=20)
+ax1.tick_params(axis="x", rotation=90, labelsize=20)
 
 ax2 = ax1.twinx()
 color = "red"
-ax2.set_ylabel("Accuracy (%)", color=color, fontsize=16)
+ax2.set_ylabel("Accuracy (%)", color=color, fontsize=20)
 ax2.plot(x, accuracy, color=color, marker="o", label="Accuracy (%)")
-ax2.tick_params(axis="y", labelcolor=color)
-ax2.tick_params(axis="x", labelsize=14)
+ax2.tick_params(axis="y", labelcolor=color, labelsize=20)
+ax2.tick_params(axis="x", labelsize=20)
 
 ax3 = ax1.twinx()
 color = "green"
 ax3.spines["right"].set_position(("outward", 60))
-ax3.set_ylabel("Group Numbers", color=color, fontsize=16)
+ax3.set_ylabel("Group Numbers", color=color, fontsize=20)
 ax3.plot(x, group_numbers, color=color, marker="s", label="Group Numbers")
-ax3.tick_params(axis="y", labelcolor=color)
-ax3.tick_params(axis="x", labelsize=14)
+ax3.tick_params(axis="y", labelcolor=color, labelsize=20)
+ax3.tick_params(axis="x", labelsize=18)
 
 fig.tight_layout()
-fig.legend(loc="upper left", bbox_to_anchor=(0.1, 0.9), fontsize=14)
+fig.legend(loc="upper left", bbox_to_anchor=(0.1, 0.9), fontsize=20)
 plt.show()

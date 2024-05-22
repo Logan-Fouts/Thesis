@@ -289,28 +289,28 @@ for column in [
 ]:
     axs[0, 0].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
 axs[0, 0].set_title("Precision by Number of Images", fontsize=20)
-axs[0, 0].set_xlabel("Number of Images", fontsize=18)
-axs[0, 0].set_ylabel("Precision", fontsize=18)
-axs[0, 0].legend(fontsize=16)
-axs[0, 0].tick_params(axis="both", which="major", labelsize=16)
+axs[0, 0].set_xlabel("Number of Images", fontsize=20)
+axs[0, 0].set_ylabel("Precision", fontsize=20)
+axs[0, 0].legend(fontsize=20)
+axs[0, 0].tick_params(axis="both", which="major", labelsize=20)
 
 # Recall
 for column in ["Dhash Recall", "Phash Recall", "SIFT Recall", "Combined Recall"]:
     axs[0, 1].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
 axs[0, 1].set_title("Recall by Number of Images", fontsize=20)
-axs[0, 1].set_xlabel("Number of Images", fontsize=18)
-axs[0, 1].set_ylabel("Recall", fontsize=18)
-axs[0, 1].legend(fontsize=16)
-axs[0, 1].tick_params(axis="both", which="major", labelsize=16)
+axs[0, 1].set_xlabel("Number of Images", fontsize=20)
+axs[0, 1].set_ylabel("Recall", fontsize=20)
+axs[0, 1].legend(fontsize=20)
+axs[0, 1].tick_params(axis="both", which="major", labelsize=20)
 
 # F1-Score
 for column in ["Dhash F1", "Phash F1", "SIFT F1", "Combined F1"]:
     axs[1, 0].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
 axs[1, 0].set_title("F1-Score by Number of Images", fontsize=20)
-axs[1, 0].set_xlabel("Number of Images", fontsize=16)
-axs[1, 0].set_ylabel("F1-Score", fontsize=16)
-axs[1, 0].legend(fontsize=14)
-axs[1, 0].tick_params(axis="both", which="major", labelsize=14)
+axs[1, 0].set_xlabel("Number of Images", fontsize=20)
+axs[1, 0].set_ylabel("F1-Score", fontsize=20)
+axs[1, 0].legend(fontsize=20)
+axs[1, 0].tick_params(axis="both", which="major", labelsize=20)
 
 # Accuracy
 for column in [
@@ -321,10 +321,10 @@ for column in [
 ]:
     axs[1, 1].plot(df["Images"], df[column], label=column.split()[0], linewidth=2)
 axs[1, 1].set_title("Accuracy by Number of Images", fontsize=20)
-axs[1, 1].set_xlabel("Number of Images", fontsize=18)
-axs[1, 1].set_ylabel("Accuracy", fontsize=18)
+axs[1, 1].set_xlabel("Number of Images", fontsize=20)
+axs[1, 1].set_ylabel("Accuracy", fontsize=20)
 axs[1, 1].legend(fontsize=16)
-axs[1, 1].tick_params(axis="both", which="major", labelsize=14)
+axs[1, 1].tick_params(axis="both", which="major", labelsize=20)
 
 plt.tight_layout()
 plt.show()
@@ -348,9 +348,9 @@ plt.plot(
 )
 
 plt.title("Time Elapsed for Image Processing Algorithms", fontsize=20)
-plt.xlabel("Number of Images", fontsize=18)
-plt.ylabel("Time Elapsed (seconds)", fontsize=18)
-plt.legend(fontsize=16)
+plt.xlabel("Number of Images", fontsize=20)
+plt.ylabel("Time Elapsed (seconds)", fontsize=20)
+plt.legend(fontsize=20)
 plt.grid(True)
-plt.tick_params(axis="both", which="major", labelsize=16)
+plt.tick_params(axis="both", which="major", labelsize=20)
 plt.show()

@@ -13,7 +13,7 @@ Before you begin, make sure you have Python installed on your computer. This pro
 If you haven't already, clone the project repository to your local machine and navigate to the project directory:
 
 ```bash
-git clone <git@github.com:Logan-Fouts/Thesis.git>
+git clone git@github.com:Logan-Fouts/Thesis.git --depth 1
 cd Thesis
 ```
 
